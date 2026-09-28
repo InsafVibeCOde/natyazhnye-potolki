@@ -743,6 +743,11 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 28px; font-size: 13px; color: var(--ink-3); }
 .footer__bottom a { text-decoration: underline; }
 .footer__legal { max-width: 720px; }
+.footer__owner { max-width: 520px; }
+.footer__age {
+  display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 6px;
+  border: 1px solid var(--line-2); color: var(--ink-2); font-size: 12px; font-weight: 600;
+}
 
 /* ---------- Mobile bar ---------- */
 
