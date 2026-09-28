@@ -14,7 +14,12 @@
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
   const motion = hasGsap && !reduceMotion;
 
-  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+  if (hasGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    // на телефонах адресная строка меняет высоту окна — не пересчитываем всё из-за этого
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
+  const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
   if (motion) html.classList.add('anim');
 
   /* ---------- Smooth scroll (Lenis) ---------- */
@@ -130,8 +135,9 @@
       .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
       .to(header, { opacity: 1, duration: 0.8 }, '<');
 
+    // на телефоне без масштабирования сцены с размытием — только затухание, так плавнее
     gsap.to('.hero__svg', {
-      scale: 1.18, opacity: 0.3, ease: 'none',
+      scale: isMobile() ? 1 : 1.18, opacity: 0.3, ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
     });
     gsap.to('.hero__inner', {
@@ -215,7 +221,8 @@
 
   const calc = $('#calc');
   const plan = $('[data-plan]');
-  const W = 600, H = 460, PX = 38, RATIO = 1.25;
+  const W = 600, H = 460, RATIO = 1.25;
+  const MAX_W = Math.min(W - 100, (H - 110) * RATIO); // ширина комнаты при 100 м²
   let prevLights = 0;
 
   const inPoly = (x, y, pts) => {
@@ -231,7 +238,11 @@
     if (!plan) return;
     const wm = Math.sqrt(state.area * RATIO);
     const hm = state.area / wm;
-    const w = wm * PX, h = hm * PX;
+    // комната растёт с площадью, но даже маленькая занимает заметную часть поля;
+    // сетка метров масштабируется вместе с ней — как будто камера отъезжает
+    const w = MAX_W * (0.4 + 0.6 * Math.sqrt(state.area / 100));
+    const h = w / RATIO;
+    const PX = w / wm;
     const x0 = (W - w) / 2, y0 = (H - h) / 2 + 12, x1 = x0 + w, y1 = y0 + h;
     const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
     const n = Math.min(Math.floor((state.corners - 4) / 2), 6);
@@ -375,12 +386,28 @@
     ScrollTrigger.create({
       trigger: '.steps', start: 'top 75%', end: 'bottom 55%', scrub: true,
       onUpdate: (self) => {
-        if (line) line.style.transform = `scaleX(${self.progress})`;
+        if (line) line.style.setProperty('--p', self.progress);
         steps.forEach((s, i) => s.classList.toggle('is-lit', self.progress >= i / steps.length));
       },
     });
   } else {
     $$('.step').forEach((s) => s.classList.add('is-lit'));
+    const line = $('.steps__line i');
+    if (line) line.style.setProperty('--p', 1);
+  }
+
+  /* ---------- Works: счётчик для мобильной ленты ---------- */
+
+  const worksTrack = $('.works__track');
+  const worksCur = $('[data-works-cur]');
+  if (worksTrack && worksCur) {
+    const cards = $$('.work', worksTrack);
+    worksTrack.addEventListener('scroll', () => {
+      const first = cards[0];
+      const step = first.offsetWidth + parseFloat(getComputedStyle(worksTrack).columnGap || 12);
+      const i = Math.min(cards.length - 1, Math.round(worksTrack.scrollLeft / step));
+      worksCur.textContent = String(i + 1).padStart(2, '0');
+    }, { passive: true });
   }
 
   /* ---------- Magnetic buttons + cursor light ---------- */

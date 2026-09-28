@@ -33,7 +33,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
   margin: 0;
@@ -219,6 +219,16 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   overflow-y: auto;
 }
 .menu-open .mobile-menu { opacity: 1; visibility: visible; }
+.mobile-menu > * { opacity: 0; transform: translateY(18px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.menu-open .mobile-menu > * { opacity: 1; transform: none; }
+.menu-open .mobile-menu > :nth-child(2) { transition-delay: .04s; }
+.menu-open .mobile-menu > :nth-child(3) { transition-delay: .08s; }
+.menu-open .mobile-menu > :nth-child(4) { transition-delay: .12s; }
+.menu-open .mobile-menu > :nth-child(5) { transition-delay: .16s; }
+.menu-open .mobile-menu > :nth-child(6) { transition-delay: .2s; }
+.menu-open .mobile-menu > :nth-child(7) { transition-delay: .24s; }
+.menu-open .mobile-menu > :nth-child(8) { transition-delay: .28s; }
+.menu-open .mobile-menu > :nth-child(9) { transition-delay: .32s; }
 .mobile-menu a:not(.btn) {
   font-size: 30px; font-weight: 700; letter-spacing: -.03em;
   padding: 10px 0; border-bottom: 1px solid var(--line);
@@ -474,6 +484,10 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .work:hover::after, .work:hover .work__cap { opacity: 1; transform: none; }
 .work__end { flex: 0 0 auto; width: 40px; }
 
+.works__head-m, .works__foot-m { display: none; }
+.works__count { font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.works__count b { color: var(--ink); font-weight: 700; }
+
 .works__progress {
   margin: 36px var(--gutter) 0; height: 1px; background: var(--line); position: relative; overflow: hidden;
 }
@@ -536,7 +550,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 
 .steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 56px; }
 .steps__line { position: absolute; left: 0; right: 0; top: 16px; height: 1px; background: var(--line); }
-.steps__line i { position: absolute; inset: 0; background: var(--glow); box-shadow: 0 0 12px rgba(var(--glow-rgb), .9); transform-origin: left; transform: scaleX(0); }
+.steps__line i { position: absolute; inset: 0; background: var(--glow); box-shadow: 0 0 12px rgba(var(--glow-rgb), .9); transform-origin: left; transform: scaleX(var(--p, 0)); }
 .step { position: relative; }
 .step__dot {
   position: absolute; top: -48px; left: 0;
@@ -790,12 +804,30 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .facts { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .fact:nth-child(3) { padding-left: 0; border-left: 0; }
 
+  /* Технологии — свайп-карточки */
   .tech { grid-template-columns: 1fr; }
   .tech__media { display: none; }
-  .tech__item { min-height: 0; opacity: 1; padding: 36px 0; }
-  .tech__item-img { display: block; margin-top: 24px; border-radius: 18px; aspect-ratio: 4 / 3; width: 100%; object-fit: cover; }
+  .tech__list {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; scroll-padding-left: var(--gutter);
+    scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .tech__list::-webkit-scrollbar { display: none; }
+  .tech__item {
+    flex: 0 0 80vw; max-width: 440px; min-height: 0; opacity: 1;
+    justify-content: flex-start; padding: 0 0 22px; border: 1px solid var(--line); border-radius: 20px;
+    background: var(--surface); overflow: hidden; scroll-snap-align: start;
+  }
+  .tech__item:first-child { border-top: 1px solid var(--line); }
+  .tech__item > :not(.tech__item-img) { padding: 0 20px; }
+  .tech__item-img { display: block; order: -1; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: 18px; }
+  .tech__num { font-size: 22px; margin-bottom: 6px; }
+  .tech__item .h3 { font-size: 24px; }
+  .tech__item p { font-size: 15px; margin-top: 10px; }
+  .tech__tags { margin-top: 16px; }
 
-  .calc__plan { min-height: 340px; }
+  .calc__plan { min-height: 320px; }
+  .plan-area-sub { font-size: 20px; letter-spacing: 1px; }
 
   .works__pin { height: auto; padding: 88px 0 72px; }
   .works__track {
@@ -803,8 +835,19 @@ em .w { padding-right: .08em; margin-right: -.08em; }
     scrollbar-width: none; -webkit-overflow-scrolling: touch;
   }
   .works__track::-webkit-scrollbar { display: none; }
-  .works__intro { width: 82vw; padding-right: 8px; scroll-snap-align: start; }
-  .work { height: 60vh; max-height: 480px; scroll-snap-align: start; }
+  .works__head-m { display: block; margin-bottom: 28px; }
+  .works__head-m .h2 { margin-top: 18px; }
+  .works__head-m .lead { margin-top: 14px; }
+  .works__foot-m { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; }
+  .works__intro { display: none; }
+  .works__track { gap: 12px; scroll-padding-left: var(--gutter); }
+  .work, .work--wide, .work--tall, .work--sq {
+    width: 78vw; max-width: 420px; height: auto; max-height: none;
+    aspect-ratio: 4 / 5; scroll-snap-align: start;
+  }
+  .work img { transform: none; }
+  .work::after, .work__cap { opacity: 1; transform: none; }
+  .work__end { width: 1px; }
   .works__progress { display: none; }
 
   .promos { grid-template-columns: 1fr; }
@@ -826,15 +869,70 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .counter { display: flex; justify-content: space-between; align-items: center; }
   .counter__label { margin: 0; min-height: 0; }
   .counter__ctrl { gap: 14px; }
-  .prices, .textures, .steps, .benefits { grid-template-columns: 1fr; }
+  .section { padding: 72px 0; }
+  .section-head { margin-bottom: 32px; }
+  .section-head .eyebrow { margin-bottom: 16px; }
+  .marquee { padding: 18px 0; }
+
+  /* Цены и фото руководителя — свайп */
+  .prices, .team {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; scroll-padding-left: var(--gutter);
+    scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .prices::-webkit-scrollbar, .team::-webkit-scrollbar { display: none; }
+  .price { flex: 0 0 80vw; max-width: 360px; scroll-snap-align: start; padding: 24px; }
+  .price:hover { transform: none; }
+  .price__value { font-size: 42px; margin: 20px 0 18px; }
+  .team img { flex: 0 0 80vw; max-width: 380px; scroll-snap-align: start; }
+
+  .textures, .benefits { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .texture { flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px; }
+  .benefit { padding: 16px; }
+  .benefit__icon { width: 38px; height: 38px; margin-bottom: 12px; }
+  .benefit b { font-size: 15px; }
+  .benefit span { font-size: 13px; }
+
+  /* 4 шага — вертикальная линия */
+  .steps { grid-template-columns: 1fr; row-gap: 34px; padding: 0 0 0 38px; }
+  .steps__line { display: block; left: 8px; right: auto; top: 8px; bottom: 8px; width: 1px; height: auto; }
+  .steps__line i { transform-origin: top; transform: scaleY(var(--p, 0)); }
+  .step__dot { top: 4px; left: -38px; }
+  .step__title { font-size: 21px; margin: 6px 0 8px; }
+
+  .promo { padding: 26px; }
+  .promo__big { font-size: 56px; }
+  .cta { padding: 24px; min-height: 0; gap: 24px; }
+  .cta__form { padding: 20px; }
+
+  .faq__q { padding: 22px 0; }
   .faq__a p { padding-right: 0; }
   .footer__top { grid-template-columns: 1fr; }
+  .footer__big { margin-bottom: 40px; }
   .mobile-bar { display: grid; }
-  .footer { padding-bottom: 110px; }
+  .footer { padding: 64px 0 110px; }
   .cookie { left: 12px; right: 12px; bottom: 84px; flex-direction: column; align-items: stretch; }
-  .modal__box { padding: 30px 22px; }
   .fact { padding-right: 12px; }
   .fact + .fact { padding-left: 16px; }
+
+  /* Форма — шторка снизу */
+  .modal { place-items: end center; padding: 0; }
+  .modal__box {
+    max-width: none; border-radius: 26px 26px 0 0; border-bottom: 0;
+    padding: 34px 22px calc(26px + env(safe-area-inset-bottom));
+    transform: translateY(100%); max-height: 92vh;
+  }
+  .modal__box::before {
+    content: ""; position: absolute; top: 10px; left: 50%; width: 40px; height: 4px; margin-left: -20px;
+    border-radius: 4px; background: var(--line-2);
+  }
+  .modal__title { font-size: 26px; }
+}
+
+/* Отклик на тап на сенсорных экранах */
+@media (hover: none) {
+  .btn:active, .counter__btn:active, .work:active, .faq__q:active { transform: scale(.97); }
+  .btn, .counter__btn, .work { transition: transform .2s var(--ease), background-color .3s, color .3s, border-color .3s; }
 }
 
 @media (max-width: 400px) {
