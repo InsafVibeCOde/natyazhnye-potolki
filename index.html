@@ -17,7 +17,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=21">
+  <link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body>
 
@@ -597,8 +597,8 @@
             <div class="cta__form-title">Рассчитаем со всеми скидками</div>
             <form class="form" data-form novalidate>
               <input type="hidden" name="source" value="Финальная форма">
-              <input class="input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
-              <input class="input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+              <input class="input ym-disable-keys" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+              <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
               <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Жду звонка</span><span class="arrow" aria-hidden="true">→</span></button>
               <label class="check">
                 <input type="checkbox" name="agree" required>
@@ -660,7 +660,7 @@
       </div>
       <div class="footer__bottom">
         <span class="footer__owner">© 2009–2026 «Люкс Монтаж» · Самозанятый Валиев Альберт Талгатович, ИНН 165609328077 <span class="footer__age" title="Возрастная маркировка">0+</span></span>
-        <span class="footer__legal">Информация на сайте не является публичной офертой (ст. 437 ГК РФ). <a href="html/privacy.html">Политика конфиденциальности</a> · <a href="html/agreement.html">Согласие на обработку персональных данных</a></span>
+        <span class="footer__legal">Информация на сайте не является публичной офертой (ст. 437 ГК РФ). <a href="html/privacy.html">Политика конфиденциальности</a> · <a href="html/agreement.html">Согласие на обработку персональных данных</a><a href="#" data-cookie-settings hidden> · Настройки cookie</a></span>
       </div>
     </div>
   </footer>
@@ -680,8 +680,8 @@
       <div class="modal__summary"></div>
       <form class="form" data-form novalidate>
         <input type="hidden" name="source" value="">
-        <input class="input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
-        <input class="input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input class="input ym-disable-keys" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+        <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
         <button class="btn btn--light btn--block" type="submit">Отправить заявку</button>
         <label class="check">
           <input type="checkbox" name="agree" required>
@@ -702,14 +702,17 @@
   </div>
 
   <!-- Cookie -->
-  <div class="cookie" id="cookie">
-    <span>Сайт использует cookie только для своей работы, аналитики нет. Подробнее — в <a href="html/privacy.html">политике конфиденциальности</a>.</span>
-    <button class="btn btn--light btn--sm">Понятно</button>
+  <div class="cookie" id="cookie" role="dialog" aria-label="Cookie">
+    <span data-cookie-text>Сайт использует cookie только для своей работы, аналитики нет. Подробнее — в <a href="html/privacy.html">политике конфиденциальности</a>.</span>
+    <div class="cookie__actions">
+      <button class="btn btn--ghost btn--sm" data-cookie-decline hidden>Отклонить</button>
+      <button class="btn btn--light btn--sm" data-cookie-accept>Понятно</button>
+    </div>
   </div>
 
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=22"></script>
+  <script src="js/main.js?v=23"></script>
 </body>
 </html>

@@ -774,6 +774,10 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .cookie.is-visible { display: flex; }
 .cookie a { text-decoration: underline; }
+.cookie__actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* атрибут hidden сильнее display у кнопок и ссылок */
+[hidden] { display: none !important; }
 
 /* ---------- Motion states ---------- */
 /* .anim ставится JS-ом только если GSAP загрузился и анимации разрешены */
@@ -917,6 +921,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .mobile-bar { display: grid; }
   .footer { padding: 64px 0 110px; }
   .cookie { left: 12px; right: 12px; bottom: 84px; flex-direction: column; align-items: stretch; }
+  .cookie__actions .btn { flex: 1; }
   .fact { padding-right: 12px; }
   .fact + .fact { padding-left: 16px; }
 

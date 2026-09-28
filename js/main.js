@@ -2,6 +2,12 @@
 (function () {
   'use strict';
 
+  /* ================= НАСТРОЙКИ ================= */
+  // Номер счётчика Яндекс.Метрики, например 12345678.
+  // Пока null — аналитики нет, баннер только информирует.
+  // Как включить — см. README.md, раздел «Яндекс.Метрика».
+  const METRIKA_ID = null;
+
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
   const fmt = (n) => Math.round(n).toLocaleString('ru-RU').replace(/[\s,]/g, ' ');
@@ -512,6 +518,8 @@
       // TODO: подключить отправку заявок (Telegram-бот / почта / CRM)
       // await fetch('/send.php', { method: 'POST', body: JSON.stringify(data) });
       console.log('Заявка:', data);
+      // цель «Заявка» в Метрике — только сам факт, без телефона и имени
+      if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'lead');
 
       form.classList.add('is-sent');
       form.reset();
@@ -573,16 +581,72 @@
     }
   });
 
-  /* ---------- Cookie ---------- */
+  /* ---------- Cookie и согласие на аналитику ---------- */
+  // Порядок строго такой: согласие → загрузка Метрики. До выбора и после отказа
+  // скрипта Метрики на странице нет вообще.
+
+  const CONSENT_KEY = 'cookie-consent'; // 'granted' | 'denied'
+  const store = {
+    get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* storage недоступен */ } },
+  };
 
   const cookie = $('#cookie');
-  let accepted = false;
-  try { accepted = localStorage.getItem('cookie-ok') === '1'; } catch (e) { /* storage недоступен */ }
-  if (!accepted) setTimeout(() => cookie.classList.add('is-visible'), 2500);
-  $('button', cookie).addEventListener('click', () => {
-    cookie.classList.remove('is-visible');
-    try { localStorage.setItem('cookie-ok', '1'); } catch (e) { /* ignore */ }
-  });
+  const btnAccept = $('[data-cookie-accept]', cookie);
+  const btnDecline = $('[data-cookie-decline]', cookie);
+  const showCookie = () => cookie.classList.add('is-visible');
+  const hideCookie = () => cookie.classList.remove('is-visible');
+
+  const loadMetrika = () => {
+    if (!METRIKA_ID || window.ym) return;
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    window.ym(METRIKA_ID, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+  };
+
+  const clearMetrikaCookies = () => {
+    const host = location.hostname;
+    const base = host.split('.').slice(-2).join('.');
+    document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => n.startsWith('_ym')).forEach((n) => {
+      const exp = '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      document.cookie = n + exp;
+      document.cookie = n + exp + '; domain=' + host;
+      document.cookie = n + exp + '; domain=.' + base;
+    });
+  };
+
+  if (METRIKA_ID) {
+    // режим с аналитикой: явный выбор «Принять / Отклонить»
+    $('[data-cookie-text]', cookie).innerHTML =
+      'Мы используем cookie и Яндекс.Метрику, чтобы понимать, как улучшить сайт. Метрика включится только с вашего согласия. Подробнее — в <a href="html/cookie.html">политике cookie</a>.';
+    btnAccept.textContent = 'Принять';
+    btnDecline.hidden = false;
+    $$('[data-cookie-settings]').forEach((l) => {
+      l.hidden = false;
+      l.addEventListener('click', (e) => { e.preventDefault(); showCookie(); });
+    });
+
+    const consent = store.get(CONSENT_KEY);
+    if (consent === 'granted') loadMetrika();
+    else if (consent !== 'denied') setTimeout(showCookie, 1500);
+
+    btnAccept.addEventListener('click', () => { store.set(CONSENT_KEY, 'granted'); hideCookie(); loadMetrika(); });
+    btnDecline.addEventListener('click', () => {
+      const wasGranted = store.get(CONSENT_KEY) === 'granted';
+      store.set(CONSENT_KEY, 'denied');
+      hideCookie();
+      // отзыв согласия: убираем cookie Метрики и перезагружаем страницу без неё
+      if (wasGranted) { clearMetrikaCookies(); location.reload(); }
+    });
+  } else {
+    // аналитики нет — баннер только информирует
+    if (store.get('cookie-ok') !== '1') setTimeout(showCookie, 2500);
+    btnAccept.addEventListener('click', () => { store.set('cookie-ok', '1'); hideCookie(); });
+  }
 
   /* ---------- Refresh after fonts/images ---------- */
 
