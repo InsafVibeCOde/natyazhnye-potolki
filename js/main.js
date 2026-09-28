@@ -504,6 +504,10 @@
 
       const data = Object.fromEntries(new FormData(form));
       if (form.closest('#modal') && modalSummary.textContent) data.calc = modalSummary.textContent;
+      // фиксируем факт согласия: когда и на какую редакцию документа
+      data.consent = 'Согласие на обработку ПДн, ред. 28.09.2026';
+      data.consent_at = new Date().toISOString();
+      delete data.agree;
 
       // TODO: подключить отправку заявок (Telegram-бот / почта / CRM)
       // await fetch('/send.php', { method: 'POST', body: JSON.stringify(data) });
