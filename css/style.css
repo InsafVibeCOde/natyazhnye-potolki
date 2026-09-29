@@ -111,7 +111,7 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* Split words (JS) */
 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
-.w__i { display: inline-block; will-change: transform; }
+.w__i { display: inline-block; }
 em .w { padding-right: .08em; margin-right: -.08em; }
 
 /* ---------- Buttons ---------- */
@@ -246,8 +246,8 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   isolation: isolate;
 }
 
-.hero__scene { position: absolute; inset: 0; z-index: -1; }
-.hero__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__scene { position: absolute; inset: -24px; z-index: -1; will-change: transform; }
+.hero__svg { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform, opacity; }
 .hero__scene::after {
   content: ""; position: absolute; inset: 0;
   background:
@@ -271,8 +271,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .price-chip {
   display: inline-flex; align-items: center; gap: 14px;
   padding: 10px 18px 10px 10px; border-radius: 999px;
-  border: 1px solid var(--line-2); background: rgba(255,255,255,.03);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-2); background: rgba(20, 22, 27, .72);
   width: fit-content; white-space: nowrap;
 }
 .price-chip__tag {
@@ -452,7 +451,8 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 
 .works { position: relative; overflow: hidden; background: var(--bg-2); }
 .works__pin { height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 100px 0 48px; }
-.works__track { display: flex; gap: 20px; padding-left: var(--gutter); will-change: transform; align-items: stretch; }
+.works__track { display: flex; gap: 20px; padding-left: var(--gutter); align-items: stretch; }
+@media (min-width: 961px) { .works__track { will-change: transform; } }
 .works__intro {
   flex: 0 0 auto; width: min(460px, 80vw); padding-right: 40px;
   display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
@@ -519,7 +519,8 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .price .btn { margin-top: auto; }
 
 @property --a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-.price--featured { border-color: transparent; background: linear-gradient(var(--surface-2), var(--surface-2)) padding-box, conic-gradient(from var(--a), transparent 0 60%, rgba(var(--glow-rgb), .9) 75%, transparent 90%) border-box; border: 1px solid transparent; animation: spin 5s linear infinite; }
+.price--featured { border-color: transparent; background: linear-gradient(var(--surface-2), var(--surface-2)) padding-box, conic-gradient(from var(--a), transparent 0 60%, rgba(var(--glow-rgb), .9) 75%, transparent 90%) border-box; border: 1px solid transparent; animation: spin 5s linear infinite paused; }
+.price--featured.is-inview { animation-play-state: running; }
 .price--featured .price__tag { background: var(--glow); color: var(--bg); border-color: var(--glow); }
 @keyframes spin { to { --a: 360deg; } }
 
@@ -587,12 +588,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .cert b { display: block; }
 .cert span { font-size: 14px; color: var(--ink-2); }
 
-.team-head {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
-  margin-top: clamp(64px, 9vw, 120px); padding-top: 32px; border-top: 1px solid var(--line);
-}
-.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
-.team img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; }
 
 /* ---------- FAQ ---------- */
 
@@ -863,7 +858,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .promo { min-height: 0; }
   .faq-wrap .section-head { position: static; }
   .footer__top { grid-template-columns: 1fr 1fr; }
-  .team { gap: 8px; }
 }
 
 @media (max-width: 720px) {
@@ -884,16 +878,15 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .marquee { padding: 18px 0; }
 
   /* Цены и фото руководителя — свайп */
-  .prices, .team {
+  .prices {
     display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
     margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; scroll-padding-left: var(--gutter);
     scrollbar-width: none; overscroll-behavior-x: contain;
   }
-  .prices::-webkit-scrollbar, .team::-webkit-scrollbar { display: none; }
+  .prices::-webkit-scrollbar { display: none; }
   .price { flex: 0 0 80vw; max-width: 360px; scroll-snap-align: start; padding: 24px; }
   .price:hover { transform: none; }
   .price__value { font-size: 42px; margin: 20px 0 18px; }
-  .team img { flex: 0 0 80vw; max-width: 380px; scroll-snap-align: start; }
 
   .textures, .benefits { grid-template-columns: 1fr 1fr; gap: 8px; }
   .texture { flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px; }
@@ -937,6 +930,19 @@ em .w { padding-right: .08em; margin-right: -.08em; }
     border-radius: 4px; background: var(--line-2);
   }
   .modal__title { font-size: 26px; }
+}
+
+/* Телефоны: без дорогих фильтров и размытия фона — так анимации идут плавно */
+@media (max-width: 960px), (hover: none) {
+  .ceil-glow { filter: none; stroke-width: 12; stroke: rgba(var(--glow-rgb), .2); }
+  .header.is-scrolled { background: rgba(11, 12, 15, .94); }
+  .header.is-scrolled, .mobile-bar, .cta__form, .modal, .tech__counter {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  .mobile-bar { background: rgba(21, 24, 30, .97); }
+  .modal { background: rgba(5, 6, 8, .82); }
+  .cta__form { background: rgba(21, 24, 30, .94); }
+  .price--featured { animation: none; --a: 200deg; }
 }
 
 /* Отклик на тап на сенсорных экранах */

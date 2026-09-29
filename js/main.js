@@ -136,7 +136,7 @@
       .to(cores, { strokeDashoffset: 0, duration: 1.2, stagger: 0.1, ease: 'power3.inOut' }, '-=0.9')
       .to(glows, { keyframes: { opacity: [0.9, 0.1, 0.7, 0.25, 1] }, duration: 0.7, ease: 'none' })
       .to('.ceil-amb', { opacity: 0.75, duration: 1.4, ease: 'power2.out' }, '<')
-      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out' }, '-=1.1')
+      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' }, '-=1.1')
       .to('.hero .eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '<')
       .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
       .to(header, { opacity: 1, duration: 0.8 }, '<');
@@ -152,8 +152,8 @@
     });
 
     if (finePointer) {
-      const px = gsap.quickTo('.hero__parallax', 'x', { duration: 1.4, ease: 'power3.out' });
-      const py = gsap.quickTo('.hero__parallax', 'y', { duration: 1.4, ease: 'power3.out' });
+      const px = gsap.quickTo('.hero__scene', 'x', { duration: 1.4, ease: 'power3.out' });
+      const py = gsap.quickTo('.hero__scene', 'y', { duration: 1.4, ease: 'power3.out' });
       hero.addEventListener('mousemove', (e) => {
         px((e.clientX / innerWidth - 0.5) * -40);
         py((e.clientY / innerHeight - 0.5) * -24);
@@ -170,7 +170,7 @@
       gsap.set(words, { yPercent: 110 });
       ScrollTrigger.create({
         trigger: el, start: 'top 88%', once: true,
-        onEnter: () => gsap.to(words, { yPercent: 0, duration: 1.1, stagger: 0.06, ease: 'expo.out' }),
+        onEnter: () => gsap.to(words, { yPercent: 0, duration: 1.1, stagger: 0.06, ease: 'expo.out', clearProps: 'transform' }),
       });
     });
 
@@ -188,6 +188,13 @@
         onEnter: () => gsap.to(obj, { v: target, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = fmt(obj.v); } }),
       });
     });
+  }
+
+  /* ---------- Анимация рамки популярного полотна только в зоне видимости ---------- */
+
+  const featured = $('.price--featured');
+  if (featured && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => featured.classList.toggle('is-inview', en.isIntersecting)).observe(featured);
   }
 
   /* ---------- Tech: sticky media ---------- */
@@ -651,7 +658,9 @@
   /* ---------- Refresh after fonts/images ---------- */
 
   if (hasGsap) {
-    window.addEventListener('load', () => ScrollTrigger.refresh());
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+    // один пересчёт после загрузки страницы и шрифтов — вместо двух, чтобы не дёргать страницу
+    const loaded = new Promise((r) => (document.readyState === 'complete' ? r() : window.addEventListener('load', r, { once: true })));
+    const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    Promise.all([loaded, fonts]).then(() => ScrollTrigger.refresh());
   }
 })();
