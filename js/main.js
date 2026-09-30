@@ -9,10 +9,8 @@
     metrikaId: null,     // номер счётчика Яндекс.Метрики, например 12345678
     max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
     leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
-    // рейтинг — реальный, с карт (проверено 30.09.2026); отзывы на сайт не выводим, они на картах
-    rating: { value: '5,0', text: '4 оценки в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
-    reviewsUrl: null,    // ссылка на все отзывы
-    reviews: [],         // только реальные отзывы: [{ name: 'Анна', text: '…', source: 'Яндекс Карты' }]
+    // рейтинг — реальный, с карт (проверено 30.09.2026); сами отзывы на сайт не выводим — только ссылки на площадки
+    rating: { value: '5,0', text: 'в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
   };
   const METRIKA_ID = CONFIG.metrikaId;
 
@@ -770,7 +768,7 @@
     });
   }
 
-  /* ---------- Рейтинг и отзывы (только реальные, из CONFIG) ---------- */
+  /* ---------- Рейтинг (только реальный, из CONFIG) ---------- */
 
   if (CONFIG.rating) {
     const r = $('[data-rating]');
@@ -778,30 +776,6 @@
     $('[data-rating-text]', r).textContent = CONFIG.rating.text;
     if (CONFIG.rating.url) r.href = CONFIG.rating.url;
     r.hidden = false;
-  }
-
-  if (CONFIG.reviews.length) {
-    const box = $('[data-reviews]');
-    CONFIG.reviews.forEach((rv) => {
-      const card = document.createElement('article');
-      card.className = 'review';
-      const stars = document.createElement('span');
-      stars.className = 'review__stars';
-      stars.setAttribute('aria-hidden', 'true');
-      stars.textContent = '★★★★★';
-      const text = document.createElement('p');
-      text.textContent = rv.text;
-      const who = document.createElement('span');
-      who.className = 'review__who';
-      const name = document.createElement('b');
-      name.textContent = rv.name;
-      who.append(name, rv.source ? `, ${rv.source}` : '');
-      card.append(stars, text, who);
-      box.append(card);
-    });
-    const all = $('[data-reviews-link]');
-    if (CONFIG.reviewsUrl) { all.href = CONFIG.reviewsUrl; all.hidden = false; }
-    $('#reviews').hidden = false;
   }
 
   /* ---------- Refresh after fonts/images ---------- */
