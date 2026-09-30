@@ -258,6 +258,15 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .hero__title { margin-top: 22px; }
 
 .hero__side { display: flex; flex-direction: column; gap: 26px; padding-bottom: 10px; }
+.hero .lead { color: var(--ink); }
+/* мягкая светлая подложка: текст читается, даже если под ним проходит линия света */
+@media (min-width: 721px) {
+  .hero__side { position: relative; }
+  .hero__side::before {
+    content: ""; position: absolute; inset: -30px -40px -24px -40px; z-index: -1; pointer-events: none;
+    border-radius: 48px; background: rgba(247, 246, 243, .92); filter: blur(26px);
+  }
+}
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .price-chip {
@@ -880,11 +889,14 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .works__foot-m { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; }
   .works__intro { display: none; }
   .works__track { gap: 12px; scroll-padding-left: var(--gutter); }
+  /* на телефоне фото целиком, без обрезки: кадр 4:3, поля заполнены размытой копией снимка */
   .work, .work--wide, .work--tall, .work--sq {
-    width: 78vw; max-width: 420px; height: auto; max-height: none;
-    aspect-ratio: 4 / 5; scroll-snap-align: start;
+    width: 86vw; max-width: 460px; height: auto; max-height: none;
+    aspect-ratio: 4 / 3; scroll-snap-align: start;
+    background-color: var(--surface-2); background-size: cover; background-position: center;
   }
-  .work img { transform: none; }
+  .work::before { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, .22); }
+  .work img { position: relative; transform: none; object-fit: contain; }
   .work__end { width: 1px; }
   .works__progress { display: none; }
 
@@ -1019,3 +1031,8 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .calc__alt { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); }
 .calc__alt p { margin: 0 0 2px; font-size: 14px; color: var(--ink-2); text-align: center; }
+/* Первый экран на телефоне: потолок со светом — над заголовком, текст на чистом фоне */
+@media (max-width: 720px) {
+  .hero { background: var(--bg); }
+  .hero__scene { bottom: auto; height: 58%; }
+}
