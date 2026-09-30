@@ -3,10 +3,20 @@
   'use strict';
 
   /* ================= НАСТРОЙКИ ================= */
-  // Номер счётчика Яндекс.Метрики, например 12345678.
-  // Пока null — аналитики нет, баннер только информирует.
-  // Как включить — см. README.md, раздел «Яндекс.Метрика».
-  const METRIKA_ID = null;
+  // Всё, что заполняется данными заказчика. Пока значение пустое — связанный блок на сайте скрыт.
+  // Подробно — в README.md.
+  const CONFIG = {
+    metrikaId: null,     // номер счётчика Яндекс.Метрики, например 12345678
+    max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
+    whatsapp: null,      // номер WhatsApp, например '79510618500'
+    telegram: null,      // username в Telegram без @, например 'luxmontage'
+    leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
+    // рейтинг — реальный, с карт (проверено 30.09.2026); отзывы на сайт не выводим, они на картах
+    rating: { value: '5,0', text: '4 оценки в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
+    reviewsUrl: null,    // ссылка на все отзывы
+    reviews: [],         // только реальные отзывы: [{ name: 'Анна', text: '…', source: 'Яндекс Карты' }]
+  };
+  const METRIKA_ID = CONFIG.metrikaId;
 
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
@@ -129,7 +139,7 @@
     gsap.set(glows, { opacity: 0 });
     gsap.set('.ceil-amb', { opacity: 0 });
     gsap.set(heroWords, { yPercent: 110 });
-    gsap.set(['.hero__side', '.hero .eyebrow'], { y: 30 });
+    gsap.set('.hero__side', { y: 30 });
 
     gsap.timeline({ delay: 0.2 })
       .to(edges, { strokeDashoffset: 0, duration: 1.4, stagger: 0.08, ease: 'power2.inOut' })
@@ -137,7 +147,6 @@
       .to(glows, { keyframes: { opacity: [0.9, 0.1, 0.7, 0.25, 1] }, duration: 0.7, ease: 'none' })
       .to('.ceil-amb', { opacity: 0.75, duration: 1.4, ease: 'power2.out' }, '<')
       .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' }, '-=1.1')
-      .to('.hero .eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '<')
       .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
       .to(header, { opacity: 1, duration: 0.8 }, '<');
 
@@ -464,7 +473,7 @@
     const summary = btn.dataset.summary === 'calc' ? calcSummary() : btn.dataset.summary || '';
     modalSummary.textContent = summary;
     modalSummary.classList.toggle('is-visible', !!summary);
-    modalForm.classList.remove('is-sent');
+    modalForm.classList.remove('is-sent', 'is-error');
     modal.classList.add('is-open');
     lockScroll(true);
     setTimeout(() => $('input[name="phone"]', modal).focus(), 120);
@@ -499,7 +508,24 @@
   };
   $$('input[name="phone"]').forEach(maskPhone);
 
+  // Заявка уходит на сервер в РФ (CONFIG.leadsEndpoint). Пока адрес не задан — только в консоль.
+  const sendLead = async (data) => {
+    if (!CONFIG.leadsEndpoint) { console.info('Заявка (отправка ещё не подключена):', data); return true; }
+    try {
+      const res = await fetch(CONFIG.leadsEndpoint, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data),
+      });
+      // успех — только если сервер явно ответил { ok: true }
+      const body = await res.json().catch(() => null);
+      return res.ok && !!(body && body.ok);
+    } catch (err) {
+      return false;
+    }
+  };
+
   $$('form[data-form]').forEach((form) => {
+    const errBox = $('.form__error', form);
+    const submit = $('button[type="submit"]', form);
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const phone = $('input[name="phone"]', form);
@@ -507,19 +533,31 @@
       const okPhone = phone.value.replace(/\D/g, '').length === 11;
       phone.classList.toggle('is-invalid', !okPhone);
       agree.closest('.check').classList.toggle('is-invalid', !agree.checked);
-      if (!okPhone || !agree.checked) return;
+      if (!okPhone || !agree.checked) { if (!okPhone) phone.focus(); return; }
+
+      // скрытое поле заполняют только боты — делаем вид, что всё ушло
+      const trap = $('input[name="website"]', form);
+      if (trap && trap.value) { form.classList.add('is-sent'); return; }
 
       const data = Object.fromEntries(new FormData(form));
+      delete data.website;
+      delete data.agree;
       if (form.closest('#modal') && modalSummary.textContent) data.calc = modalSummary.textContent;
+      data.page = location.href.split('#')[0];
       // фиксируем факт согласия: когда и на какую редакцию документа
       data.consent = 'Согласие на обработку ПДн, ред. 28.09.2026';
       data.consent_at = new Date().toISOString();
-      delete data.agree;
 
-      // TODO: подключить отправку заявок (Telegram-бот / почта / CRM)
-      // await fetch('/send.php', { method: 'POST', body: JSON.stringify(data) });
-      console.log('Заявка:', data);
-      // цель «Заявка» в Метрике — только сам факт, без телефона и имени
+      form.classList.remove('is-error');
+      if (submit) submit.disabled = true;
+      const ok = await sendLead(data);
+      if (submit) submit.disabled = false;
+      if (!ok) {
+        if (errBox) errBox.textContent = 'Не получилось отправить заявку. Позвоните нам: 8 (951) 061-85-00.';
+        form.classList.add('is-error');
+        return;
+      }
+      // цель «Заявка» в Метрике — только сам факт, без телефона
       if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'lead');
 
       form.classList.add('is-sent');
@@ -647,6 +685,162 @@
     // аналитики нет — баннер только информирует
     if (store.get('cookie-ok') !== '1') setTimeout(showCookie, 2500);
     btnAccept.addEventListener('click', () => { store.set('cookie-ok', '1'); hideCookie(); });
+  }
+
+  /* ---------- Квиз «Подберём потолок за минуту» ---------- */
+
+  const quiz = $('[data-quiz]');
+  if (quiz) {
+    const steps = $$('.quiz__step', quiz);
+    const questions = steps.filter((st) => st.dataset.q);
+    const answers = {};
+    const countEl = $('[data-quiz-count]', quiz);
+    const bar = $('[data-quiz-bar]', quiz);
+    const back = $('[data-quiz-back]', quiz);
+    let at = 0;
+
+    const show = (i) => {
+      at = i;
+      steps.forEach((st, k) => st.classList.toggle('is-active', k === i));
+      const final = i >= questions.length;
+      countEl.textContent = final ? 'Последний шаг' : `Вопрос ${i + 1} из ${questions.length}`;
+      bar.style.setProperty('--p', ((i + 1) / (questions.length + 1)) * 100 + '%');
+      back.hidden = i === 0;
+      if (final) {
+        const picked = questions.map((q) => answers[q.dataset.q]).filter(Boolean);
+        $('[data-quiz-summary]', quiz).textContent = 'Ваш выбор: ' + picked.join(', ');
+        $('input[name="quiz"]', quiz).value = questions.map((q) => `${q.dataset.q}: ${answers[q.dataset.q]}`).join('; ');
+      }
+      if (hasGsap) ScrollTrigger.refresh();
+    };
+
+    questions.forEach((st, i) => {
+      $$('button[data-v]', st).forEach((b) => b.addEventListener('click', () => {
+        $$('button[data-v]', st).forEach((x) => x.classList.toggle('is-picked', x === b));
+        answers[st.dataset.q] = b.dataset.v;
+        setTimeout(() => show(i + 1), 220);
+      }));
+    });
+    back.addEventListener('click', () => show(Math.max(0, at - 1)));
+    show(0);
+  }
+
+  /* ---------- Мессенджеры ---------- */
+
+  const waLink = (text) => (CONFIG.whatsapp
+    ? `https://wa.me/${CONFIG.whatsapp}${text ? '?text=' + encodeURIComponent(text) : ''}` : null);
+  const tgLink = () => (CONFIG.telegram ? `https://t.me/${CONFIG.telegram}` : null);
+
+  const msgLinks = {
+    max: () => CONFIG.max,
+    whatsapp: () => waLink('Здравствуйте! Хочу узнать про натяжные потолки.'),
+    telegram: tgLink,
+  };
+  $$('[data-msg]').forEach((a) => {
+    const url = msgLinks[a.dataset.msg] && msgLinks[a.dataset.msg]();
+    if (url) { a.href = url; a.hidden = false; }
+  });
+
+  /* ---------- Расчёт и ответы квиза — в MAX ---------- */
+  // MAX не умеет открывать чат с готовым текстом, поэтому кладём текст в буфер обмена
+  // и подсказываем вставить его. Сайт при этом ничего не отправляет и не хранит.
+
+  const toast = $('[data-toast]');
+  let toastTimer;
+  const showToast = (text) => {
+    toast.textContent = text;
+    toast.classList.add('is-shown');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('is-shown'), 6000);
+  };
+
+  const copyText = (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(() => true, () => false);
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    ta.remove();
+    return Promise.resolve(ok);
+  };
+
+  const quizText = () => {
+    const v = $('[data-quiz] input[name="quiz"]');
+    return v && v.value ? v.value : '';
+  };
+  const shareText = {
+    calc: () => `Здравствуйте! Посчитал(а) потолок на сайте: ${calcSummary()}. Хочу уточнить стоимость и записаться на бесплатный замер.`,
+    quiz: () => `Здравствуйте! Подбираю натяжной потолок. ${quizText()}. Подскажите варианты и стоимость.`,
+  };
+
+  if (CONFIG.max) {
+    $$('[data-max-share]').forEach((a) => {
+      a.href = CONFIG.max;
+      a.hidden = false;
+      a.addEventListener('click', () => {
+        const text = shareText[a.dataset.maxShare]();
+        copyText(text).then((ok) => showToast(ok
+          ? 'Текст скопирован. В чате MAX нажмите на поле сообщения и выберите «Вставить».'
+          : 'Откроется чат в MAX — напишите нам, и мы посчитаем точнее.'));
+        if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
+      });
+    });
+    $$('[data-max-alt]').forEach((el) => { el.hidden = false; });
+    // заявка через форму остаётся запасным вариантом
+    const calcForm = $('[data-calc-form]');
+    if (calcForm) {
+      calcForm.classList.replace('btn--light', 'btn--ghost');
+      $('.btn__label', calcForm).textContent = 'Или оставить телефон';
+    }
+  }
+
+  const calcWa = $('[data-calc-wa]');
+  if (calcWa && CONFIG.whatsapp) {
+    const refreshWa = () => { calcWa.href = waLink('Здравствуйте! Посчитал потолок на сайте: ' + calcSummary()); };
+    refreshWa();
+    calcWa.hidden = false;
+    calcWa.addEventListener('pointerdown', refreshWa);
+    calcWa.addEventListener('focus', refreshWa);
+  }
+
+  /* ---------- Рейтинг и отзывы (только реальные, из CONFIG) ---------- */
+
+  if (CONFIG.rating) {
+    const r = $('[data-rating]');
+    $('[data-rating-value]', r).textContent = CONFIG.rating.value;
+    $('[data-rating-text]', r).textContent = CONFIG.rating.text;
+    if (CONFIG.rating.url) r.href = CONFIG.rating.url;
+    r.hidden = false;
+  }
+
+  if (CONFIG.reviews.length) {
+    const box = $('[data-reviews]');
+    CONFIG.reviews.forEach((rv) => {
+      const card = document.createElement('article');
+      card.className = 'review';
+      const stars = document.createElement('span');
+      stars.className = 'review__stars';
+      stars.setAttribute('aria-hidden', 'true');
+      stars.textContent = '★★★★★';
+      const text = document.createElement('p');
+      text.textContent = rv.text;
+      const who = document.createElement('span');
+      who.className = 'review__who';
+      const name = document.createElement('b');
+      name.textContent = rv.name;
+      who.append(name, rv.source ? `, ${rv.source}` : '');
+      card.append(stars, text, who);
+      box.append(card);
+    });
+    const all = $('[data-reviews-link]');
+    if (CONFIG.reviewsUrl) { all.href = CONFIG.reviewsUrl; all.hidden = false; }
+    $('#reviews').hidden = false;
   }
 
   /* ---------- Refresh after fonts/images ---------- */

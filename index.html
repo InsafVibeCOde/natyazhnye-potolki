@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Натяжные потолки в Казани от 499 ₽/м² с установкой — Люкс Монтаж</title>
-  <meta name="description" content="Натяжные потолки в Казани под ключ: световые линии, теневой профиль, трековое освещение, парящие потолки. Бесплатный замер, монтаж за 1–2 дня, договор и гарантия до 10 лет. С 2009 года.">
+  <title>Натяжные потолки в Казани под ключ, полотно от 499 ₽/м² — Люкс Монтаж</title>
+  <meta name="description" content="Натяжные потолки в Казани под ключ: световые линии, теневой профиль, трековое освещение, парящие потолки. Бесплатный замер с образцами, монтаж за 1–2 дня, цена по договору, гарантия до 10 лет. С 2009 года.">
   <meta name="theme-color" content="#F7F6F3">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Натяжные потолки в Казани — Люкс Монтаж">
-  <meta property="og:description" content="От 499 ₽/м² с установкой. Бесплатный замер, монтаж за 1–2 дня, гарантия до 10 лет.">
+  <meta property="og:description" content="Полотно от 499 ₽/м². Бесплатный замер с образцами, монтаж за 1–2 дня, гарантия до 10 лет.">
   <meta property="og:image" content="img/cta.webp">
 
   <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
@@ -17,7 +17,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=32">
+  <link rel="stylesheet" href="css/style.css?v=41">
 </head>
 <body>
 
@@ -33,18 +33,23 @@
       </a>
 
       <nav class="nav" aria-label="Основное меню">
-        <a href="#tech">Технологии</a>
+        <a href="#quiz">Подбор</a>
         <a href="#calc">Калькулятор</a>
         <a href="#works">Работы</a>
         <a href="#prices">Цены</a>
         <a href="#promo">Скидки</a>
-        <a href="#contacts">Контакты</a>
+        <a href="#faq">Вопросы</a>
       </nav>
 
       <div class="header__contacts">
+        <div class="header__msgs">
+          <a class="msg-btn" data-msg="max" hidden target="_blank" rel="noopener" aria-label="Написать в MAX">MAX</a>
+          <a class="msg-btn" data-msg="whatsapp" hidden target="_blank" rel="noopener" aria-label="Написать в WhatsApp">WhatsApp</a>
+          <a class="msg-btn" data-msg="telegram" hidden target="_blank" rel="noopener" aria-label="Написать в Telegram">Telegram</a>
+        </div>
         <div class="header__phone">
           <a href="tel:+79510618500">8 (951) 061-85-00</a>
-          <span>ежедневно 8:00–20:00</span>
+          <span>ежедневно 8:00–22:00</span>
         </div>
         <button class="btn btn--light btn--sm" data-modal data-source="Шапка — замер">Вызвать замерщика</button>
         <a class="header__call" href="tel:+79510618500" aria-label="Позвонить"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg></a>
@@ -54,14 +59,18 @@
   </header>
 
   <div class="mobile-menu" aria-label="Мобильное меню">
-    <a href="#tech">Технологии</a>
+    <a href="#quiz">Подбор потолка</a>
     <a href="#calc">Калькулятор</a>
     <a href="#works">Наши работы</a>
     <a href="#prices">Цены</a>
     <a href="#promo">Скидки</a>
     <a href="#faq">Вопросы</a>
-    <a href="#contacts">Контакты</a>
     <a class="mobile-menu__phone" href="tel:+79510618500">8 (951) 061-85-00</a>
+    <div class="mobile-menu__msgs">
+      <a class="btn btn--ghost" data-msg="max" hidden target="_blank" rel="noopener">Написать в MAX</a>
+      <a class="btn btn--ghost" data-msg="whatsapp" hidden target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="btn btn--ghost" data-msg="telegram" hidden target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
     <button class="btn btn--light btn--block" data-modal data-source="Меню — замер">Вызвать замерщика бесплатно</button>
   </div>
 
@@ -112,63 +121,46 @@
 
       <div class="container hero__inner">
         <div>
-          <span class="eyebrow">С 2009 года · Казань и Татарстан</span>
           <h1 class="h1 hero__title" data-split>Натяжные потолки в&nbsp;Казани <em>под ключ</em></h1>
         </div>
 
         <div class="hero__side">
-          <p class="lead">Световые линии, теневой профиль, треки, парящие и классика. Бесплатный замер, цена по договору и монтаж за 1–2 дня.</p>
-          <div class="price-chip">
-            <b>от 499 ₽</b><small>за м² с установкой</small>
+          <p class="lead">Световые линии, теневой профиль, треки и классика. С 2009 года в Казани и Татарстане: бесплатный замер с образцами, цена по договору, монтаж за 1–2 дня.</p>
+          <div class="hero__offer">
+            <div class="price-chip"><b>от 499 ₽</b><small>за м² полотна</small></div>
+            <p class="gift-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg>Санузел в подарок при заказе во всю квартиру</p>
           </div>
           <div class="hero__actions">
             <button class="btn btn--light" data-magnetic data-modal data-source="Первый экран — замер"
                     data-title="Бесплатный замер"
                     data-text="Оставьте телефон — перезвоним, подберём удобное время и привезём образцы полотен.">
-              <span class="btn__label">Вызвать замерщика</span><span class="arrow" aria-hidden="true">→</span>
+              <span class="btn__label">Вызвать замерщика</span>
             </button>
-            <a class="btn btn--ghost" data-magnetic href="#calc"><span class="btn__label">Рассчитать цену</span></a>
+            <a class="btn btn--ghost" data-magnetic href="#quiz"><span class="btn__label">Подобрать потолок за минуту</span></a>
           </div>
         </div>
       </div>
-
-      <div class="scroll-hint" aria-hidden="true">Листайте</div>
     </section>
 
-    <!-- ================= MARQUEE ================= -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span class="marquee__item">Световые линии</span>
-        <span class="marquee__item">Теневой профиль</span>
-        <span class="marquee__item">Трековые системы</span>
-        <span class="marquee__item">Парящие потолки</span>
-        <span class="marquee__item">Тканевые</span>
-        <span class="marquee__item">Фотопечать</span>
-        <span class="marquee__item">Двухуровневые</span>
-        <span class="marquee__item">Звёздное небо</span>
+    <!-- ================= ДОВЕРИЕ ================= -->
+    <div class="trust">
+      <div class="container trust__inner">
+        <!-- Рейтинг появится автоматически, когда в js/main.js заполнен CONFIG.rating -->
+        <a class="trust__rating" data-rating hidden target="_blank" rel="noopener">
+          <span class="trust__stars" aria-hidden="true">★★★★★</span><b data-rating-value></b><span data-rating-text></span>
+        </a>
+        <span class="trust__item"><b>С 2009 года</b> в Казани и Татарстане</span>
+        <span class="trust__item"><b>До 10 лет</b> гарантии по договору</span>
+        <span class="trust__item"><b>Цена фиксируется</b> на замере</span>
+        <span class="trust__item"><b>Полотна</b> MSD, BAUF, Teqtum</span>
       </div>
     </div>
-
-    <!-- ================= FACTS ================= -->
-    <section class="section">
-      <div class="container">
-        <div class="facts">
-          <div class="fact reveal"><div class="fact__value"><span data-count="17">17</span><small>лет</small></div><div class="fact__label">делаем потолки в Казани и Татарстане</div></div>
-          <div class="fact reveal"><div class="fact__value"><span data-count="10">10</span><small>лет</small></div><div class="fact__label">гарантия на материалы и монтаж по договору</div></div>
-          <div class="fact reveal"><div class="fact__value"><span data-count="499">499</span><small>₽/м²</small></div><div class="fact__label">стартовая цена полотна с установкой</div></div>
-          <div class="fact reveal"><div class="fact__value">1–2<small>дня</small></div><div class="fact__label">от замера до готового потолка</div></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ================= TECH (sticky) ================= -->
     <section class="section section--alt" id="tech">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Технологии</span>
-            <h2 class="h2" data-split>Свет — это часть <em>потолка</em></h2>
-          </div>
+          <h2 class="h2" data-split>Свет — это часть потолка</h2>
           <p class="lead reveal">Мы не просто натягиваем полотно. Проектируем свет вместе с потолком, чтобы люстра была не нужна — или стала главным акцентом.</p>
         </div>
 
@@ -223,14 +215,99 @@
       </div>
     </section>
 
+    <!-- ================= КВИЗ ================= -->
+    <section class="section" id="quiz">
+      <div class="container quiz">
+        <div class="quiz__intro">
+          <h2 class="h2" data-split>Подберём потолок за минуту</h2>
+          <p class="lead reveal">Ответьте на 4 вопроса — предложим 2–3 варианта под ваш интерьер и посчитаем стоимость. Бесплатно.</p>
+          <ul class="quiz__perks reveal">
+            <li>Скидка 7% пенсионерам и новосёлам</li>
+            <li>Санузел в подарок при заказе во всю квартиру</li>
+            <li>Образцы полотен привезём на замер</li>
+          </ul>
+        </div>
+
+        <form class="quiz__card reveal" data-quiz data-form novalidate>
+          <div class="quiz__top">
+            <span class="quiz__count" data-quiz-count>Вопрос 1 из 4</span>
+            <button type="button" class="quiz__back" data-quiz-back hidden>Назад</button>
+          </div>
+          <div class="quiz__bar" aria-hidden="true"><i data-quiz-bar></i></div>
+
+          <fieldset class="quiz__step is-active" data-q="Помещение">
+            <legend class="quiz__q">Где нужен потолок?</legend>
+            <div class="quiz__opts">
+              <button type="button" data-v="Кухня">Кухня</button>
+              <button type="button" data-v="Спальня">Спальня</button>
+              <button type="button" data-v="Гостиная">Гостиная</button>
+              <button type="button" data-v="Детская">Детская</button>
+              <button type="button" data-v="Ванная или санузел">Ванная или санузел</button>
+              <button type="button" data-v="Коридор">Коридор</button>
+              <button type="button" data-v="Вся квартира или дом" class="is-wide">Вся квартира или дом</button>
+            </div>
+          </fieldset>
+          <fieldset class="quiz__step" data-q="Свет">
+            <legend class="quiz__q">Какой свет вам нравится?</legend>
+            <div class="quiz__opts">
+              <button type="button" data-v="Люстра и точечные светильники">Люстра и точечные</button>
+              <button type="button" data-v="Световые линии">Световые линии</button>
+              <button type="button" data-v="Трековые светильники">Треки</button>
+              <button type="button" data-v="Подсветка по контуру">Подсветка по контуру</button>
+              <button type="button" data-v="Пока не знаю" class="is-wide">Пока не знаю — посоветуйте</button>
+            </div>
+          </fieldset>
+          <fieldset class="quiz__step" data-q="Фактура">
+            <legend class="quiz__q">Какое полотно ближе?</legend>
+            <div class="quiz__opts">
+              <button type="button" data-v="Матовое">Матовое<small>как ровная побелка</small></button>
+              <button type="button" data-v="Сатиновое">Сатиновое<small>мягкий блеск</small></button>
+              <button type="button" data-v="Глянцевое">Глянцевое<small>отражает свет</small></button>
+              <button type="button" data-v="Тканевое">Тканевое<small>фактура ткани</small></button>
+              <button type="button" data-v="Посоветуйте" class="is-wide">Не знаю — покажите образцы</button>
+            </div>
+          </fieldset>
+          <fieldset class="quiz__step" data-q="Сроки">
+            <legend class="quiz__q">Когда планируете ремонт?</legend>
+            <div class="quiz__opts">
+              <button type="button" data-v="В ближайшие 1–2 недели">В ближайшие 1–2 недели</button>
+              <button type="button" data-v="В течение месяца">В течение месяца</button>
+              <button type="button" data-v="Позже">Позже</button>
+              <button type="button" data-v="Пока присматриваюсь">Пока присматриваюсь</button>
+            </div>
+          </fieldset>
+
+          <div class="quiz__step quiz__final" data-quiz-final>
+            <p class="quiz__q">Готово! Куда прислать варианты?</p>
+            <p class="quiz__summary" data-quiz-summary></p>
+            <input type="hidden" name="source" value="Квиз — подбор потолка">
+            <input type="hidden" name="quiz" value="">
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
+            <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
+              <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
+              <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
+              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
+              <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
+            </div>
+            <button class="btn btn--light btn--block" type="submit">Получить подборку</button>
+            <label class="check">
+              <input type="checkbox" name="agree" required>
+              <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
+            </label>
+            <div class="form__error" role="alert"></div>
+            <p class="quiz__alt" data-max-alt hidden>Не хотите оставлять телефон? <a data-max-share="quiz" target="_blank" rel="noopener">Отправьте ответы в MAX</a></p>
+          </div>
+          <div class="form__success">Спасибо! Подберём варианты и свяжемся с вами в рабочее время.</div>
+        </form>
+      </div>
+    </section>
+
     <!-- ================= CALCULATOR ================= -->
     <section class="section" id="calc">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Калькулятор</span>
-            <h2 class="h2" data-split>Соберите свой потолок <em>за минуту</em></h2>
-          </div>
+          <h2 class="h2" data-split>Посчитайте стоимость с установкой</h2>
           <p class="lead reveal">Двигайте площадь, добавляйте светильники — схема и цена меняются сразу. Точную смету замерщик зафиксирует в договоре.</p>
         </div>
 
@@ -284,12 +361,16 @@
               <div class="calc__note">* ориентировочно, полотно MSD, монтаж под ключ</div>
             </div>
 
-            <button class="btn btn--light btn--block" data-magnetic data-modal data-summary="calc" data-source="Калькулятор"
+            <a class="btn btn--light btn--block" data-max-share="calc" hidden target="_blank" rel="noopener">
+              <span class="btn__label">Отправить расчёт в MAX</span>
+            </a>
+            <button class="btn btn--light btn--block" data-calc-form data-magnetic data-modal data-summary="calc" data-source="Калькулятор"
                     data-title="Зафиксировать цену"
                     data-text="Оставьте телефон — замерщик приедет бесплатно и сделает точную смету по вашему расчёту.">
-              <span class="btn__label">Зафиксировать цену</span><span class="arrow" aria-hidden="true">→</span>
+              <span class="btn__label">Зафиксировать цену</span>
             </button>
-            <div class="calc__gift">+ подарок или скидка 7% при заказе</div>
+            <a class="btn btn--ghost btn--block" data-calc-wa hidden target="_blank" rel="noopener">Прислать расчёт в WhatsApp</a>
+            <div class="calc__gift">Санузел в подарок при заказе во всю квартиру, скидка 7% пенсионерам и новосёлам</div>
           </div>
         </div>
       </div>
@@ -299,18 +380,16 @@
     <section class="works" id="works">
       <div class="works__pin">
         <div class="works__head-m container">
-          <span class="eyebrow">Портфолио</span>
-          <h2 class="h2">Наши работы в&nbsp;<em>Казани</em></h2>
-          <p class="lead">Реальные объекты — без рендеров и стоковых фото. Листайте вбок →</p>
+          <h2 class="h2">Наши работы в&nbsp;Казани</h2>
+          <p class="lead">Реальные объекты — без рендеров и стоковых фото. Листайте вбок.</p>
         </div>
         <div class="works__track">
           <div class="works__intro">
             <div>
-              <span class="eyebrow">Портфолио</span>
-              <h2 class="h2">Наши работы в&nbsp;<em>Казани</em></h2>
+              <h2 class="h2">Наши работы в&nbsp;Казани</h2>
               <p class="lead">Реальные объекты — квартиры, дома, клиники и кафе. Без рендеров и стоковых фото.</p>
             </div>
-            <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span><span class="arrow" aria-hidden="true">→</span></button>
+            <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span></button>
           </div>
 
           <button class="work work--wide" data-lightbox="works" data-full="img/works/w-19.webp"><img decoding="async" src="img/works/w-19.webp" srcset="img/works/w-19-sm.webp 800w, img/works/w-19.webp 1800w" sizes="(max-width: 960px) 80vw, 60vw" alt="Белая кухня: матовый потолок с подвесами" loading="lazy" width="1800" height="1350"><span class="work__cap"><span>Белая кухня</span><span>01</span></span></button>
@@ -335,71 +414,94 @@
       </div>
     </section>
 
+    <!-- ================= ОТЗЫВЫ (появятся, когда заполнен CONFIG.reviews) ================= -->
+    <section class="section" id="reviews" hidden>
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Что говорят клиенты</h2>
+          <div>
+            <p class="lead">Отзывы наших клиентов о потолках и монтаже.</p>
+            <a class="btn btn--ghost btn--sm reviews__all" data-reviews-link hidden target="_blank" rel="noopener">Все отзывы</a>
+          </div>
+        </div>
+        <div class="reviews" data-reviews></div>
+      </div>
+    </section>
+
     <!-- ================= PRICES ================= -->
     <section class="section" id="prices">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Цены на полотна</span>
-            <h2 class="h2" data-split>Только сертифицированные <em>полотна</em></h2>
-          </div>
-          <p class="lead reveal">Все полотна разрешены для жилых помещений, не пахнут и не боятся влаги. Замерщик привезёт образцы — выберете вживую.</p>
+          <h2 class="h2" data-split>Цены на полотна</h2>
+          <p class="lead reveal">Цена за м² полотна. Стоимость с профилем и монтажом покажет калькулятор выше, точную — замерщик на месте. Все полотна сертифицированы и разрешены для жилых помещений.</p>
         </div>
 
         <div class="prices">
           <article class="price reveal">
             <span class="price__tag">Лучшая цена</span>
             <h3 class="price__name">MSD Classic</h3>
-            <p class="price__origin">Китай · белый и цветной</p>
+            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
             <div class="price__value">499 ₽ <small>/ м²</small></div>
-            <dl class="price__spec">
-              <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
-              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-              <div><dt>Плотность</dt><dd>170 мк</dd></div>
-              <div><dt>Фактуры</dt><dd>мат, сатин, глянец</dd></div>
-            </dl>
+            <details class="price__more">
+              <summary>Характеристики</summary>
+              <dl class="price__spec">
+                <div><dt>Производство</dt><dd>Китай</dd></div>
+                <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
+                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+                <div><dt>Плотность</dt><dd>170 мк</dd></div>
+              </dl>
+            </details>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — MSD Classic" data-title="Консультация по MSD Classic">Консультация</button>
           </article>
 
           <article class="price price--featured reveal">
             <span class="price__tag">Популярный</span>
             <h3 class="price__name">MSD Premium</h3>
-            <p class="price__origin">Тайвань · белый и цветной</p>
+            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
             <div class="price__value">520 ₽ <small>/ м²</small></div>
-            <dl class="price__spec">
-              <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
-              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-              <div><dt>Плотность</dt><dd>180–200 мк</dd></div>
-              <div><dt>Фактуры</dt><dd>мат, сатин, глянец</dd></div>
-            </dl>
+            <details class="price__more">
+              <summary>Характеристики</summary>
+              <dl class="price__spec">
+                <div><dt>Производство</dt><dd>Тайвань</dd></div>
+                <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
+                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+                <div><dt>Плотность</dt><dd>180–200 мк</dd></div>
+              </dl>
+            </details>
             <button class="btn btn--light btn--block" data-modal data-source="Цены — MSD Premium" data-title="Консультация по MSD Premium">Консультация</button>
           </article>
 
           <article class="price reveal">
             <span class="price__tag">Германия</span>
             <h3 class="price__name">BAUF</h3>
-            <p class="price__origin">Германия · белый</p>
+            <p class="price__origin">мат, сатин, глянец, фотопечать · белый</p>
             <div class="price__value">700 ₽ <small>/ м²</small></div>
-            <dl class="price__spec">
-              <div><dt>Пожаробезопасность</dt><dd>КМ3</dd></div>
-              <div><dt>Ширина</dt><dd>до 300 см</dd></div>
-              <div><dt>Плотность</dt><dd>270 мк</dd></div>
-              <div><dt>Фактуры</dt><dd>мат, сатин, глянец, фотопечать</dd></div>
-            </dl>
+            <details class="price__more">
+              <summary>Характеристики</summary>
+              <dl class="price__spec">
+                <div><dt>Производство</dt><dd>Германия</dd></div>
+                <div><dt>Пожаробезопасность</dt><dd>КМ3</dd></div>
+                <div><dt>Ширина</dt><dd>до 300 см</dd></div>
+                <div><dt>Плотность</dt><dd>270 мк</dd></div>
+              </dl>
+            </details>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — BAUF" data-title="Консультация по BAUF">Консультация</button>
           </article>
 
           <article class="price reveal">
             <span class="price__tag">Не горит</span>
             <h3 class="price__name">Teqtum Euro</h3>
-            <p class="price__origin">Германия · белый и цветной</p>
+            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
             <div class="price__value">1100 ₽ <small>/ м²</small></div>
-            <dl class="price__spec">
-              <div><dt>Пожаробезопасность</dt><dd>КМ2</dd></div>
-              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-              <div><dt>Плотность</dt><dd>210 мк</dd></div>
-              <div><dt>Фактуры</dt><dd>мат, сатин, глянец</dd></div>
-            </dl>
+            <details class="price__more">
+              <summary>Характеристики</summary>
+              <dl class="price__spec">
+                <div><dt>Производство</dt><dd>Германия</dd></div>
+                <div><dt>Пожаробезопасность</dt><dd>КМ2</dd></div>
+                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+                <div><dt>Плотность</dt><dd>210 мк</dd></div>
+              </dl>
+            </details>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — Teqtum" data-title="Консультация по Teqtum Euro">Консультация</button>
           </article>
         </div>
@@ -417,11 +519,8 @@
     <section class="section section--alt" id="promo">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Скидки и подарки</span>
-            <h2 class="h2" data-split>Выгоднее, <em>чем кажется</em></h2>
-          </div>
-          <p class="lead reveal">Скидки суммируются с подарком при заказе потолков во всю квартиру. Подробности — у менеджера.</p>
+          <h2 class="h2" data-split>Скидка 7% пенсионерам и&nbsp;новосёлам</h2>
+          <p class="lead reveal">А при заказе потолков во всю квартиру — потолок в санузел в подарок. Скидки суммируются с подарком, подробности у менеджера.</p>
         </div>
 
         <div class="promos">
@@ -429,7 +528,7 @@
             <div class="promo__big">Подарок</div>
             <h3 class="promo__title">Потолок в санузел бесплатно или плёнка на балкон с подсветкой</h3>
             <p class="muted">При заказе натяжных потолков во всю квартиру.</p>
-            <button class="btn btn--light" data-magnetic data-modal data-source="Подарок — санузел или балкон" data-title="Забрать подарок" data-summary="Подарок: потолок в санузел или плёнка на балкон"><span class="btn__label">Забрать подарок</span><span class="arrow" aria-hidden="true">→</span></button>
+            <button class="btn btn--light" data-magnetic data-modal data-source="Подарок — санузел или балкон" data-title="Забрать подарок" data-summary="Подарок: потолок в санузел или плёнка на балкон"><span class="btn__label">Забрать подарок</span></button>
           </article>
           <article class="promo reveal">
             <div class="promo__big">−7%</div>
@@ -451,10 +550,7 @@
     <section class="section" id="steps">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Как мы работаем</span>
-            <h2 class="h2" data-split>4 шага к&nbsp;вашему <em>потолку</em></h2>
-          </div>
+          <h2 class="h2" data-split>4 шага к&nbsp;вашему потолку</h2>
           <p class="lead reveal">Цена известна в день обращения и не меняется от замера до сдачи. В стоимость входит всё: материалы, работа, контроль и гарантия.</p>
         </div>
 
@@ -464,7 +560,7 @@
             <span class="step__dot" aria-hidden="true"></span>
             <span class="step__num">01</span>
             <h3 class="step__title">Заявка</h3>
-            <p>Оставляете заявку на сайте или звоните — перезваниваем и подбираем время замера.</p>
+            <p>Оставляете заявку на сайте, пишете или звоните — связываемся и подбираем время замера.</p>
           </div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
@@ -493,9 +589,8 @@
       <div class="container">
         <div class="about">
           <div class="about__text">
-            <span class="eyebrow">О компании</span>
-            <h2 class="h2" data-split>Потолки, за&nbsp;которые <em>не стыдно</em></h2>
-            <p class="lead reveal">«Люкс Монтаж» устанавливает натяжные потолки в Казани и Татарстане с 2009 года. Собственное производство, штатные мастера и официальный договор на каждый объект.</p>
+            <h2 class="h2" data-split>С 2009 года делаем потолки и&nbsp;отвечаем за них по договору</h2>
+            <p class="lead reveal">«Люкс Монтаж» устанавливает натяжные потолки в Казани и Татарстане. Собственное производство, штатные мастера и официальный договор на каждый объект.</p>
             <p class="muted reveal">Работаем с конструкциями любой сложности: двухуровневые со встроенным светом, парящие, резные, бесшовные, теневые и «Тихие стены». Для сложных систем делаем проект с учётом вашего интерьера.</p>
 
             <button class="cert reveal" data-lightbox="cert" data-full="img/cert.webp">
@@ -530,13 +625,24 @@
     <section class="section" id="faq">
       <div class="container faq-wrap">
         <div class="section-head">
-          <span class="eyebrow">Вопросы</span>
-          <h2 class="h2">Частые <em>вопросы</em></h2>
-          <p class="lead">Не нашли ответ? Позвоните или оставьте заявку — мастер проконсультирует бесплатно.</p>
-          <button class="btn btn--light" data-magnetic data-modal data-source="FAQ — вопрос" data-title="Задать вопрос мастеру" data-text="Оставьте телефон — мастер перезвонит и ответит на все вопросы."><span class="btn__label">Задать вопрос</span><span class="arrow" aria-hidden="true">→</span></button>
+          <h2 class="h2">Частые вопросы</h2>
+          <p class="lead">Не нашли ответ? Позвоните, напишите или оставьте заявку — мастер проконсультирует бесплатно.</p>
+          <button class="btn btn--light" data-magnetic data-modal data-source="FAQ — вопрос" data-title="Задать вопрос мастеру" data-text="Оставьте телефон — мастер свяжется и ответит на все вопросы."><span class="btn__label">Задать вопрос</span></button>
         </div>
 
         <div class="faq">
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">Безопасен ли натяжной потолок в детской?<span class="faq__icon" aria-hidden="true"></span></button>
+            <div class="faq__a"><div><p>Мы ставим только сертифицированные полотна, разрешённые для жилых помещений, — сертификаты покажем на замере. В детскую чаще выбирают матовые и сатиновые фактуры, а для настроения — фотопечать, например небо.</p></div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">Будет ли запах после монтажа?<span class="faq__icon" aria-hidden="true"></span></button>
+            <div class="faq__a"><div><p>Сразу после установки у ПВХ-полотна может быть лёгкий запах — он уходит после проветривания. Если для вас это важно, посмотрите тканевые полотна: замерщик привезёт образцы.</p></div></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">Что будет, если затопят соседи сверху?<span class="faq__icon" aria-hidden="true"></span></button>
+            <div class="faq__a"><div><p>ПВХ-полотно удерживает воду и защищает мебель и ремонт. Не прокалывайте его — позвоните нам: мастер приедет, аккуратно сольёт воду, просушит и вернёт полотно на место.</p></div></div>
+          </div>
           <div class="faq__item">
             <button class="faq__q" aria-expanded="false">Сколько времени занимает установка?<span class="faq__icon" aria-hidden="true"></span></button>
             <div class="faq__a"><div><p>Полотно изготавливаем на производстве по размерам замера, а сам монтаж одной комнаты обычно занимает несколько часов. Весь путь от замера до готового потолка — в среднем 1–2 дня.</p></div></div>
@@ -550,12 +656,8 @@
             <div class="faq__a"><div><p>Нет. Замерщик считает точную смету на месте, и она фиксируется в договоре. Стоимость не меняется от замера до сдачи объекта.</p></div></div>
           </div>
           <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">Какой потолок выбрать в ванную, детскую или кухню?<span class="faq__icon" aria-hidden="true"></span></button>
-            <div class="faq__a"><div><p>Для ванной и кухни подойдёт любое ПВХ-полотно — оно не впитывает влагу и запахи и легко моется. В детскую и спальню чаще выбирают матовые и сатиновые фактуры, в гостиную — глянец или световые линии. Замерщик привезёт образцы и поможет выбрать.</p></div></div>
-          </div>
-          <div class="faq__item">
             <button class="faq__q" aria-expanded="false">Как ухаживать за натяжным потолком?<span class="faq__icon" aria-hidden="true"></span></button>
-            <div class="faq__a"><div><p>Специальный уход не нужен. Достаточно протирать полотно мягкой тканью примерно раз в пару лет, а небольшие загрязнения убираются мыльным раствором.</p></div></div>
+            <div class="faq__a"><div><p>Специальный уход не нужен. Полотно не впитывает влагу и запахи, поэтому подходит для кухни и ванной. Достаточно протирать его мягкой тканью, а небольшие загрязнения убираются мыльным раствором.</p></div></div>
           </div>
           <div class="faq__item">
             <button class="faq__q" aria-expanded="false">Делаете ли вы дизайн-проект?<span class="faq__icon" aria-hidden="true"></span></button>
@@ -563,7 +665,7 @@
           </div>
           <div class="faq__item">
             <button class="faq__q" aria-expanded="false">Где вы работаете?<span class="faq__icon" aria-hidden="true"></span></button>
-            <div class="faq__a"><div><p>В Казани и по Республике Татарстан. Работаем ежедневно с 8:00 до 20:00, без выходных. Замер бесплатный.</p></div></div>
+            <div class="faq__a"><div><p>В Казани и по Республике Татарстан. Работаем ежедневно с 8:00 до 22:00, без выходных. Замер бесплатный.</p></div></div>
           </div>
         </div>
       </div>
@@ -575,23 +677,29 @@
         <div class="cta">
           <div class="cta__bg" aria-hidden="true"><img decoding="async" src="img/cta.webp" alt="" loading="lazy" width="1600" height="900"></div>
           <div>
-            <span class="eyebrow">Бесплатный замер</span>
-            <h2 class="h2" data-split>Включим свет <em>в вашем доме</em></h2>
-            <p class="lead">Оставьте телефон — перезвоним, подберём время замера и привезём образцы полотен. Замер бесплатный, даже если передумаете.</p>
+            <h2 class="h2" data-split>Бесплатный замер с&nbsp;образцами полотен</h2>
+            <p class="lead">Оставьте телефон — свяжемся, подберём время и привезём образцы. Посчитаем со всеми скидками прямо на месте.</p>
           </div>
 
           <div class="cta__form">
-            <div class="cta__form-title">Рассчитаем со всеми скидками</div>
+            <div class="cta__form-title">Записаться на замер</div>
             <form class="form" data-form novalidate>
               <input type="hidden" name="source" value="Финальная форма">
-              <input class="input ym-disable-keys" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
-              <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
-              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Жду звонка</span><span class="arrow" aria-hidden="true">→</span></button>
+              <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
+              <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
+                <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
+                <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
+              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
+                <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
+              </div>
+              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Записаться</span></button>
               <label class="check">
                 <input type="checkbox" name="agree" required>
                 <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
               </label>
-              <div class="form__success">Спасибо! Перезвоним в течение 5 минут в рабочее время.</div>
+              <div class="form__error" role="alert"></div>
+              <div class="form__success">Спасибо! Свяжемся с вами в рабочее время.</div>
             </form>
           </div>
         </div>
@@ -603,7 +711,6 @@
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__big" aria-hidden="true">Люкс Монтаж</div>
       <div class="footer__top">
         <div>
           <a href="#top" class="logo">
@@ -618,7 +725,7 @@
         <div>
           <div class="footer__title">Разделы</div>
           <ul class="footer__list">
-            <li><a href="#tech">Технологии</a></li>
+            <li><a href="#quiz">Подбор потолка</a></li>
             <li><a href="#calc">Калькулятор</a></li>
             <li><a href="#works">Наши работы</a></li>
             <li><a href="#prices">Цены</a></li>
@@ -639,9 +746,12 @@
           <div class="footer__title">Контакты</div>
           <ul class="footer__list">
             <li><a class="footer__phone" href="tel:+79510618500">8 (951) 061-85-00</a></li>
+            <li><a data-msg="max" hidden target="_blank" rel="noopener">MAX</a></li>
+            <li><a data-msg="whatsapp" hidden target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a data-msg="telegram" hidden target="_blank" rel="noopener">Telegram</a></li>
             <li><a href="mailto:luxmontage@mail.ru">luxmontage@mail.ru</a></li>
-            <li>г. Казань</li>
-            <li>ежедневно с 8:00 до 20:00</li>
+            <li>г. Казань, ежедневно с 8:00 до 22:00</li>
+            <li>Отзывы: <a href="https://yandex.ru/maps/org/lyuks_montazh/154054015821/reviews/" target="_blank" rel="noopener">Яндекс Карты</a>, <a href="https://2gis.ru/kazan/geo/70000001110180739" target="_blank" rel="noopener">2ГИС</a></li>
           </ul>
         </div>
       </div>
@@ -655,26 +765,37 @@
   <!-- Mobile bottom bar -->
   <div class="mobile-bar">
     <a class="btn btn--ghost" href="tel:+79510618500">Позвонить</a>
-    <button class="btn btn--light" data-modal data-source="Мобильная панель — замер">Бесплатный замер</button>
+    <a class="btn btn--ghost" data-msg="max" hidden target="_blank" rel="noopener">MAX</a>
+    <a class="btn btn--ghost" data-msg="whatsapp" hidden target="_blank" rel="noopener">WhatsApp</a>
+    <button class="btn btn--light" data-modal data-source="Мобильная панель — замер">Замер</button>
   </div>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <!-- Modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-lenis-prevent>
     <div class="modal__box">
       <button class="modal__close" aria-label="Закрыть">×</button>
       <h3 class="modal__title" id="modal-title">Бесплатный замер</h3>
-      <p class="modal__text">Оставьте телефон — перезвоним в течение 5 минут.</p>
+      <p class="modal__text">Оставьте телефон — свяжемся в рабочее время.</p>
       <div class="modal__summary"></div>
       <form class="form" data-form novalidate>
         <input type="hidden" name="source" value="">
-        <input class="input ym-disable-keys" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
-        <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
+        <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
+          <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
+          <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
+              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
+          <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
+        </div>
         <button class="btn btn--light btn--block" type="submit">Отправить заявку</button>
         <label class="check">
           <input type="checkbox" name="agree" required>
           <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
         </label>
-        <div class="form__success">Спасибо! Заявка принята — скоро перезвоним.</div>
+        <div class="form__error" role="alert"></div>
+        <div class="form__success">Спасибо! Заявка принята — скоро свяжемся.</div>
       </form>
     </div>
   </div>
@@ -700,6 +821,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=30"></script>
+  <script src="js/main.js?v=41"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+# Журнал заявок недоступен из браузера
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^leads/ - [F,L]
+</IfModule>
+<FilesMatch "\.(csv|log)$">
+  Require all denied
+</FilesMatch>
