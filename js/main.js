@@ -304,13 +304,13 @@
     const dimW = wm.toFixed(1).replace('.', ',');
     const dimH = hm.toFixed(1).replace('.', ',');
     const dims = `
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x0}" y1="${y0 - 16}" x2="${x1}" y2="${y0 - 16}"/>
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x0}" y1="${y0 - 21}" x2="${x0}" y2="${y0 - 11}"/>
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x1}" y1="${y0 - 21}" x2="${x1}" y2="${y0 - 11}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x0}" y1="${y0 - 16}" x2="${x1}" y2="${y0 - 16}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x0}" y1="${y0 - 21}" x2="${x0}" y2="${y0 - 11}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x1}" y1="${y0 - 21}" x2="${x1}" y2="${y0 - 11}"/>
       <text class="plan-area-sub" x="${cx}" y="${y0 - 24}" text-anchor="middle">${dimW} м</text>
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x0 - 16}" y1="${y0}" x2="${x0 - 16}" y2="${y1}"/>
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x0 - 21}" y1="${y0}" x2="${x0 - 11}" y2="${y0}"/>
-      <line class="plan-grid" style="stroke:rgba(255,255,255,.25)" x1="${x0 - 21}" y1="${y1}" x2="${x0 - 11}" y2="${y1}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x0 - 16}" y1="${y0}" x2="${x0 - 16}" y2="${y1}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x0 - 21}" y1="${y0}" x2="${x0 - 11}" y2="${y0}"/>
+      <line class="plan-grid" style="stroke:rgba(27,26,24,.3)" x1="${x0 - 21}" y1="${y1}" x2="${x0 - 11}" y2="${y1}"/>
       <text class="plan-area-sub" x="${x0 - 24}" y="${cy}" text-anchor="middle" transform="rotate(-90 ${x0 - 24} ${cy})">${dimH} м</text>`;
 
     plan.innerHTML = `
@@ -437,13 +437,7 @@
       el.addEventListener('mouseleave', () => { xTo(0); yTo(0); });
     });
 
-    const light = $('.cursor-light');
-    const lx = gsap.quickTo(light, 'x', { duration: 0.8, ease: 'power3.out' });
-    const ly = gsap.quickTo(light, 'y', { duration: 0.8, ease: 'power3.out' });
-    window.addEventListener('mousemove', (e) => {
-      html.classList.add('has-cursor');
-      lx(e.clientX); ly(e.clientY);
-    }, { passive: true });
+
   }
 
   /* ---------- Modal ---------- */

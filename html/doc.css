@@ -8,6 +8,6 @@
 .doc p, .doc li { color: var(--ink-2); font-size: 16px; line-height: 1.7; }
 .doc p + p { margin-top: 12px; }
 .doc b { color: var(--ink); font-weight: 600; }
-.doc a:not(.doc__back) { color: var(--glow); text-decoration: underline; text-underline-offset: 3px; }
+.doc a:not(.doc__back) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .doc ul { list-style: disc; padding-left: 22px; }
 .doc li + li { margin-top: 6px; }
