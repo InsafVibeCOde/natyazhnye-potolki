@@ -8,8 +8,6 @@
   const CONFIG = {
     metrikaId: null,     // номер счётчика Яндекс.Метрики, например 12345678
     max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
-    whatsapp: null,      // номер WhatsApp, например '79510618500'
-    telegram: null,      // username в Telegram без @, например 'luxmontage'
     leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
     // рейтинг — реальный, с карт (проверено 30.09.2026); отзывы на сайт не выводим, они на картах
     rating: { value: '5,0', text: '4 оценки в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
@@ -725,23 +723,7 @@
     show(0);
   }
 
-  /* ---------- Мессенджеры ---------- */
-
-  const waLink = (text) => (CONFIG.whatsapp
-    ? `https://wa.me/${CONFIG.whatsapp}${text ? '?text=' + encodeURIComponent(text) : ''}` : null);
-  const tgLink = () => (CONFIG.telegram ? `https://t.me/${CONFIG.telegram}` : null);
-
-  const msgLinks = {
-    max: () => CONFIG.max,
-    whatsapp: () => waLink('Здравствуйте! Хочу узнать про натяжные потолки.'),
-    telegram: tgLink,
-  };
-  $$('[data-msg]').forEach((a) => {
-    const url = msgLinks[a.dataset.msg] && msgLinks[a.dataset.msg]();
-    if (url) { a.href = url; a.hidden = false; }
-  });
-
-  /* ---------- Расчёт и ответы квиза — в MAX ---------- */
+  /* ---------- Расчёт калькулятора — в MAX ---------- */
   // MAX не умеет открывать чат с готовым текстом, поэтому кладём текст в буфер обмена
   // и подсказываем вставить его. Сайт при этом ничего не отправляет и не хранит.
 
@@ -770,13 +752,8 @@
     return Promise.resolve(ok);
   };
 
-  const quizText = () => {
-    const v = $('[data-quiz] input[name="quiz"]');
-    return v && v.value ? v.value : '';
-  };
   const shareText = {
     calc: () => `Здравствуйте! Посчитал(а) потолок на сайте: ${calcSummary()}. Хочу уточнить стоимость и записаться на бесплатный замер.`,
-    quiz: () => `Здравствуйте! Подбираю натяжной потолок. ${quizText()}. Подскажите варианты и стоимость.`,
   };
 
   if (CONFIG.max) {
@@ -791,22 +768,6 @@
         if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
       });
     });
-    $$('[data-max-alt]').forEach((el) => { el.hidden = false; });
-    // заявка через форму остаётся запасным вариантом
-    const calcForm = $('[data-calc-form]');
-    if (calcForm) {
-      calcForm.classList.replace('btn--light', 'btn--ghost');
-      $('.btn__label', calcForm).textContent = 'Или оставить телефон';
-    }
-  }
-
-  const calcWa = $('[data-calc-wa]');
-  if (calcWa && CONFIG.whatsapp) {
-    const refreshWa = () => { calcWa.href = waLink('Здравствуйте! Посчитал потолок на сайте: ' + calcSummary()); };
-    refreshWa();
-    calcWa.hidden = false;
-    calcWa.addEventListener('pointerdown', refreshWa);
-    calcWa.addEventListener('focus', refreshWa);
   }
 
   /* ---------- Рейтинг и отзывы (только реальные, из CONFIG) ---------- */

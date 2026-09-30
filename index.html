@@ -17,7 +17,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=41">
+  <link rel="stylesheet" href="css/style.css?v=43">
 </head>
 <body>
 
@@ -42,11 +42,6 @@
       </nav>
 
       <div class="header__contacts">
-        <div class="header__msgs">
-          <a class="msg-btn" data-msg="max" hidden target="_blank" rel="noopener" aria-label="Написать в MAX">MAX</a>
-          <a class="msg-btn" data-msg="whatsapp" hidden target="_blank" rel="noopener" aria-label="Написать в WhatsApp">WhatsApp</a>
-          <a class="msg-btn" data-msg="telegram" hidden target="_blank" rel="noopener" aria-label="Написать в Telegram">Telegram</a>
-        </div>
         <div class="header__phone">
           <a href="tel:+79510618500">8 (951) 061-85-00</a>
           <span>ежедневно 8:00–22:00</span>
@@ -66,11 +61,6 @@
     <a href="#promo">Скидки</a>
     <a href="#faq">Вопросы</a>
     <a class="mobile-menu__phone" href="tel:+79510618500">8 (951) 061-85-00</a>
-    <div class="mobile-menu__msgs">
-      <a class="btn btn--ghost" data-msg="max" hidden target="_blank" rel="noopener">Написать в MAX</a>
-      <a class="btn btn--ghost" data-msg="whatsapp" hidden target="_blank" rel="noopener">Написать в WhatsApp</a>
-      <a class="btn btn--ghost" data-msg="telegram" hidden target="_blank" rel="noopener">Написать в Telegram</a>
-    </div>
     <button class="btn btn--light btn--block" data-modal data-source="Меню — замер">Вызвать замерщика бесплатно</button>
   </div>
 
@@ -284,19 +274,12 @@
             <input type="hidden" name="quiz" value="">
             <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
             <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
-            <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
-              <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
-              <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
-              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
-              <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
-            </div>
-            <button class="btn btn--light btn--block" type="submit">Получить подборку</button>
+            <button class="btn btn--light btn--block" type="submit">Оставить заявку</button>
             <label class="check">
               <input type="checkbox" name="agree" required>
               <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
             </label>
             <div class="form__error" role="alert"></div>
-            <p class="quiz__alt" data-max-alt hidden>Не хотите оставлять телефон? <a data-max-share="quiz" target="_blank" rel="noopener">Отправьте ответы в MAX</a></p>
           </div>
           <div class="form__success">Спасибо! Подберём варианты и свяжемся с вами в рабочее время.</div>
         </form>
@@ -361,15 +344,16 @@
               <div class="calc__note">* ориентировочно, полотно MSD, монтаж под ключ</div>
             </div>
 
-            <a class="btn btn--light btn--block" data-max-share="calc" hidden target="_blank" rel="noopener">
-              <span class="btn__label">Отправить расчёт в MAX</span>
-            </a>
-            <button class="btn btn--light btn--block" data-calc-form data-magnetic data-modal data-summary="calc" data-source="Калькулятор"
-                    data-title="Зафиксировать цену"
+            <button class="btn btn--light btn--block" data-magnetic data-modal data-summary="calc" data-source="Калькулятор"
+                    data-title="Оставить заявку"
                     data-text="Оставьте телефон — замерщик приедет бесплатно и сделает точную смету по вашему расчёту.">
-              <span class="btn__label">Зафиксировать цену</span>
+              <span class="btn__label">Оставить заявку</span>
             </button>
-            <a class="btn btn--ghost btn--block" data-calc-wa hidden target="_blank" rel="noopener">Прислать расчёт в WhatsApp</a>
+            <div class="calc__alt">
+              <p>Не хотите оставлять заявку? Напишите или позвоните сами.</p>
+              <a class="btn btn--ghost btn--block" data-max-share="calc" hidden target="_blank" rel="noopener">Отправить расчёт в MAX</a>
+              <a class="btn btn--ghost btn--block" href="tel:+79510618500">Позвонить: 8 (951) 061-85-00</a>
+            </div>
             <div class="calc__gift">Санузел в подарок при заказе во всю квартиру, скидка 7% пенсионерам и новосёлам</div>
           </div>
         </div>
@@ -687,13 +671,7 @@
               <input type="hidden" name="source" value="Финальная форма">
               <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
               <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
-              <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
-                <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
-                <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
-              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
-                <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
-              </div>
-              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Записаться</span></button>
+              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Оставить заявку</span></button>
               <label class="check">
                 <input type="checkbox" name="agree" required>
                 <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
@@ -746,12 +724,9 @@
           <div class="footer__title">Контакты</div>
           <ul class="footer__list">
             <li><a class="footer__phone" href="tel:+79510618500">8 (951) 061-85-00</a></li>
-            <li><a data-msg="max" hidden target="_blank" rel="noopener">MAX</a></li>
-            <li><a data-msg="whatsapp" hidden target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a data-msg="telegram" hidden target="_blank" rel="noopener">Telegram</a></li>
             <li><a href="mailto:luxmontage@mail.ru">luxmontage@mail.ru</a></li>
             <li>г. Казань, ежедневно с 8:00 до 22:00</li>
-            <li>Отзывы: <a href="https://yandex.ru/maps/org/lyuks_montazh/154054015821/reviews/" target="_blank" rel="noopener">Яндекс Карты</a>, <a href="https://2gis.ru/kazan/geo/70000001110180739" target="_blank" rel="noopener">2ГИС</a></li>
+            <li>Отзывы: <a href="https://yandex.ru/maps/org/lyuks_montazh/154054015821/reviews/" target="_blank" rel="noopener">Яндекс Карты</a>, <a href="https://2gis.ru/kazan/geo/70000001110180739" target="_blank" rel="noopener">2ГИС</a>, <a href="https://www.avito.ru/brands/a786323fda3f8978af748af81c578576" target="_blank" rel="noopener">Авито</a></li>
           </ul>
         </div>
       </div>
@@ -765,8 +740,6 @@
   <!-- Mobile bottom bar -->
   <div class="mobile-bar">
     <a class="btn btn--ghost" href="tel:+79510618500">Позвонить</a>
-    <a class="btn btn--ghost" data-msg="max" hidden target="_blank" rel="noopener">MAX</a>
-    <a class="btn btn--ghost" data-msg="whatsapp" hidden target="_blank" rel="noopener">WhatsApp</a>
     <button class="btn btn--light" data-modal data-source="Мобильная панель — замер">Замер</button>
   </div>
 
@@ -783,13 +756,7 @@
         <input type="hidden" name="source" value="">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
-        <div class="contact-way" role="radiogroup" aria-label="Как удобнее связаться">
-          <label><input type="radio" name="contact" value="Звонок" checked><span>Позвонить</span></label>
-          <label><input type="radio" name="contact" value="MAX"><span>MAX</span></label>
-              <label><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
-          <label><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
-        </div>
-        <button class="btn btn--light btn--block" type="submit">Отправить заявку</button>
+        <button class="btn btn--light btn--block" type="submit">Оставить заявку</button>
         <label class="check">
           <input type="checkbox" name="agree" required>
           <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
@@ -821,6 +788,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=41"></script>
+  <script src="js/main.js?v=43"></script>
 </body>
 </html>

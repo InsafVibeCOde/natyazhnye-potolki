@@ -64,7 +64,7 @@ if (empty($data['consent'])) {
 $lead = [
     'time'       => date('Y-m-d H:i:s'),
     'phone'      => '+' . $phoneDigits,
-    'contact'    => $clean($data['contact'] ?? 'Звонок'),
+    'contact'    => $clean($data['contact'] ?? ''),
     'source'     => $clean($data['source'] ?? ''),
     'calc'       => $clean($data['calc'] ?? ''),
     'quiz'       => $clean($data['quiz'] ?? ''),
