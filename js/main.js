@@ -33,7 +33,7 @@
     ScrollTrigger.config({ ignoreMobileResize: true });
   }
   const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
-  if (motion) html.classList.add('anim');
+  html.classList.toggle('anim', motion);
 
   /* ---------- Smooth scroll (Lenis) ---------- */
 
@@ -129,14 +129,25 @@
   if (motion && hero) {
     const heroWords = splitWords($('.hero__title'));
     gsap.set(heroWords, { yPercent: 110 });
+    gsap.set('.hero__title', { opacity: 1 });
     gsap.set('.hero__side', { y: 30 });
 
-    gsap.timeline({ delay: 0.15 })
-      .to('.hero__dim', { opacity: 0, duration: 1.4, ease: 'power2.inOut' })
-      .fromTo('.hero__photo', { scale: 1.06 }, { scale: 1, duration: 2.4, ease: 'power3.out' }, 0)
-      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' }, 0.5)
+    // текст появляется сразу
+    gsap.timeline({ delay: 0.1 })
+      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' })
       .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
       .to(header, { opacity: 1, duration: 0.8 }, '<');
+
+    // «включаем свет» на фото, как только оно загрузилось (но не дольше 0,8 с ожидания)
+    const photo = $('.hero__photo');
+    const photoReady = photo && !photo.complete && photo.decode
+      ? Promise.race([photo.decode().catch(() => {}), new Promise((r) => setTimeout(r, 800))])
+      : Promise.resolve();
+    photoReady.then(() => {
+      gsap.to('.hero__dim', { opacity: 0, duration: 1.2, ease: 'power2.inOut' });
+      // лёгкое «приближение» фото — только на компьютере, телефону это тяжело
+      if (!isMobile()) gsap.fromTo('.hero__photo', { scale: 1.05 }, { scale: 1, duration: 2.2, ease: 'power3.out' });
+    });
 
     gsap.to('.hero__scene', {
       yPercent: 10, opacity: 0.35, ease: 'none',
