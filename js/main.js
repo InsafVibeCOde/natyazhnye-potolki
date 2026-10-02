@@ -127,28 +127,18 @@
   const hero = $('.hero');
   if (motion && hero) {
     const heroWords = splitWords($('.hero__title'));
-    const edges = $$('.ceil-edge');
-    const cores = $$('.ceil-core');
-    const glows = $$('.ceil-glow');
-
-    gsap.set([...edges, ...cores], { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.set(glows, { opacity: 0 });
-    gsap.set('.ceil-amb', { opacity: 0 });
     gsap.set(heroWords, { yPercent: 110 });
     gsap.set('.hero__side', { y: 30 });
 
-    gsap.timeline({ delay: 0.2 })
-      .to(edges, { strokeDashoffset: 0, duration: 1.4, stagger: 0.08, ease: 'power2.inOut' })
-      .to(cores, { strokeDashoffset: 0, duration: 1.2, stagger: 0.1, ease: 'power3.inOut' }, '-=0.9')
-      .to(glows, { keyframes: { opacity: [0.9, 0.1, 0.7, 0.25, 1] }, duration: 0.7, ease: 'none' })
-      .to('.ceil-amb', { opacity: 0.75, duration: 1.4, ease: 'power2.out' }, '<')
-      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' }, '-=1.1')
+    gsap.timeline({ delay: 0.15 })
+      .to('.hero__dim', { opacity: 0, duration: 1.4, ease: 'power2.inOut' })
+      .fromTo('.hero__photo', { scale: 1.06 }, { scale: 1, duration: 2.4, ease: 'power3.out' }, 0)
+      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' }, 0.5)
       .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
       .to(header, { opacity: 1, duration: 0.8 }, '<');
 
-    // на телефоне без масштабирования сцены с размытием — только затухание, так плавнее
-    gsap.to('.hero__svg', {
-      scale: isMobile() ? 1 : 1.18, opacity: 0.3, ease: 'none',
+    gsap.to('.hero__scene', {
+      yPercent: 10, opacity: 0.35, ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
     });
     gsap.to('.hero__inner', {
@@ -596,7 +586,11 @@
       openLb(all.map((a) => a.dataset.full), all.indexOf(el));
     });
   });
-  const allWorks = Array.from({ length: 24 }, (_, i) => `img/works/w-${String(i + 1).padStart(2, '0')}.webp`);
+  // «Все фото»: сначала 12 снимков из ленты, потом остальные работы без повторов
+  const allWorks = [
+    ...Array.from({ length: 12 }, (_, i) => `img/works/p-${String(i + 1).padStart(2, '0')}.webp`),
+    ...[1, 2, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24].map((n) => `img/works/w-${String(n).padStart(2, '0')}.webp`),
+  ];
   $$('[data-all-works]').forEach((b) => b.addEventListener('click', () => openLb(allWorks, 0)));
 
   $('.lightbox__close', lb).addEventListener('click', closeLb);

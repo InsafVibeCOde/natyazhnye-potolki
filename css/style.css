@@ -237,19 +237,17 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 
 .hero__scene { position: absolute; inset: -24px; z-index: -1; will-change: transform; }
-.hero__svg { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform, opacity; }
+.hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; will-change: transform; }
+/* «включаем свет»: затемнение уходит при загрузке */
+.hero__dim { position: absolute; inset: 0; background: #1B1A18; opacity: 0; pointer-events: none; }
+.anim .hero__dim { opacity: .55; }
 .hero__scene::after {
   content: ""; position: absolute; inset: 0;
   background:
-    linear-gradient(to top, var(--bg) 6%, rgba(247,246,243,.88) 32%, rgba(247,246,243,.12) 62%, rgba(247,246,243,.3) 100%);
+    linear-gradient(to top, var(--bg) 6%, rgba(247,246,243,.88) 32%, rgba(247,246,243,.12) 62%, rgba(247,246,243,.2) 84%, rgba(247,246,243,.7) 100%);
 }
 
 .hero { background: #F1EFEA; }
-.ceil-edge { fill: none; stroke: rgba(27, 26, 24, .16); stroke-width: 1.2; }
-.ceil-edges .ceil-edge:first-child { fill: #E2DDD4; }
-.ceil-core { fill: none; stroke: #FFFFFF; stroke-width: 3.5; stroke-linecap: round; }
-.ceil-glow { fill: none; stroke: rgba(var(--glow-rgb), .95); stroke-width: 16; stroke-linecap: round; filter: url(#blur); }
-.ceil-amb { opacity: .75; }
 
 .hero__inner {
   position: relative; width: 100%;
@@ -425,9 +423,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   height: min(62vh, 620px); border-radius: var(--radius); overflow: hidden;
   cursor: zoom-in; background: var(--surface);
 }
-.work--wide { aspect-ratio: 16 / 10; }
-.work--tall { aspect-ratio: 3 / 4; }
-.work--sq { aspect-ratio: 1 / 1; }
+.work { aspect-ratio: 4 / 3; }
 .work img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.2s var(--ease); }
 .work:hover img { transform: scale(1.02); }
 .work__cap {
@@ -889,14 +885,9 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .works__foot-m { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; }
   .works__intro { display: none; }
   .works__track { gap: 12px; scroll-padding-left: var(--gutter); }
-  /* на телефоне фото целиком, без обрезки: кадр 4:3, поля заполнены размытой копией снимка */
-  .work, .work--wide, .work--tall, .work--sq {
-    width: 86vw; max-width: 460px; height: auto; max-height: none;
-    aspect-ratio: 4 / 3; scroll-snap-align: start;
-    background-color: var(--surface-2); background-size: cover; background-position: center;
-  }
-  .work::before { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, .22); }
-  .work img { position: relative; transform: none; object-fit: contain; }
+  /* на телефоне фото целиком: у всех снимков пропорция 4:3, как у карточки */
+  .work { width: 86vw; max-width: 460px; height: auto; max-height: none; scroll-snap-align: start; }
+  .work img { transform: none; }
   .work__end { width: 1px; }
   .works__progress { display: none; }
 
@@ -976,8 +967,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 
 /* Телефоны: без дорогих фильтров и размытия фона — так анимации идут плавно */
 @media (max-width: 960px), (hover: none) {
-  .ceil-glow { filter: none; stroke-width: 11; stroke: rgba(var(--glow-rgb), .5); }
-  .header.is-scrolled { background: rgba(247, 246, 243, .97); }
+    .header.is-scrolled { background: rgba(247, 246, 243, .97); }
   .header.is-scrolled, .mobile-bar, .cta__form, .modal, .tech__counter {
     backdrop-filter: none; -webkit-backdrop-filter: none;
   }
