@@ -49,7 +49,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=57">
 </head>
 <body>
 
@@ -65,7 +65,6 @@
       </a>
 
       <nav class="nav" aria-label="Основное меню">
-        <a href="#quiz">Подбор</a>
         <a href="#calc">Калькулятор</a>
         <a href="#works">Работы</a>
         <a href="#prices">Цены</a>
@@ -86,7 +85,6 @@
   </header>
 
   <div class="mobile-menu" aria-label="Мобильное меню">
-    <a href="#quiz">Подбор потолка</a>
     <a href="#calc">Калькулятор</a>
     <a href="#works">Наши работы</a>
     <a href="#prices">Цены</a>
@@ -122,7 +120,7 @@
                     data-text="Оставьте телефон — перезвоним, подберём удобное время и привезём образцы полотен.">
               <span class="btn__label">Вызвать замерщика</span>
             </button>
-            <a class="btn btn--ghost" data-magnetic href="#quiz"><span class="btn__label">Подобрать потолок за минуту</span></a>
+            <a class="btn btn--ghost" data-magnetic href="#calc"><span class="btn__label">Рассчитать стоимость</span></a>
           </div>
         </div>
       </div>
@@ -198,87 +196,6 @@
             <div class="tech__counter"><span data-tech-count>01</span> / 05</div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ================= КВИЗ ================= -->
-    <section class="section" id="quiz">
-      <div class="container quiz">
-        <div class="quiz__intro">
-          <h2 class="h2" data-split>Подберём потолок за минуту</h2>
-          <p class="lead reveal">Ответьте на 4 вопроса — предложим 2–3 варианта под ваш интерьер и посчитаем стоимость. Бесплатно.</p>
-          <ul class="quiz__perks reveal">
-            <li>Скидка 7% пенсионерам и новосёлам</li>
-            <li>Санузел в подарок при заказе во всю квартиру</li>
-            <li>Образцы полотен привезём на замер</li>
-          </ul>
-        </div>
-
-        <form class="quiz__card reveal" data-quiz data-form novalidate>
-          <div class="quiz__top">
-            <span class="quiz__count" data-quiz-count>Вопрос 1 из 4</span>
-            <button type="button" class="quiz__back" data-quiz-back hidden>Назад</button>
-          </div>
-          <div class="quiz__bar" aria-hidden="true"><i data-quiz-bar></i></div>
-
-          <fieldset class="quiz__step is-active" data-q="Помещение">
-            <legend class="quiz__q">Где нужен потолок?</legend>
-            <div class="quiz__opts">
-              <button type="button" data-v="Кухня">Кухня</button>
-              <button type="button" data-v="Спальня">Спальня</button>
-              <button type="button" data-v="Гостиная">Гостиная</button>
-              <button type="button" data-v="Детская">Детская</button>
-              <button type="button" data-v="Ванная или санузел">Ванная или санузел</button>
-              <button type="button" data-v="Коридор">Коридор</button>
-              <button type="button" data-v="Вся квартира или дом" class="is-wide">Вся квартира или дом</button>
-            </div>
-          </fieldset>
-          <fieldset class="quiz__step" data-q="Свет">
-            <legend class="quiz__q">Какой свет вам нравится?</legend>
-            <div class="quiz__opts">
-              <button type="button" data-v="Люстра и точечные светильники">Люстра и точечные</button>
-              <button type="button" data-v="Световые линии">Световые линии</button>
-              <button type="button" data-v="Трековые светильники">Треки</button>
-              <button type="button" data-v="Подсветка по контуру">Подсветка по контуру</button>
-              <button type="button" data-v="Пока не знаю" class="is-wide">Пока не знаю — посоветуйте</button>
-            </div>
-          </fieldset>
-          <fieldset class="quiz__step" data-q="Фактура">
-            <legend class="quiz__q">Какое полотно ближе?</legend>
-            <div class="quiz__opts">
-              <button type="button" data-v="Матовое">Матовое<small>как ровная побелка</small></button>
-              <button type="button" data-v="Сатиновое">Сатиновое<small>мягкий блеск</small></button>
-              <button type="button" data-v="Глянцевое">Глянцевое<small>отражает свет</small></button>
-              <button type="button" data-v="Тканевое">Тканевое<small>фактура ткани</small></button>
-              <button type="button" data-v="Посоветуйте" class="is-wide">Не знаю — покажите образцы</button>
-            </div>
-          </fieldset>
-          <fieldset class="quiz__step" data-q="Сроки">
-            <legend class="quiz__q">Когда планируете ремонт?</legend>
-            <div class="quiz__opts">
-              <button type="button" data-v="В ближайшие 1–2 недели">В ближайшие 1–2 недели</button>
-              <button type="button" data-v="В течение месяца">В течение месяца</button>
-              <button type="button" data-v="Позже">Позже</button>
-              <button type="button" data-v="Пока присматриваюсь">Пока присматриваюсь</button>
-            </div>
-          </fieldset>
-
-          <div class="quiz__step quiz__final" data-quiz-final>
-            <p class="quiz__q">Готово! Куда прислать варианты?</p>
-            <p class="quiz__summary" data-quiz-summary></p>
-            <input type="hidden" name="source" value="Квиз — подбор потолка">
-            <input type="hidden" name="quiz" value="">
-            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
-            <button class="btn btn--light btn--block" type="submit">Оставить заявку</button>
-            <label class="check">
-              <input type="checkbox" name="agree" required>
-              <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
-            </label>
-            <div class="form__error" role="alert"></div>
-          </div>
-          <div class="form__success">Спасибо! Подберём варианты и свяжемся с вами в рабочее время.</div>
-        </form>
       </div>
     </section>
 
@@ -390,6 +307,20 @@
         <div class="works__foot-m container">
           <span class="works__count" aria-live="polite"><b data-works-cur>01</b> / 12</span>
           <button class="btn btn--ghost btn--sm" data-all-works>Все фото</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ВИДЕО С ОБЪЕКТА (файл подключается в CONFIG.video) ================= -->
+    <section class="section" id="video">
+      <div class="container video-block">
+        <div class="video-block__text">
+          <h2 class="h2" data-split>Готовый объект на видео</h2>
+          <p class="lead reveal">Альберт показывает потолок после монтажа: стыки, профиль и свет вблизи — так, как это выглядит в жизни.</p>
+        </div>
+        <div class="video-frame reveal" data-video>
+          <img class="video-frame__poster" src="img/works/p-11-sm.webp" alt="" loading="lazy" width="800" height="600">
+          <p class="video-frame__soon">Видео с объекта скоро появится</p>
         </div>
       </div>
     </section>
@@ -711,7 +642,6 @@
         <div>
           <div class="footer__title">Разделы</div>
           <ul class="footer__list">
-            <li><a href="#quiz">Подбор потолка</a></li>
             <li><a href="#calc">Калькулятор</a></li>
             <li><a href="#works">Наши работы</a></li>
             <li><a href="#prices">Цены</a></li>
@@ -796,6 +726,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=54"></script>
+  <script src="js/main.js?v=56"></script>
 </body>
 </html>

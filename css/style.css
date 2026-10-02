@@ -737,49 +737,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .trust__rating b { color: var(--ink); font-size: 18px; }
 .trust__stars { color: var(--glow); letter-spacing: 1px; }
 
-/* ---------- Квиз ---------- */
-
-.quiz { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
-.quiz__intro .lead { margin-top: 22px; }
-.quiz__perks { margin-top: 28px; display: grid; gap: 12px; }
-.quiz__perks li { position: relative; padding-left: 28px; font-weight: 600; }
-.quiz__perks li::before {
-  content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-radius: 50%;
-  background: var(--glow); box-shadow: 0 0 12px 2px rgba(var(--glow-rgb), .6);
-}
-.quiz__card {
-  position: relative; padding: clamp(22px, 3vw, 36px); border-radius: var(--radius);
-  background: var(--surface); border: 1px solid var(--line); box-shadow: 0 30px 70px -45px rgba(27, 26, 24, .45);
-}
-.quiz__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 28px; }
-.quiz__count { font-size: 14px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.quiz__back { font-size: 14px; font-weight: 600; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
-.quiz__bar { height: 4px; margin-top: 12px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
-.quiz__bar i { display: block; height: 100%; width: var(--p, 25%); background: var(--glow); border-radius: 4px; transition: width .5s var(--ease); }
-.quiz__step { display: none; margin: 0; padding: 0; border: 0; min-width: 0; }
-.quiz__step.is-active { display: block; animation: q-in .45s var(--ease); }
-@keyframes q-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
-.quiz__q { display: block; margin: 22px 0 16px; padding: 0; font-size: clamp(21px, 2vw, 26px); font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
-.quiz__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.quiz__opts button {
-  min-height: 58px; padding: 14px 16px; border-radius: 16px; text-align: left;
-  border: 1.5px solid var(--line); background: var(--surface-2);
-  font-size: 16px; font-weight: 600; line-height: 1.25;
-  transition: border-color .2s, background-color .2s, color .2s, transform .15s;
-}
-.quiz__opts button small { display: block; margin-top: 3px; font-size: 13px; font-weight: 400; color: var(--ink-3); }
-.quiz__opts button:hover { border-color: var(--ink); background: var(--surface); }
-.quiz__opts button:active { transform: scale(.98); }
-.quiz__opts button.is-picked { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.quiz__opts button.is-picked small { color: rgba(247, 246, 243, .7); }
-.quiz__opts .is-wide { grid-column: span 2; }
-.quiz__final.is-active { display: flex; flex-direction: column; gap: 12px; }
-.quiz__final .quiz__q { margin-bottom: 4px; }
-.quiz__summary { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 14px; color: var(--ink-2); }
-.quiz__card .form__success { margin-top: 8px; }
-.quiz__card.is-sent > :not(.form__success) { display: none; }
-.quiz__card.is-sent .form__success { display: block; }
-
 /* ---------- Ошибка отправки и защита от спама ---------- */
 
 .form__error { display: none; font-size: 14px; color: var(--danger); }
@@ -989,7 +946,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 
 @media (max-width: 960px) {
-  .quiz { grid-template-columns: 1fr; gap: 28px; }
   .review-links { grid-template-columns: 1fr; gap: 10px; }
   .review-link { flex-direction: row; align-items: center; min-height: 72px; gap: 16px; padding: 18px 20px; }
   .review-link__name { font-size: 19px; }
@@ -1002,8 +958,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .trust__rating { grid-column: span 2; }
   .hero__offer { gap: 10px; }
   .gift-line { font-size: 14px; }
-  .quiz__card { padding: 20px 16px; }
-  .quiz__opts button { min-height: 54px; padding: 12px 14px; font-size: 15px; }
   .mobile-bar { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 1fr; }
 }
 
@@ -1025,4 +979,25 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 @media (max-width: 720px) {
   .hero { background: var(--bg); }
   .hero__scene { bottom: auto; height: 58%; }
+}
+
+/* ---------- Видео с объекта ---------- */
+
+.video-block { display: grid; grid-template-columns: 1fr auto; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.video-block__text .lead { margin-top: 22px; max-width: 520px; }
+.video-frame {
+  position: relative; width: 340px; aspect-ratio: 9 / 16; overflow: hidden;
+  border-radius: var(--radius); background: var(--surface-2); border: 1px solid var(--line);
+}
+.video-frame__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(5px) saturate(.85); transform: scale(1.08); opacity: .75; }
+.video-frame__soon {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; width: max-content; max-width: calc(100% - 40px);
+  padding: 12px 18px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: var(--ink);
+  font-size: 15px; font-weight: 600; text-align: center; box-shadow: 0 10px 30px -14px rgba(27, 26, 24, .4);
+}
+.video-frame.has-video { border: 0; background: #000; }
+.video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 960px) {
+  .video-block { grid-template-columns: 1fr; gap: 28px; }
+  .video-frame { justify-self: center; width: min(320px, 100%); }
 }

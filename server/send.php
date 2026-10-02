@@ -67,7 +67,6 @@ $lead = [
     'contact'    => $clean($data['contact'] ?? ''),
     'source'     => $clean($data['source'] ?? ''),
     'calc'       => $clean($data['calc'] ?? ''),
-    'quiz'       => $clean($data['quiz'] ?? ''),
     'page'       => $clean($data['page'] ?? ''),
     'consent'    => $clean($data['consent']),
     'consent_at' => $clean($data['consent_at'] ?? ''),
@@ -93,7 +92,7 @@ if ($fh) {
 // 2. Письмо на почту
 $labels = [
     'phone' => 'Телефон', 'contact' => 'Как связаться', 'source' => 'Откуда заявка',
-    'calc' => 'Расчёт', 'quiz' => 'Ответы квиза', 'page' => 'Страница',
+    'calc' => 'Расчёт', 'page' => 'Страница',
     'consent' => 'Согласие', 'consent_at' => 'Время согласия', 'time' => 'Получено',
 ];
 $lines = [];

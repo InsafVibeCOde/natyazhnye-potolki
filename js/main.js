@@ -10,6 +10,7 @@
     max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
     leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
     // рейтинг — реальный, с карт (проверено 30.09.2026); сами отзывы на сайт не выводим — только ссылки на площадки
+    video: null,         // видео с объекта: { src: 'video/obekt.mp4', poster: 'video/obekt.webp' }
     rating: { value: '5,0', text: 'в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
   };
   const METRIKA_ID = CONFIG.metrikaId;
@@ -677,44 +678,6 @@
     btnAccept.addEventListener('click', () => { store.set('cookie-ok', '1'); hideCookie(); });
   }
 
-  /* ---------- Квиз «Подберём потолок за минуту» ---------- */
-
-  const quiz = $('[data-quiz]');
-  if (quiz) {
-    const steps = $$('.quiz__step', quiz);
-    const questions = steps.filter((st) => st.dataset.q);
-    const answers = {};
-    const countEl = $('[data-quiz-count]', quiz);
-    const bar = $('[data-quiz-bar]', quiz);
-    const back = $('[data-quiz-back]', quiz);
-    let at = 0;
-
-    const show = (i) => {
-      at = i;
-      steps.forEach((st, k) => st.classList.toggle('is-active', k === i));
-      const final = i >= questions.length;
-      countEl.textContent = final ? 'Последний шаг' : `Вопрос ${i + 1} из ${questions.length}`;
-      bar.style.setProperty('--p', ((i + 1) / (questions.length + 1)) * 100 + '%');
-      back.hidden = i === 0;
-      if (final) {
-        const picked = questions.map((q) => answers[q.dataset.q]).filter(Boolean);
-        $('[data-quiz-summary]', quiz).textContent = 'Ваш выбор: ' + picked.join(', ');
-        $('input[name="quiz"]', quiz).value = questions.map((q) => `${q.dataset.q}: ${answers[q.dataset.q]}`).join('; ');
-      }
-      if (hasGsap) ScrollTrigger.refresh();
-    };
-
-    questions.forEach((st, i) => {
-      $$('button[data-v]', st).forEach((b) => b.addEventListener('click', () => {
-        $$('button[data-v]', st).forEach((x) => x.classList.toggle('is-picked', x === b));
-        answers[st.dataset.q] = b.dataset.v;
-        setTimeout(() => show(i + 1), 220);
-      }));
-    });
-    back.addEventListener('click', () => show(Math.max(0, at - 1)));
-    show(0);
-  }
-
   /* ---------- Расчёт калькулятора — в MAX ---------- */
   // MAX не умеет открывать чат с готовым текстом, поэтому кладём текст в буфер обмена
   // и подсказываем вставить его. Сайт при этом ничего не отправляет и не хранит.
@@ -760,6 +723,20 @@
         if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
       });
     });
+  }
+
+  /* ---------- Видео с объекта: пока файла нет — плашка «скоро» ---------- */
+
+  const videoBox = $('[data-video]');
+  if (videoBox && CONFIG.video) {
+    const v = document.createElement('video');
+    v.src = CONFIG.video.src;
+    if (CONFIG.video.poster) v.poster = CONFIG.video.poster;
+    v.controls = true;
+    v.playsInline = true;
+    v.preload = 'none';
+    videoBox.replaceChildren(v);
+    videoBox.classList.add('has-video');
   }
 
   /* ---------- Рейтинг (только реальный, из CONFIG) ---------- */
