@@ -10,7 +10,6 @@
     max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
     leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
     // рейтинг — реальный, с карт (проверено 30.09.2026); сами отзывы на сайт не выводим — только ссылки на площадки
-    video: null,         // видео с объекта: { src: 'video/obekt.mp4', poster: 'video/obekt.webp' }
     rating: { value: '5,0', text: 'в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
   };
   const METRIKA_ID = CONFIG.metrikaId;
@@ -466,7 +465,7 @@
     lastFocus = btn;
     closeMenu();
     modalTitle.textContent = btn.dataset.title || 'Бесплатный замер';
-    modalText.textContent = btn.dataset.text || 'Оставьте телефон — перезвоним в течение 5 минут и подберём удобное время замера.';
+    modalText.textContent = btn.dataset.text || 'Оставьте телефон. Перезвоним и договоримся о времени замера.';
     modalSource.value = btn.dataset.source || modalTitle.textContent;
     const summary = btn.dataset.summary === 'calc' ? calcSummary() : btn.dataset.summary || '';
     modalSummary.textContent = summary;
@@ -734,20 +733,6 @@
         if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
       });
     });
-  }
-
-  /* ---------- Видео с объекта: пока файла нет — плашка «скоро» ---------- */
-
-  const videoBox = $('[data-video]');
-  if (videoBox && CONFIG.video) {
-    const v = document.createElement('video');
-    v.src = CONFIG.video.src;
-    if (CONFIG.video.poster) v.poster = CONFIG.video.poster;
-    v.controls = true;
-    v.playsInline = true;
-    v.preload = 'none';
-    videoBox.replaceChildren(v);
-    videoBox.classList.add('has-video');
   }
 
   /* ---------- Рейтинг (только реальный, из CONFIG) ---------- */

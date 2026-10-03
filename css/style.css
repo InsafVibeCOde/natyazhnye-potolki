@@ -980,24 +980,3 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .hero { background: var(--bg); }
   .hero__scene { bottom: auto; height: 58%; }
 }
-
-/* ---------- Видео с объекта ---------- */
-
-.video-block { display: grid; grid-template-columns: 1fr auto; gap: clamp(32px, 6vw, 96px); align-items: center; }
-.video-block__text .lead { margin-top: 22px; max-width: 520px; }
-.video-frame {
-  position: relative; width: 340px; aspect-ratio: 9 / 16; overflow: hidden;
-  border-radius: var(--radius); background: var(--surface-2); border: 1px solid var(--line);
-}
-.video-frame__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(5px) saturate(.85); transform: scale(1.08); opacity: .75; }
-.video-frame__soon {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; width: max-content; max-width: calc(100% - 40px);
-  padding: 12px 18px; border-radius: 999px; background: rgba(255, 255, 255, .94); color: var(--ink);
-  font-size: 15px; font-weight: 600; text-align: center; box-shadow: 0 10px 30px -14px rgba(27, 26, 24, .4);
-}
-.video-frame.has-video { border: 0; background: #000; }
-.video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
-@media (max-width: 960px) {
-  .video-block { grid-template-columns: 1fr; gap: 28px; }
-  .video-frame { justify-self: center; width: min(320px, 100%); }
-}
