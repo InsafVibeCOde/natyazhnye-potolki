@@ -39,10 +39,7 @@
     "addressRegion": "Республика Татарстан",
     "addressCountry": "RU"
   },
-  "areaServed": [
-    "Казань",
-    "Республика Татарстан"
-  ],
+  "areaServed": "Казань",
   "openingHours": "Mo-Su 08:00-22:00",
   "foundingDate": "2011",
   "sameAs": [
@@ -52,44 +49,67 @@
   ]
 }
   </script>
-  <link rel="preload" as="image" imagesrcset="img/hero/ceiling-sm.webp?v=4 1200w, img/hero/ceiling.webp?v=4 2400w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" imagesrcset="img/hero/ceiling-sm.webp?v=4 1200w, img/hero/ceiling.webp?v=4 2400w" imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=60">
+  <link rel="stylesheet" href="css/style.css?v=63">
 </head>
 <body>
 
   <!-- ================= HEADER ================= -->
   <header class="header">
-    <div class="container header__inner">
-      <a href="#top" class="logo" aria-label="Люкс Монтаж — на главную">
-        <img decoding="async" class="logo__mark" src="img/logo-mark.svg" alt="" width="42" height="42">
-        <span class="logo__text">
-          <span class="logo__name">Люкс Монтаж</span>
-          <span class="logo__sub">натяжные потолки в Казани</span>
-        </span>
-      </a>
+    <div class="header__top">
+      <div class="container header__inner">
+        <a href="#top" class="logo" aria-label="Люкс Монтаж — на главную">
+          <img decoding="async" class="logo__mark" src="img/logo-mark.svg" alt="" width="42" height="42">
+          <span class="logo__text">
+            <span class="logo__name">Люкс Монтаж</span>
+            <span class="logo__sub">натяжные потолки в Казани</span>
+          </span>
+        </a>
 
-      <nav class="nav" aria-label="Основное меню">
-        <a href="#calc">Калькулятор</a>
-        <a href="#works">Работы</a>
-        <a href="#prices">Цены</a>
-        <a href="#promo">Скидки</a>
-        <a href="#faq">Вопросы</a>
-      </nav>
-
-      <div class="header__contacts">
-        <div class="header__phone">
-          <a href="tel:+79510618500">8 (951) 061-85-00</a>
-          <span>ежедневно 8:00–22:00</span>
+        <div class="rates">
+          <a class="rate" href="https://2gis.ru/kazan/geo/70000001110180739" target="_blank" rel="noopener" aria-label="Рейтинг 5,0 в 2ГИС">
+            <span class="rate__name rate__name--gis">2ГИС</span>
+            <span class="rate__val"><b>5,0</b><i aria-hidden="true">★★★★★</i></span>
+          </a>
+          <a class="rate" href="https://www.avito.ru/brands/a786323fda3f8978af748af81c578576" target="_blank" rel="noopener" aria-label="Рейтинг 5,0 на Авито, 46 отзывов">
+            <span class="rate__name rate__name--avito">Авито, 46 отзывов</span>
+            <span class="rate__val"><b>5,0</b><i aria-hidden="true">★★★★★</i></span>
+          </a>
         </div>
-        <button class="btn btn--light btn--sm" data-modal data-source="Шапка — замер">Вызвать замерщика</button>
-        <a class="header__call" href="tel:+79510618500" aria-label="Позвонить"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg></a>
-        <button class="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+
+        <div class="header__measure">
+          <b>Замер бесплатно</b>
+          <span>приедем с образцами полотен</span>
+        </div>
+
+        <div class="header__contacts">
+          <div class="header__phone">
+            <a href="tel:+79510618500">8 (951) 061-85-00</a>
+            <span>ежедневно 8:00–22:00</span>
+          </div>
+          <button class="btn btn--light btn--sm" data-modal data-source="Шапка — замер">Вызвать замерщика</button>
+          <a class="header__call" href="tel:+79510618500" aria-label="Позвонить"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg></a>
+          <button class="burger" aria-label="Меню" aria-expanded="false"><span></span></button>
+        </div>
       </div>
     </div>
+    <nav class="header__nav" aria-label="Основное меню">
+      <div class="container header__nav-inner">
+        <a href="#tech">Технологии</a>
+        <a href="#calc">Калькулятор</a>
+        <a href="#works">Наши работы</a>
+        <a href="#prices">Цены</a>
+        <a href="#promo">Скидки</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#steps">Как работаем</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+    </nav>
   </header>
 
   <div class="mobile-menu" aria-label="Мобильное меню">
@@ -97,7 +117,10 @@
     <a href="#works">Наши работы</a>
     <a href="#prices">Цены</a>
     <a href="#promo">Скидки</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#steps">Как работаем</a>
     <a href="#faq">Вопросы</a>
+    <a href="#contacts">Контакты</a>
     <a class="mobile-menu__phone" href="tel:+79510618500">8 (951) 061-85-00</a>
     <button class="btn btn--light btn--block" data-modal data-source="Меню — замер">Вызвать замерщика бесплатно</button>
   </div>
@@ -106,103 +129,89 @@
 
     <!-- ================= HERO ================= -->
     <section class="hero">
-      <div class="hero__scene" aria-hidden="true">
-        <img class="hero__photo" src="img/hero/ceiling.webp?v=4" srcset="img/hero/ceiling-sm.webp?v=4 1200w, img/hero/ceiling.webp?v=4 2400w" sizes="100vw" alt="" width="2400" height="1350" fetchpriority="high">
-        <div class="hero__dim"></div>
-      </div>
-
-      <div class="container hero__inner">
-        <div>
-          <h1 class="h1 hero__title" data-split>Натяжные потолки в&nbsp;Казани <em>под ключ</em></h1>
+      <div class="container hero__grid">
+        <div class="hero__rates-m hero__fade">
+          <div class="rates">
+          <a class="rate" href="https://2gis.ru/kazan/geo/70000001110180739" target="_blank" rel="noopener" aria-label="Рейтинг 5,0 в 2ГИС">
+            <span class="rate__name rate__name--gis">2ГИС</span>
+            <span class="rate__val"><b>5,0</b><i aria-hidden="true">★★★★★</i></span>
+          </a>
+          <a class="rate" href="https://www.avito.ru/brands/a786323fda3f8978af748af81c578576" target="_blank" rel="noopener" aria-label="Рейтинг 5,0 на Авито, 46 отзывов">
+            <span class="rate__name rate__name--avito">Авито, 46 отзывов</span>
+            <span class="rate__val"><b>5,0</b><i aria-hidden="true">★★★★★</i></span>
+          </a>
         </div>
-
-        <div class="hero__side">
-          <p class="lead">Бесплатно приедем на замер с образцами. Монтаж за 1–2 дня, гарантия до 10 лет по договору. Делаем световые линии, теневой профиль, треки и обычные потолки с 2011 года.</p>
-          <div class="hero__offer">
-            <div class="price-chip"><b>от 499 ₽</b><small>за м² полотна</small></div>
-            <p class="gift-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg>Санузел в подарок при заказе во всю квартиру</p>
-          </div>
-          <div class="hero__actions">
-            <button class="btn btn--light" data-magnetic data-modal data-source="Первый экран — замер"
-                    data-title="Бесплатный замер"
-                    data-text="Оставьте телефон. Перезвоним и договоримся, когда приехать с образцами.">
-              <span class="btn__label">Вызвать замерщика</span>
-            </button>
-            <a class="btn btn--ghost" data-magnetic href="#calc"><span class="btn__label">Рассчитать стоимость</span></a>
-          </div>
+        </div>
+        <h1 class="h1 hero__title" data-split>Натяжные потолки в&nbsp;Казани <em>под ключ</em></h1>
+        <p class="lead hero__lead hero__fade">Делаем световые линии, теневой профиль, треки и обычные потолки с 2011 года.</p>
+        <div class="hero__media hero__fade">
+          <img src="img/hero/ceiling-sm.webp?v=4" srcset="img/hero/ceiling-sm.webp?v=4 1200w, img/hero/ceiling.webp?v=4 2400w" sizes="(max-width: 960px) 100vw, 50vw" alt="Белый натяжной потолок со световыми линиями" width="2400" height="1350" fetchpriority="high">
+          <span class="hero__badge">Работаем с 2011 года</span>
+        </div>
+        <ul class="hero__perks hero__fade">
+          <li><b>Замер бесплатно</b><span>приедем с образцами полотен</span></li>
+          <li><b>Монтаж за 3–4 часа</b><span>стандартная комната</span></li>
+          <li><b>Без предоплаты</b><span>за работу платите по факту</span></li>
+          <li><b>Гарантия до 10 лет</b><span>прописана в договоре</span></li>
+        </ul>
+        <div class="hero__offer hero__fade">
+          <div class="price-chip"><b>от 499 ₽</b><small>за м² полотна</small></div>
+          <p class="gift-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg>Санузел в подарок при заказе во всю квартиру</p>
+        </div>
+        <div class="hero__actions hero__fade">
+          <button class="btn btn--light" data-magnetic data-modal data-source="Первый экран — замер"
+                  data-title="Бесплатный замер"
+                  data-text="Оставьте телефон. Перезвоним и договоримся, когда приехать с образцами.">
+            <span class="btn__label">Вызвать замерщика</span>
+          </button>
+          <a class="btn btn--ghost" data-magnetic href="#calc"><span class="btn__label">Рассчитать стоимость</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ================= ДОВЕРИЕ ================= -->
-    <div class="trust">
-      <div class="container trust__inner">
-        <!-- Рейтинг появится автоматически, когда в js/main.js заполнен CONFIG.rating -->
-        <a class="trust__rating" data-rating hidden target="_blank" rel="noopener">
-          <span class="trust__stars" aria-hidden="true">★★★★★</span><b data-rating-value></b><span data-rating-text></span>
-        </a>
-        <span class="trust__item"><b>С 2011 года</b> в Казани и Татарстане</span>
-        <span class="trust__item"><b>До 10 лет</b> гарантии по договору</span>
-        <span class="trust__item"><b>Цена фиксируется</b> на замере</span>
-        <span class="trust__item"><b>Полотна</b> MSD, BAUF, Teqtum</span>
-      </div>
-    </div>
-
-    <!-- ================= TECH (sticky) ================= -->
+    <!-- ================= TECH ================= -->
     <section class="section section--alt" id="tech">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Потолок сразу со светом</h2>
           <p class="lead reveal">Свет продумываем вместе с потолком: где пройдут линии, куда встанут треки и нужна ли вообще люстра.</p>
         </div>
-
-        <div class="tech">
-          <div class="tech__list">
-            <article class="tech__item is-active" data-tech="0">
-              <div class="tech__num">01</div>
+        <div class="tech-grid">
+          <article class="tech-card reveal">
+            <img decoding="async" src="img/tech/c-01.webp" srcset="img/tech/c-01-sm.webp 640w, img/tech/c-01.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Световые линии на натяжном потолке на кухне" loading="lazy" width="1200" height="750">
+            <div class="tech-card__body">
               <h3 class="h3">Световые линии</h3>
               <p>Светодиодные линии встраиваем прямо в полотно. Ими можно заменить люстру или разделить комнату на зоны. Форму линий выбираете сами.</p>
-              <div class="tech__tags"><span>Гостиная</span><span>Коридор</span><span>Кухня</span></div>
-              <img decoding="async" class="tech__item-img" src="img/tech/t-lines.webp" alt="Световые линии на натяжном потолке" loading="lazy" width="1050" height="1400">
-            </article>
-            <article class="tech__item" data-tech="1">
-              <div class="tech__num">02</div>
+            </div>
+          </article>
+          <article class="tech-card reveal">
+            <img decoding="async" src="img/tech/c-02.webp" srcset="img/tech/c-02-sm.webp 640w, img/tech/c-02.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Контурная подсветка в теневом профиле у стены" loading="lazy" width="1200" height="750">
+            <div class="tech-card__body">
               <h3 class="h3">Теневой профиль и контурная подсветка</h3>
               <p>Вместо плинтуса у стены остаётся ровный теневой зазор, по контуру можно пустить ленту. Потолок будто висит в воздухе и кажется выше.</p>
-              <div class="tech__tags"><span>Flexy</span><span>Без вставки</span><span>Спальня</span></div>
-              <img decoding="async" class="tech__item-img" src="img/tech/t-contour.webp" alt="Контурная подсветка потолка" loading="lazy" width="787" height="1400">
-            </article>
-            <article class="tech__item" data-tech="2">
-              <div class="tech__num">03</div>
+            </div>
+          </article>
+          <article class="tech-card reveal">
+            <img decoding="async" src="img/tech/c-03.webp" srcset="img/tech/c-03-sm.webp 640w, img/tech/c-03.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Магнитный трек со светильниками по периметру потолка" loading="lazy" width="1200" height="750">
+            <div class="tech-card__body">
               <h3 class="h3">Трековые системы</h3>
               <p>Магнитные треки ставим вровень с полотном. Светильники на треке потом можно переставить или поменять.</p>
-              <div class="tech__tags"><span>Кухня</span><span>Гостиная</span><span>Офис</span></div>
-              <img decoding="async" class="tech__item-img" src="img/tech/t-track.webp" alt="Трековые светильники на натяжном потолке" loading="lazy" width="1050" height="1400">
-            </article>
-            <article class="tech__item" data-tech="3">
-              <div class="tech__num">04</div>
+            </div>
+          </article>
+          <article class="tech-card reveal">
+            <img decoding="async" src="img/tech/c-04.webp" srcset="img/tech/c-04-sm.webp 640w, img/tech/c-04.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Световые квадраты на натяжном потолке" loading="lazy" width="1200" height="750">
+            <div class="tech-card__body">
               <h3 class="h3">Фигурные световые конструкции</h3>
               <p>Соты, квадраты и другие фигуры из светового профиля. Делали такие в квартирах, клиниках, салонах и офисах.</p>
-              <div class="tech__tags"><span>Соты</span><span>Геометрия</span><span>Коммерция</span></div>
-              <img decoding="async" class="tech__item-img" src="img/tech/t-shape.webp" alt="Сотовая подсветка на потолке" loading="lazy" width="787" height="1400">
-            </article>
-            <article class="tech__item" data-tech="4">
-              <div class="tech__num">05</div>
+            </div>
+          </article>
+          <article class="tech-card reveal">
+            <img decoding="async" src="img/tech/c-05.webp" srcset="img/tech/c-05-sm.webp 640w, img/tech/c-05.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Ниша с подсветкой в натяжном потолке" loading="lazy" width="1200" height="750">
+            <div class="tech-card__body">
               <h3 class="h3">Парящие ниши и&nbsp;двухуровневые</h3>
               <p>Круглые и прямоугольные ниши с подсветкой, потолки в два уровня, карнизы, спрятанные в потолок. Свет от ниш мягкий и рассеянный.</p>
-              <div class="tech__tags"><span>Ниши</span><span>Два уровня</span><span>Скрытый карниз</span></div>
-              <img decoding="async" class="tech__item-img" src="img/tech/t-float.webp" alt="Парящая круглая ниша с подсветкой" loading="lazy" width="787" height="1400">
-            </article>
-          </div>
-
-          <div class="tech__media" aria-hidden="true">
-            <img decoding="async" class="is-active" src="img/tech/t-lines.webp" alt="" loading="lazy" width="1050" height="1400">
-            <img decoding="async" src="img/tech/t-contour.webp" alt="" loading="lazy" width="787" height="1400">
-            <img decoding="async" src="img/tech/t-track.webp" alt="" loading="lazy" width="1050" height="1400">
-            <img decoding="async" src="img/tech/t-shape.webp" alt="" loading="lazy" width="787" height="1400">
-            <img decoding="async" src="img/tech/t-float.webp" alt="" loading="lazy" width="787" height="1400">
-            <div class="tech__counter"><span data-tech-count>01</span> / 05</div>
-          </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -507,7 +516,7 @@
         <div class="about">
           <div class="about__text">
             <h2 class="h2" data-split>С 2011 года делаем потолки и&nbsp;отвечаем за них по договору</h2>
-            <p class="lead reveal">Ставим натяжные потолки в Казани и по Татарстану. Производство своё, мастера в штате, на каждый объект заключаем договор.</p>
+            <p class="lead reveal">Ставим натяжные потолки в Казани. Производство своё, мастера в штате, на каждый объект заключаем договор.</p>
             <p class="muted reveal">Делаем двухуровневые потолки со встроенным светом, парящие, резные, бесшовные, теневые и «Тихие стены». Если система сложная, сначала рисуем проект под ваш интерьер.</p>
 
             <button class="cert reveal" data-lightbox="cert" data-full="img/cert.webp">
@@ -582,7 +591,7 @@
           </div>
           <div class="faq__item">
             <button class="faq__q" aria-expanded="false">Где вы работаете?<span class="faq__icon" aria-hidden="true"></span></button>
-            <div class="faq__a"><div><p>В Казани и по Республике Татарстан. Работаем ежедневно с 8:00 до 22:00, без выходных. Замер бесплатный.</p></div></div>
+            <div class="faq__a"><div><p>В Казани. Работаем ежедневно с 8:00 до 22:00, без выходных. Замер бесплатный.</p></div></div>
           </div>
         </div>
       </div>
@@ -631,7 +640,7 @@
               <span class="logo__sub">натяжные потолки с 2011 года</span>
             </span>
           </a>
-          <p class="footer__about">Натяжные потолки под ключ в Казани и по Татарстану. Своё производство, договор, гарантия до 10 лет.</p>
+          <p class="footer__about">Натяжные потолки под ключ в Казани. Своё производство, договор, гарантия до 10 лет.</p>
         </div>
         <div>
           <div class="footer__title">Разделы</div>
@@ -720,6 +729,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=61"></script>
+  <script src="js/main.js?v=62"></script>
 </body>
 </html>

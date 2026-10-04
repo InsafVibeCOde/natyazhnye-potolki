@@ -9,8 +9,6 @@
     metrikaId: null,     // номер счётчика Яндекс.Метрики, например 12345678
     max: 'https://max.ru/u/f9LHodD0cOIeTNAkemGS5fLyl_J12t_ITj_i_2og3PRIHGLkD-noYUuiRo4', // ссылка на профиль в MAX
     leadsEndpoint: null, // адрес приёма заявок на российском хостинге, например 'server/send.php'
-    // рейтинг — реальный, с карт (проверено 30.09.2026); сами отзывы на сайт не выводим — только ссылки на площадки
-    rating: { value: '5,0', text: 'в 2ГИС', url: 'https://2gis.ru/kazan/geo/70000001110180739' },
   };
   const METRIKA_ID = CONFIG.metrikaId;
 
@@ -122,49 +120,19 @@
     return $$('.w__i', el);
   };
 
-  /* ---------- Hero: «включаем свет» ---------- */
+  /* ---------- Hero: заголовок выезжает, остальное проявляется ---------- */
 
   const hero = $('.hero');
   if (motion && hero) {
     const heroWords = splitWords($('.hero__title'));
     gsap.set(heroWords, { yPercent: 110 });
     gsap.set('.hero__title', { opacity: 1 });
-    gsap.set('.hero__side', { y: 30 });
+    gsap.set('.hero__fade', { y: 24 });
 
-    // текст появляется сразу
     gsap.timeline({ delay: 0.1 })
-      .to(heroWords, { yPercent: 0, duration: 1.1, stagger: 0.07, ease: 'expo.out', clearProps: 'transform' })
-      .to('.hero__side', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
-      .to(header, { opacity: 1, duration: 0.8 }, '<');
-
-    // «включаем свет» на фото, как только оно загрузилось (но не дольше 0,8 с ожидания)
-    const photo = $('.hero__photo');
-    const photoReady = photo && !photo.complete && photo.decode
-      ? Promise.race([photo.decode().catch(() => {}), new Promise((r) => setTimeout(r, 800))])
-      : Promise.resolve();
-    photoReady.then(() => {
-      gsap.to('.hero__dim', { opacity: 0, duration: 1.2, ease: 'power2.inOut' });
-      // лёгкое «приближение» фото — только на компьютере, телефону это тяжело
-      if (!isMobile()) gsap.fromTo('.hero__photo', { scale: 1.05 }, { scale: 1, duration: 2.2, ease: 'power3.out' });
-    });
-
-    gsap.to('.hero__scene', {
-      yPercent: 10, opacity: 0.35, ease: 'none',
-      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
-    });
-    gsap.to('.hero__inner', {
-      y: -80, opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: hero, start: '30% top', end: 'bottom top', scrub: true },
-    });
-
-    if (finePointer) {
-      const px = gsap.quickTo('.hero__scene', 'x', { duration: 1.4, ease: 'power3.out' });
-      const py = gsap.quickTo('.hero__scene', 'y', { duration: 1.4, ease: 'power3.out' });
-      hero.addEventListener('mousemove', (e) => {
-        px((e.clientX / innerWidth - 0.5) * -40);
-        py((e.clientY / innerHeight - 0.5) * -24);
-      });
-    }
+      .to(heroWords, { yPercent: 0, duration: 1, stagger: 0.06, ease: 'expo.out', clearProps: 'transform' })
+      .to('.hero__fade', { opacity: 1, y: 0, duration: 0.8, stagger: 0.06, ease: 'power3.out', clearProps: 'transform' }, '-=0.8')
+      .to(header, { opacity: 1, duration: 0.6 }, 0);
   }
 
   /* ---------- Split headings on scroll ---------- */
@@ -201,30 +169,6 @@
   const featured = $('.price--featured');
   if (featured && 'IntersectionObserver' in window) {
     new IntersectionObserver(([en]) => featured.classList.toggle('is-inview', en.isIntersecting)).observe(featured);
-  }
-
-  /* ---------- Tech: sticky media ---------- */
-
-  const techItems = $$('.tech__item');
-  const techImgs = $$('.tech__media img');
-  const techCount = $('[data-tech-count]');
-  let techActive = 0;
-  const setTech = (i) => {
-    if (i === techActive) return;
-    techItems.forEach((it, k) => it.classList.toggle('is-active', k === i));
-    techImgs.forEach((img, k) => {
-      img.classList.remove('is-prev');
-      if (k === techActive) img.classList.add('is-prev');
-      img.classList.toggle('is-active', k === i);
-    });
-    if (techCount) techCount.textContent = String(i + 1).padStart(2, '0');
-    techActive = i;
-  };
-  if ('IntersectionObserver' in window && techItems.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) setTech(+en.target.dataset.tech); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    techItems.forEach((it) => io.observe(it));
   }
 
   /* ---------- Calculator + live plan ---------- */
@@ -733,16 +677,6 @@
         if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
       });
     });
-  }
-
-  /* ---------- Рейтинг (только реальный, из CONFIG) ---------- */
-
-  if (CONFIG.rating) {
-    const r = $('[data-rating]');
-    $('[data-rating-value]', r).textContent = CONFIG.rating.value;
-    $('[data-rating-text]', r).textContent = CONFIG.rating.text;
-    if (CONFIG.rating.url) r.href = CONFIG.rating.url;
-    r.hidden = false;
   }
 
   /* ---------- Refresh after fonts/images ---------- */
