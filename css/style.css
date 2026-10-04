@@ -263,8 +263,17 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   box-shadow: 0 6px 18px -8px rgba(27, 26, 24, .35);
 }
 /* выгоды — таблица 2×2 */
+/* главный оффер — первое, что видно под заголовком */
+.hero__deal {
+  display: flex; align-items: center; gap: 12px; margin-top: 22px; padding: 14px 18px;
+  border-radius: 16px; background: rgba(var(--glow-rgb), .16); border: 1px solid rgba(var(--glow-rgb), .45);
+  font-size: 16px; line-height: 1.35; color: var(--ink); transition: background-color .2s;
+}
+.hero__deal:hover { background: rgba(var(--glow-rgb), .24); }
+.hero__deal svg { flex-shrink: 0; color: var(--warm); }
+.hero__deal b { font-weight: 800; }
 .hero__perks {
-  margin-top: 26px; display: grid; grid-template-columns: 1fr 1fr;
+  margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr;
   border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden;
 }
 .hero__perks li { display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; }
@@ -962,4 +971,16 @@ a.calc__gift { display: block; }
 @supports not (aspect-ratio: 1 / 1) {
   .work { width: calc(min(62vh, 620px) * 4 / 3); }
   .tech-card img, .work img { height: auto; }
+}
+
+/* Телефон: оффер и выгоды — до фото, чтобы были видны без прокрутки */
+@media (max-width: 960px) {
+  .hero__rates-m { order: 0; }
+  .hero__title { order: 1; }
+  .hero__deal { order: 2; margin-top: 16px; padding: 12px 14px; font-size: 15px; }
+  .hero__perks { order: 3; margin-top: 10px; }
+  .hero__media { order: 4; margin-top: 16px; }
+  .hero__offer { order: 5; }
+  .hero__actions { order: 6; }
+  .hero__lead { display: none; }
 }
