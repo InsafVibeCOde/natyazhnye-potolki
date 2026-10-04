@@ -54,7 +54,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=63">
+  <link rel="stylesheet" href="css/style.css?v=64">
 </head>
 <body>
 
@@ -156,7 +156,7 @@
         </ul>
         <div class="hero__offer hero__fade">
           <div class="price-chip"><b>от 499 ₽</b><small>за м² полотна</small></div>
-          <p class="gift-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg>Санузел в подарок при заказе во всю квартиру</p>
+          <a class="gift-line" href="#promo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg><span>Скидки до 10% и подарки к заказу</span></a>
         </div>
         <div class="hero__actions hero__fade">
           <button class="btn btn--light" data-magnetic data-modal data-source="Первый экран — замер"
@@ -284,7 +284,7 @@
               <a class="btn btn--ghost btn--block" data-max-share="calc" hidden target="_blank" rel="noopener">Отправить расчёт в MAX</a>
               <a class="btn btn--ghost btn--block" href="tel:+79510618500">Позвонить: 8 (951) 061-85-00</a>
             </div>
-            <div class="calc__gift">Санузел в подарок при заказе во всю квартиру, скидка 7% пенсионерам и новосёлам</div>
+            <a class="calc__gift" href="#promo">Скидки до 10% и подарки к заказу</a>
           </div>
         </div>
       </div>
@@ -445,29 +445,31 @@
     <section class="section section--alt" id="promo">
       <div class="container">
         <div class="section-head">
-          <h2 class="h2" data-split>Скидка 7% пенсионерам и&nbsp;новосёлам</h2>
-          <p class="lead reveal">Если делаете потолки во всей квартире, потолок в санузел ставим в подарок. Скидку и подарок можно получить вместе.</p>
+          <h2 class="h2" data-split>Скидки и подарки</h2>
+          <p class="lead reveal">Подарок можно получить вместе со скидкой. Какая скидка подходит вам, подскажет замерщик.</p>
         </div>
 
-        <div class="promos">
-          <article class="promo promo--main reveal">
-            <div class="promo__big">Подарок</div>
-            <h3 class="promo__title">Потолок в санузел бесплатно или плёнка на балкон с подсветкой</h3>
-            <p class="muted">При заказе натяжных потолков во всю квартиру.</p>
-            <button class="btn btn--light" data-magnetic data-modal data-source="Подарок — санузел или балкон" data-title="Забрать подарок" data-summary="Подарок: потолок в санузел или плёнка на балкон"><span class="btn__label">Забрать подарок</span></button>
-          </article>
-          <article class="promo reveal">
-            <div class="promo__big">−7%</div>
-            <h3 class="promo__title">Пенсионерам</h3>
-            <p class="muted">Скидка 7% от всей сметы, на любой потолок.</p>
-            <button class="btn btn--ghost" data-modal data-source="Скидка — пенсионерам" data-title="Скидка 7% пенсионерам" data-summary="Скидка 7% пенсионерам">Получить скидку</button>
-          </article>
-          <article class="promo reveal">
-            <div class="promo__big">−7%</div>
-            <h3 class="promo__title">Новосёлам</h3>
-            <p class="muted">Переезжаете в новую квартиру — скидка 7% на потолки.</p>
-            <button class="btn btn--ghost" data-modal data-source="Скидка — новосёлам" data-title="Скидка 7% новосёлам" data-summary="Скидка 7% новосёлам">Получить скидку</button>
-          </article>
+        <div class="offers reveal">
+          <div class="offers__row">
+            <h3 class="offers__label">Скидки</h3>
+            <ul class="offers__grid">
+              <li><b class="offers__value">−10%</b><span class="offers__title">Договор в день замера</span><span class="offers__note">если подписываете договор сразу на замере</span></li>
+              <li><b class="offers__value">−7%</b><span class="offers__title">Пенсионерам</span><span class="offers__note">от всей сметы, на любой потолок</span></li>
+              <li><b class="offers__value">−7%</b><span class="offers__title">Новосёлам</span><span class="offers__note">если переезжаете в новую квартиру</span></li>
+            </ul>
+          </div>
+          <div class="offers__row">
+            <h3 class="offers__label">Подарки</h3>
+            <ul class="offers__grid">
+              <li><svg class="offers__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg><span class="offers__title">Дизайн-проект</span><span class="offers__note">к каждому потолку</span></li>
+              <li><svg class="offers__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg><span class="offers__title">Потолок в санузел</span><span class="offers__note">или плёнка на балкон с подсветкой, при заказе во всю квартиру</span></li>
+              <li><svg class="offers__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8zM12 8s1.5-5 4-4.5S17 8 12 8z"/></svg><span class="offers__title">Каждый 4-й светильник</span><span class="offers__note">при заказе от 5 светильников</span></li>
+            </ul>
+          </div>
+          <div class="offers__foot">
+            <p>Оставьте телефон, и замерщик посчитает смету уже со скидкой.</p>
+            <button class="btn btn--light" data-magnetic data-modal data-source="Скидки и подарки" data-title="Скидка и подарок" data-summary="Хочу скидку или подарок"><span class="btn__label">Получить скидку и подарок</span></button>
+          </div>
         </div>
       </div>
     </section>
