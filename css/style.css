@@ -177,9 +177,21 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .rate__val b { font-size: 16px; font-weight: 800; }
 .rate__val i { font-style: normal; font-size: 12px; letter-spacing: 1px; color: var(--glow); }
 
-.header__measure { display: flex; flex-direction: column; line-height: 1.25; padding-left: 20px; border-left: 1px solid var(--line); }
-.header__measure b { font-size: 14px; }
-.header__measure span { font-size: 12px; color: var(--ink-3); }
+.header__gift { display: flex; align-items: center; gap: 10px; line-height: 1.25; padding-left: 20px; border-left: 1px solid var(--line); }
+.header__gift svg { flex-shrink: 0; color: var(--warm); }
+.header__gift > span { display: flex; flex-direction: column; }
+.header__gift b { font-size: 14px; }
+.header__gift span span { font-size: 12px; color: var(--ink-3); }
+.header__gift:hover b { text-decoration: underline; text-underline-offset: 3px; }
+
+/* главная кнопка шапки — подсвечена, чтобы её нажимали */
+.btn--call {
+  min-height: 48px; padding: 0 22px; gap: 8px; font-size: 15px; font-weight: 700;
+  background: var(--glow); color: var(--ink);
+  box-shadow: 0 10px 26px -10px rgba(var(--glow-rgb), .95), inset 0 0 0 1px rgba(27, 26, 24, .06);
+  transition: background-color .2s, transform .2s, box-shadow .2s;
+}
+.btn--call:hover { background: #E19E35; transform: translateY(-1px); box-shadow: 0 14px 30px -10px rgba(var(--glow-rgb), 1); }
 
 .header__contacts { display: flex; align-items: center; gap: 20px; margin-left: auto; }
 .header__phone { display: flex; flex-direction: column; line-height: 1.2; text-align: right; }
@@ -895,7 +907,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 /* ---------- Шапка, первый экран, технологии: адаптив ---------- */
 @media (max-width: 1180px) {
   .burger { display: none; }
-  .header__measure { display: none; }
+  .header__gift { display: none; }
   .header__nav a { font-size: 13px; padding: 0 6px; }
 }
 @media (max-width: 960px) {
@@ -984,3 +996,33 @@ a.calc__gift { display: block; }
   .hero__actions { order: 6; }
   .hero__lead { display: none; }
 }
+
+/* ---------- Полоса «Teqtum Euro» под первым экраном ---------- */
+
+.brand-band { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.brand-band__inner { display: flex; align-items: center; gap: 24px; padding-top: 22px; padding-bottom: 22px; }
+.brand-band__logo {
+  flex-shrink: 0; display: grid; place-items: center; min-width: 120px; height: 52px; padding: 0 16px;
+  border: 1px solid var(--line-2); border-radius: 12px; font-size: 18px; font-weight: 800; letter-spacing: .02em;
+}
+img.brand-band__logo { min-width: 0; width: auto; height: 44px; padding: 0; border: 0; border-radius: 0; }
+.brand-band__text { display: flex; flex-direction: column; gap: 2px; }
+.brand-band__text b { font-size: 18px; line-height: 1.3; }
+.brand-band__text span { font-size: 14px; color: var(--ink-2); }
+.brand-band__more {
+  margin-left: auto; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  font-size: 18px; font-weight: 800; white-space: nowrap;
+}
+.brand-band__more span { font-size: 13px; font-weight: 600; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 720px) {
+  .brand-band__inner {
+    display: grid; grid-template-columns: auto 1fr; grid-template-areas: "logo more" "text text";
+    gap: 12px 16px; padding-top: 18px; padding-bottom: 18px;
+  }
+  .brand-band__logo { grid-area: logo; min-width: 0; height: 44px; font-size: 16px; }
+  .brand-band__more { grid-area: more; margin-left: 0; justify-self: end; font-size: 16px; }
+  .brand-band__text { grid-area: text; }
+  .brand-band__text b { font-size: 16px; }
+  .brand-band__text span { font-size: 13px; }
+}
+
