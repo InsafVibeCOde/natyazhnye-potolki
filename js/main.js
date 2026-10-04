@@ -27,7 +27,7 @@
   if (hasGsap) {
     gsap.registerPlugin(ScrollTrigger);
     // на телефонах адресная строка меняет высоту окна — не пересчитываем всё из-за этого
-    ScrollTrigger.config({ ignoreMobileResize: true });
+    ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: 'visibilitychange,DOMContentLoaded' });
   }
   const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
   html.classList.toggle('anim', motion);
@@ -35,7 +35,7 @@
   /* ---------- Smooth scroll (Lenis) ---------- */
 
   let lenis = null;
-  if (motion && window.Lenis) {
+  if (motion && finePointer && window.Lenis) {
     lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
@@ -123,21 +123,22 @@
   /* ---------- Hero: заголовок выезжает, остальное проявляется ---------- */
 
   const hero = $('.hero');
+  let heroIntro = null;
   if (motion && hero) {
     const heroWords = splitWords($('.hero__title'));
     gsap.set(heroWords, { yPercent: 110 });
     gsap.set('.hero__title', { opacity: 1 });
-    gsap.set('.hero__fade', { y: 24 });
 
-    gsap.timeline({ delay: 0.1 })
-      .to(heroWords, { yPercent: 0, duration: 1, stagger: 0.06, ease: 'expo.out', clearProps: 'transform' })
-      .to('.hero__fade', { opacity: 1, y: 0, duration: 0.8, stagger: 0.06, ease: 'power3.out', clearProps: 'transform' }, '-=0.8')
-      .to(header, { opacity: 1, duration: 0.6 }, 0);
+    heroIntro = gsap.timeline({ delay: 0.05 })
+      .to(heroWords, { yPercent: 0, duration: 0.8, stagger: 0.05, ease: 'expo.out', clearProps: 'transform' })
+      .to('.hero__fade', { opacity: 1, duration: 0.5, stagger: 0.04, ease: 'power1.out' }, 0.2);
   }
 
   /* ---------- Split headings on scroll ---------- */
 
-  if (motion) {
+  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 700 }) : setTimeout(fn, 300));
+
+  if (motion) whenIdle(() => {
     $$('[data-split]').forEach((el) => {
       if (el.classList.contains('hero__title')) return;
       const words = splitWords(el);
@@ -162,7 +163,7 @@
         onEnter: () => gsap.to(obj, { v: target, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = fmt(obj.v); } }),
       });
     });
-  }
+  });
 
   /* ---------- Анимация рамки популярного полотна только в зоне видимости ---------- */
 
@@ -685,6 +686,7 @@
     // один пересчёт после загрузки страницы и шрифтов — вместо двух, чтобы не дёргать страницу
     const loaded = new Promise((r) => (document.readyState === 'complete' ? r() : window.addEventListener('load', r, { once: true })));
     const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-    Promise.all([loaded, fonts]).then(() => ScrollTrigger.refresh());
+    const introDone = new Promise((r) => (heroIntro ? heroIntro.eventCallback('onComplete', r) : r()));
+    Promise.all([loaded, fonts, introDone]).then(() => whenIdle(() => ScrollTrigger.refresh()));
   }
 })();

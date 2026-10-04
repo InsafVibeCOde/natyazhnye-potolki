@@ -706,24 +706,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .is-error .form__error { display: block; }
 .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
-/* ---------- Отзывы ---------- */
-
-.review-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.review-link {
-  display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 180px;
-  padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line);
-  text-decoration: none; color: var(--ink);
-  transition: border-color .25s, box-shadow .25s, transform .25s var(--ease);
-}
-.review-link:hover { border-color: var(--ink); box-shadow: 0 24px 50px -36px rgba(27, 26, 24, .5); transform: translateY(-2px); }
-.review-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.review-link__name { display: flex; align-items: center; gap: 12px; font-size: clamp(22px, 2vw, 28px); font-weight: 700; letter-spacing: -.02em; }
-.review-link__name::before { content: ""; flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--dot); }
-.review-link--ya { --dot: #FC3F1D; }
-.review-link--gis { --dot: #29B24A; }
-.review-link--av { --dot: #0AF; }
-.review-link__go { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
-.review-link:hover .review-link__go { color: var(--ink); }
 
 /* ---------- Характеристики полотна под «раскрыть» ---------- */
 
@@ -742,7 +724,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 /* .anim ставится в <head> до отрисовки; main.js снимает его, если GSAP не загрузился */
 
 .anim .reveal { opacity: 0; transform: translateY(40px); }
-.anim .hero__fade, .anim .hero__title, .anim .header { opacity: 0; }
+.anim .hero__fade, .anim .hero__title { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .price--featured { animation: none; }
@@ -858,7 +840,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 /* Телефоны: без дорогих фильтров и размытия фона — так анимации идут плавно */
 @media (max-width: 960px), (hover: none) {
     .header.is-scrolled { background: rgba(247, 246, 243, .97); }
-  .header.is-scrolled, .mobile-bar, .cta__form, .modal, .tech__counter {
+  .header.is-scrolled, .mobile-bar, .cta__form, .modal, .work__cap {
     backdrop-filter: none; -webkit-backdrop-filter: none;
   }
   .mobile-bar { background: rgba(255, 255, 255, .98); }
@@ -879,10 +861,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 
 @media (max-width: 960px) {
-  .review-links { grid-template-columns: 1fr; gap: 10px; }
-  .review-link { flex-direction: row; align-items: center; min-height: 72px; gap: 16px; padding: 18px 20px; }
-  .review-link__name { font-size: 19px; }
-  .review-link__go { font-size: 14px; }
 }
 @media (max-width: 720px) {
   .hero__offer { gap: 10px; }
