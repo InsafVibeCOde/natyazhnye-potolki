@@ -22,7 +22,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
-  const motion = hasGsap && !reduceMotion;
+  // анимации только на компьютере с мышью — на телефоне без них, чтобы всё открывалось сразу
+  const motion = hasGsap && !reduceMotion && finePointer;
 
   if (hasGsap) {
     gsap.registerPlugin(ScrollTrigger);
@@ -31,6 +32,7 @@
   }
   const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
   html.classList.toggle('anim', motion);
+  html.classList.toggle('intro', motion && finePointer);
 
   /* ---------- Smooth scroll (Lenis) ---------- */
 
@@ -124,7 +126,7 @@
 
   const hero = $('.hero');
   let heroIntro = null;
-  if (motion && hero) {
+  if (motion && finePointer && hero) {
     const heroWords = splitWords($('.hero__title'));
     gsap.set(heroWords, { yPercent: 110 });
     gsap.set('.hero__title', { opacity: 1 });
@@ -136,10 +138,10 @@
 
   /* ---------- Split headings on scroll ---------- */
 
-  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 700 }) : setTimeout(fn, 300));
+  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 900 }) : setTimeout(fn, 900));
 
   if (motion) whenIdle(() => {
-    $$('[data-split]').forEach((el) => {
+    if (finePointer) $$('[data-split]').forEach((el) => {
       if (el.classList.contains('hero__title')) return;
       const words = splitWords(el);
       gsap.set(words, { yPercent: 110 });

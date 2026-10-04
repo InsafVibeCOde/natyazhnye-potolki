@@ -724,7 +724,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 /* .anim ставится в <head> до отрисовки; main.js снимает его, если GSAP не загрузился */
 
 .anim .reveal { opacity: 0; transform: translateY(40px); }
-.anim .hero__fade, .anim .hero__title { opacity: 0; }
+.intro .hero__fade, .intro .hero__title { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .price--featured { animation: none; }
