@@ -695,6 +695,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .mobile-bar.is-visible { transform: none; }
 .mobile-bar .btn { min-height: 48px; }
+.mobile-bar .btn--call { padding: 0 14px; font-size: 15px; }
 
 /* ---------- Cookie ---------- */
 
@@ -883,7 +884,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 @media (max-width: 720px) {
   .hero__offer { gap: 10px; }
   .gift-line { font-size: 14px; }
-  .mobile-bar { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 1fr; }
+  .mobile-bar { grid-template-columns: 1fr 1.5fr; }
 }
 
 /* ---------- Расчёт в MAX: подсказка «скопировано» ---------- */

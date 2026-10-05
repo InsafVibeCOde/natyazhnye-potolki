@@ -69,7 +69,8 @@
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 20);
     header.classList.toggle('is-hidden', y > 400 && y > lastY && !document.body.classList.contains('menu-open'));
-    if (mobileBar) mobileBar.classList.toggle('is-visible', y > 600);
+    // на телефоне панель с «Позвонить / Заказать звонок» видна сразу
+    if (mobileBar) mobileBar.classList.add('is-visible');
     lastY = y;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
