@@ -269,11 +269,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   border-radius: var(--radius); background: var(--surface-2);
 }
 .hero__media img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.hero__badge {
-  position: absolute; left: 16px; bottom: 16px; padding: 8px 14px; border-radius: 999px;
-  background: rgba(255, 255, 255, .94); font-size: 14px; font-weight: 600;
-  box-shadow: 0 6px 18px -8px rgba(27, 26, 24, .35);
-}
 /* выгоды — таблица 2×2 */
 /* главный оффер — первое, что видно под заголовком */
 .hero__deal {
@@ -531,6 +526,8 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .cert:hover { border-color: var(--line-2); }
 .cert img { width: 56px; height: 74px; object-fit: cover; border-radius: 6px; }
+.cert--wide img { width: 96px; height: 54px; }
+.cert + .cert { margin-top: 10px; }
 .cert b { display: block; }
 .cert span { font-size: 14px; color: var(--ink-2); }
 
@@ -798,7 +795,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .header__contacts .btn, .header__phone span { display: none; }
   .header__phone a { font-size: 18px; }
   .logo__mark { width: 38px; height: 38px; }
-  .logo__sub { display: none; }
+  .logo__sub { font-size: 11px; }
   .hero__actions .btn { flex: 1 1 100%; }
   .counters { grid-template-columns: 1fr; }
   .counter { display: flex; justify-content: space-between; align-items: center; }
@@ -943,7 +940,6 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   .hero__perks b { font-size: 15px; }
   .hero__perks span { font-size: 12px; }
   .hero__actions .btn { flex: 1 1 100%; }
-  .hero__badge { font-size: 13px; left: 12px; bottom: 12px; }
 }
 
 /* ---------- Скидки и подарки: две «таблицы» ---------- */
