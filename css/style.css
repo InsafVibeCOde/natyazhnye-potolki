@@ -1023,3 +1023,14 @@ img.brand-band__logo { min-width: 0; width: auto; height: 56px; padding: 0; bord
   .brand-band__text span { font-size: 13px; }
 }
 
+/* Телефон: выгоды списком с галочками — без рамок и переносов в узких ячейках */
+@media (max-width: 720px) {
+  .hero__perks { grid-template-columns: 1fr; gap: 12px; padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; }
+  .hero__perks li { position: relative; padding: 0 0 0 32px; border: 0 !important; }
+  .hero__perks li::before {
+    content: ""; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(var(--glow-rgb), .35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B1A18' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 13px no-repeat;
+  }
+  .hero__perks b { font-size: 16px; }
+  .hero__perks span { font-size: 13px; }
+}
