@@ -545,8 +545,9 @@
       openLb(all.map((a) => a.dataset.full), all.indexOf(el));
     });
   });
-  // «Все фото»: сначала 12 снимков из ленты, потом остальные работы без повторов
+  // «Все фото»: сначала 12 снимков из ленты, потом прежние работы без повторов
   const allWorks = [
+    ...Array.from({ length: 12 }, (_, i) => `img/works/n-${String(i + 1).padStart(2, '0')}.webp`),
     ...Array.from({ length: 12 }, (_, i) => `img/works/p-${String(i + 1).padStart(2, '0')}.webp`),
     ...[1, 2, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24].map((n) => `img/works/w-${String(n).padStart(2, '0')}.webp`),
   ];
