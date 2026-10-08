@@ -55,7 +55,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=83">
+  <link rel="stylesheet" href="css/style.css?v=84">
 </head>
 <body>
 
@@ -100,9 +100,9 @@
     </div>
     <nav class="header__nav" aria-label="Основное меню">
       <div class="container header__nav-inner">
+        <a href="#works">Наши работы</a>
         <a href="#tech">Технологии</a>
         <a href="#calc">Калькулятор</a>
-        <a href="#works">Наши работы</a>
         <a href="#prices">Полотна</a>
         <a href="#promo">Скидки</a>
         <a href="#steps">Как работаем</a>
@@ -113,8 +113,8 @@
   </header>
 
   <div class="mobile-menu" aria-label="Мобильное меню">
-    <a href="#calc">Калькулятор</a>
     <a href="#works">Наши работы</a>
+    <a href="#calc">Калькулятор</a>
     <a href="#prices">Полотна</a>
     <a href="#promo">Скидки</a>
     <a href="#steps">Как работаем</a>
@@ -172,8 +172,46 @@
       </div>
     </section>
 
+    <!-- ================= WORKS (horizontal) ================= -->
+    <section class="works" id="works">
+      <div class="works__pin">
+        <div class="works__head-m container">
+          <h2 class="h2">Наши работы в&nbsp;Казани</h2>
+          <p class="lead">Фото с наших объектов, без картинок из интернета. Листайте вбок.</p>
+        </div>
+        <div class="works__track">
+          <div class="works__intro">
+            <div>
+              <h2 class="h2">Наши работы в&nbsp;Казани</h2>
+              <p class="lead">Квартиры, дома, клиники и кафе, которые мы сделали. Все фото с наших объектов.</p>
+            </div>
+            <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span></button>
+          </div>
+
+          <button class="work" data-lightbox="works" data-full="img/works/n-01.webp"><img decoding="async" src="img/works/n-01.webp" srcset="img/works/n-01-sm.webp 480w, img/works/n-01.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Подвесные светильники, точечный свет и контурная подсветка у окна" loading="lazy" width="720" height="960"><span class="work__cap">Подвесные светильники</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-02.webp"><img decoding="async" src="img/works/n-02.webp" srcset="img/works/n-02-sm.webp 480w, img/works/n-02.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Натяжной потолок «звёздное небо» с подсветкой по контуру" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-03.webp"><img decoding="async" src="img/works/n-03.webp" srcset="img/works/n-03-sm.webp 480w, img/works/n-03.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Круглый световой потолок с фигурным краем" loading="lazy" width="720" height="960"><span class="work__cap">Круглый световой потолок</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-04.webp"><img decoding="async" src="img/works/n-04.webp" srcset="img/works/n-04-sm.webp 480w, img/works/n-04.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световые линии в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-05.webp"><img decoding="async" src="img/works/n-05.webp" srcset="img/works/n-05-sm.webp 480w, img/works/n-05.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Вставка «звёздное небо» и световые линии" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо и световые линии</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-06.webp"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световая линия в стене вдоль лестницы" loading="lazy" width="720" height="960"><span class="work__cap">Световая линия на лестнице</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-07.webp"><img decoding="async" src="img/works/n-07.webp" srcset="img/works/n-07-sm.webp 480w, img/works/n-07.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Дизайнерская люстра, световая линия и контурная подсветка" loading="lazy" width="720" height="960"><span class="work__cap">Люстра и световая линия</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-08.webp"><img decoding="async" src="img/works/n-08.webp" srcset="img/works/n-08-sm.webp 480w, img/works/n-08.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световое окно и световые линии" loading="lazy" width="720" height="960"><span class="work__cap">Световое окно и линии</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-09.webp"><img decoding="async" src="img/works/n-09.webp" srcset="img/works/n-09-sm.webp 480w, img/works/n-09.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Большое световое окно в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Большое световое окно</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-10.webp"><img decoding="async" src="img/works/n-10.webp" srcset="img/works/n-10-sm.webp 480w, img/works/n-10.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Контурная подсветка и точечные светильники у панорамных окон" loading="lazy" width="720" height="960"><span class="work__cap">Парящий потолок</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-11.webp"><img decoding="async" src="img/works/n-11.webp" srcset="img/works/n-11-sm.webp 480w, img/works/n-11.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Контурная подсветка и встроенные профили у панорамных окон" loading="lazy" width="720" height="960"><span class="work__cap">Контурная подсветка у окон</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-12.webp"><img decoding="async" src="img/works/n-12.webp" srcset="img/works/n-12-sm.webp 480w, img/works/n-12.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световые линии и теневой профиль" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии и теневой профиль</span></button>
+          <span class="work__end" aria-hidden="true"></span>
+        </div>
+        <div class="works__progress" aria-hidden="true"><i></i></div>
+        <div class="works__foot-m container">
+          <span class="works__count" aria-live="polite"><b data-works-cur>01</b> / 12</span>
+          <button class="btn btn--ghost btn--sm" data-all-works>Все фото</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= TECH ================= -->
-    <section class="section section--alt" id="tech">
+    <section class="section" id="tech">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Свет в натяжном потолке</h2>
@@ -220,7 +258,7 @@
     </section>
 
     <!-- ================= CALCULATOR ================= -->
-    <section class="section" id="calc">
+    <section class="section section--alt" id="calc">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Сколько стоит потолок с установкой</h2>
@@ -289,44 +327,6 @@
             </div>
             <a class="calc__gift" href="#promo">Скидки до 10% и подарки к заказу</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= WORKS (horizontal) ================= -->
-    <section class="works" id="works">
-      <div class="works__pin">
-        <div class="works__head-m container">
-          <h2 class="h2">Наши работы в&nbsp;Казани</h2>
-          <p class="lead">Фото с наших объектов, без картинок из интернета. Листайте вбок.</p>
-        </div>
-        <div class="works__track">
-          <div class="works__intro">
-            <div>
-              <h2 class="h2">Наши работы в&nbsp;Казани</h2>
-              <p class="lead">Квартиры, дома, клиники и кафе, которые мы сделали. Все фото с наших объектов.</p>
-            </div>
-            <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span></button>
-          </div>
-
-          <button class="work" data-lightbox="works" data-full="img/works/n-01.webp"><img decoding="async" src="img/works/n-01.webp" srcset="img/works/n-01-sm.webp 480w, img/works/n-01.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Подвесные светильники, точечный свет и контурная подсветка у окна" loading="lazy" width="720" height="960"><span class="work__cap">Подвесные светильники</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-02.webp"><img decoding="async" src="img/works/n-02.webp" srcset="img/works/n-02-sm.webp 480w, img/works/n-02.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Натяжной потолок «звёздное небо» с подсветкой по контуру" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-03.webp"><img decoding="async" src="img/works/n-03.webp" srcset="img/works/n-03-sm.webp 480w, img/works/n-03.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Круглый световой потолок с фигурным краем" loading="lazy" width="720" height="960"><span class="work__cap">Круглый световой потолок</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-04.webp"><img decoding="async" src="img/works/n-04.webp" srcset="img/works/n-04-sm.webp 480w, img/works/n-04.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световые линии в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-05.webp"><img decoding="async" src="img/works/n-05.webp" srcset="img/works/n-05-sm.webp 480w, img/works/n-05.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Вставка «звёздное небо» и световые линии" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо и световые линии</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-06.webp"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световая линия в стене вдоль лестницы" loading="lazy" width="720" height="960"><span class="work__cap">Световая линия на лестнице</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-07.webp"><img decoding="async" src="img/works/n-07.webp" srcset="img/works/n-07-sm.webp 480w, img/works/n-07.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Дизайнерская люстра, световая линия и контурная подсветка" loading="lazy" width="720" height="960"><span class="work__cap">Люстра и световая линия</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-08.webp"><img decoding="async" src="img/works/n-08.webp" srcset="img/works/n-08-sm.webp 480w, img/works/n-08.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световое окно и световые линии" loading="lazy" width="720" height="960"><span class="work__cap">Световое окно и линии</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-09.webp"><img decoding="async" src="img/works/n-09.webp" srcset="img/works/n-09-sm.webp 480w, img/works/n-09.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Большое световое окно в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Большое световое окно</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-10.webp"><img decoding="async" src="img/works/n-10.webp" srcset="img/works/n-10-sm.webp 480w, img/works/n-10.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Контурная подсветка и точечные светильники у панорамных окон" loading="lazy" width="720" height="960"><span class="work__cap">Парящий потолок</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-11.webp"><img decoding="async" src="img/works/n-11.webp" srcset="img/works/n-11-sm.webp 480w, img/works/n-11.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Контурная подсветка и встроенные профили у панорамных окон" loading="lazy" width="720" height="960"><span class="work__cap">Контурная подсветка у окон</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-12.webp"><img decoding="async" src="img/works/n-12.webp" srcset="img/works/n-12-sm.webp 480w, img/works/n-12.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световые линии и теневой профиль" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии и теневой профиль</span></button>
-          <span class="work__end" aria-hidden="true"></span>
-        </div>
-        <div class="works__progress" aria-hidden="true"><i></i></div>
-        <div class="works__foot-m container">
-          <span class="works__count" aria-live="polite"><b data-works-cur>01</b> / 12</span>
-          <button class="btn btn--ghost btn--sm" data-all-works>Все фото</button>
         </div>
       </div>
     </section>
@@ -617,8 +617,8 @@
         <div>
           <div class="footer__title">Разделы</div>
           <ul class="footer__list">
-            <li><a href="#calc">Калькулятор</a></li>
             <li><a href="#works">Наши работы</a></li>
+            <li><a href="#calc">Калькулятор</a></li>
             <li><a href="#prices">Полотна</a></li>
             <li><a href="#faq">Вопросы</a></li>
           </ul>
@@ -698,9 +698,17 @@
     </div>
   </div>
 
-  <script src="js/vendor/gsap.min.js"></script>
-  <script src="js/vendor/ScrollTrigger.min.js"></script>
-  <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=82"></script>
+  <script>
+    // библиотеки анимаций (~135 КБ) нужны только на компьютере с мышью — на телефоне их не грузим
+    (function () {
+      var anim = !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches;
+      var list = anim ? ['js/vendor/gsap.min.js', 'js/vendor/ScrollTrigger.min.js', 'js/vendor/lenis.min.js'] : [];
+      list.concat('js/main.js?v=83').forEach(function (src) {
+        var s = document.createElement('script');
+        s.src = src; s.async = false; // по порядку: сначала библиотеки, потом main.js
+        document.body.appendChild(s);
+      });
+    })();
+  </script>
 </body>
 </html>
