@@ -656,7 +656,22 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .lightbox__close { top: 16px; right: 16px; }
 .lightbox__prev { left: 16px; top: 50%; transform: translateY(-50%); }
 .lightbox__next { right: 16px; top: 50%; transform: translateY(-50%); }
-.lightbox__count { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: var(--ink-2); font-size: 14px; }
+.lightbox__foot {
+  position: absolute; left: 16px; right: 16px; bottom: 20px;
+  display: flex; align-items: center; justify-content: center; gap: 12px 24px; flex-wrap: wrap;
+}
+.lightbox__info { display: flex; align-items: baseline; gap: 12px; color: #fff; font-size: 15px; font-weight: 600; }
+.lightbox__count { color: rgba(255,255,255,.55); font-size: 14px; font-weight: 400; }
+.lightbox__cta { min-height: 50px; }
+/* с кнопкой заявки фото чуть ниже, чтобы низ не перекрывался */
+.lightbox.has-cta { padding: 76px 16px 104px; }
+.lightbox.has-cta img { max-height: calc(100vh - 180px); }
+@media (max-width: 720px) {
+  .lightbox__foot { flex-direction: column; bottom: 16px; }
+  .lightbox__cta { width: 100%; max-width: 360px; }
+  .lightbox.has-cta { padding-bottom: 136px; }
+  .lightbox.has-cta img { max-height: calc(100vh - 212px); max-height: calc(100dvh - 212px); }
+}
 
 /* ---------- Footer ---------- */
 

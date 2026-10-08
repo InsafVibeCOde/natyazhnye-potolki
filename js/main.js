@@ -524,25 +524,38 @@
   /* ---------- Lightbox ---------- */
 
   const lb = $('#lightbox');
+  const workCap = (el) => ($('.work__cap', el) || {}).textContent || '';
   const lbImg = $('img', lb);
   const lbCount = $('.lightbox__count', lb);
+  const lbCap = $('.lightbox__cap', lb);
+  const lbCta = $('.lightbox__cta', lb);
   let group = [];
+  let caps = [];
   let idx = 0;
 
   const show = () => {
     lbImg.src = group[idx];
+    lbImg.alt = caps[idx] || 'Фото работы';
+    lbCap.textContent = caps[idx] || '';
     lbCount.textContent = group.length > 1 ? `${idx + 1} / ${group.length}` : '';
     $('.lightbox__prev', lb).hidden = group.length < 2;
     $('.lightbox__next', lb).hidden = group.length < 2;
   };
-  const openLb = (list, i) => { group = list; idx = i; show(); lb.classList.add('is-open'); lockScroll(true); };
+  // withCta — у фото работ кнопка «Хочу такой потолок», у сертификатов её нет
+  const openLb = (list, i, capList = [], withCta = false) => {
+    group = list; caps = capList; idx = i; show();
+    lbCta.hidden = !withCta;
+    lb.classList.toggle('has-cta', withCta);
+    lb.classList.add('is-open'); lockScroll(true);
+  };
   const closeLb = () => { lb.classList.remove('is-open'); lockScroll(false); };
   const go = (d) => { idx = (idx + d + group.length) % group.length; show(); };
 
   $$('[data-lightbox]').forEach((el) => {
     el.addEventListener('click', () => {
       const all = $$(`[data-lightbox="${el.dataset.lightbox}"]`);
-      openLb(all.map((a) => a.dataset.full), all.indexOf(el));
+      const isWork = el.dataset.lightbox === 'works';
+      openLb(all.map((a) => a.dataset.full), all.indexOf(el), isWork ? all.map(workCap) : [], isWork);
     });
   });
   // «Все фото»: сначала 12 снимков из ленты, потом прежние работы без повторов
@@ -551,7 +564,20 @@
     ...Array.from({ length: 12 }, (_, i) => `img/works/p-${String(i + 1).padStart(2, '0')}.webp`),
     ...[1, 2, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24].map((n) => `img/works/w-${String(n).padStart(2, '0')}.webp`),
   ];
-  $$('[data-all-works]').forEach((b) => b.addEventListener('click', () => openLb(allWorks, 0)));
+  $$('[data-all-works]').forEach((b) => b.addEventListener('click', () => openLb(allWorks, 0, $$('.work').map(workCap), true)));
+
+  // заявка прямо из просмотра: в ней видно, какая работа понравилась
+  lbCta.addEventListener('click', () => {
+    const name = caps[idx] || `фото ${idx + 1}`;
+    Object.assign(lbCta.dataset, {
+      title: 'Посчитаем такой потолок',
+      text: 'Оставьте телефон. Перезвоним, уточним размеры комнаты и назовём цену такого потолка.',
+      source: `Работа: ${name}`,
+      summary: `Понравилась работа: ${name}`,
+    });
+    closeLb();
+    openModal(lbCta);
+  });
 
   $('.lightbox__close', lb).addEventListener('click', closeLb);
   $('.lightbox__prev', lb).addEventListener('click', () => go(-1));
