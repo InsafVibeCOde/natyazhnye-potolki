@@ -88,14 +88,8 @@ h1, h2, h3, h4, p { margin: 0; }
   font-weight: 700;
 }
 
-.h1 em, .h2 em, .h3 em, .serif {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: -.02em;
-  color: var(--warm);
-}
-.h1 em, .h2 em { font-size: 1.08em; }
+/* один шрифт на весь сайт: выделения без курсива и второй гарнитуры */
+.h1 em, .h2 em, .h3 em, .serif { font-style: normal; font-weight: inherit; color: inherit; }
 
 .lead { font-size: clamp(16px, 1.35vw, 19px); color: var(--ink-2); line-height: 1.6; }
 .muted { color: var(--ink-2); }
@@ -500,7 +494,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
   transition: background .5s, box-shadow .5s, border-color .5s;
 }
 .step.is-lit .step__dot { background: var(--glow); border-color: var(--glow); box-shadow: 0 0 18px 4px rgba(var(--glow-rgb), .7); }
-.step__num { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--warm); }
+.step__num { font-size: 15px; font-weight: 700; color: var(--warm); }
 .step__title { margin: 10px 0 12px; font-size: 24px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; }
 .step p { color: var(--ink-2); font-size: 15px; }
 
@@ -1054,3 +1048,7 @@ img.brand-band__logo { min-width: 0; width: auto; height: 56px; padding: 0; bord
 @media (max-width: 720px) {
   .hero__perks { grid-template-columns: 1fr; gap: 8px; }
 }
+
+/* плашка «Дизайн-проект в подарок» — это кнопка заявки */
+button.hero__deal { width: 100%; text-align: left; font-family: inherit; cursor: pointer; }
+.price__name { margin-top: 2px; }
