@@ -693,11 +693,11 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 
 /* ---------- Mobile bar ---------- */
 
-/* нижняя панель на всю ширину, прижата к краю: «Позвонить» — вторичная, «Заказать звонок» — главная */
+/* нижняя панель: круглая трубка (звонит сразу) + широкая «Заказать звонок» */
 .mobile-bar {
   display: none;
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-  grid-template-columns: 1fr 1.3fr; gap: 10px;
+  grid-template-columns: 50px 1fr; gap: 10px;
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
   background: #FFFFFF; border-top: 1px solid var(--line);
   box-shadow: 0 -8px 24px -18px rgba(27, 26, 24, .35);
@@ -705,7 +705,12 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .mobile-bar.is-visible { transform: none; }
 .mobile-bar .btn { min-height: 50px; padding: 0 12px; gap: 8px; font-size: 15px; font-weight: 700; }
-.mobile-bar .btn--ghost { border-color: var(--line-2); color: var(--ink); }
+.mobile-bar__tel {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--ink); color: #FFFFFF;
+}
+.mobile-bar__tel svg { width: 20px; height: 20px; }
 .mobile-bar .btn--call, .mobile-bar .btn--call:hover { box-shadow: none; transform: none; }
 
 /* ---------- Cookie ---------- */
