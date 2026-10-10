@@ -1072,3 +1072,35 @@ img.brand-band__logo { min-width: 0; width: auto; height: 56px; padding: 0; bord
 /* плашка «Дизайн-проект в подарок» — это кнопка заявки */
 button.hero__deal { width: 100%; text-align: left; font-family: inherit; cursor: pointer; }
 .price__name { margin-top: 2px; }
+
+/* ---------- Примеры расчётов (над калькулятором) ---------- */
+.ests-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; margin-bottom: 18px; }
+.ests-head .muted { font-size: 14px; color: var(--ink-3); max-width: 46ch; }
+.ests { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 56px; }
+.est {
+  display: flex; flex-direction: column; min-width: 0;
+  padding: 24px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.est__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.est__room { font-size: 14px; font-weight: 700; color: var(--warm); }
+.est__area { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; padding: 4px 10px; border-radius: 99px; background: var(--surface-2); }
+.est__name { margin: 12px 0 16px; font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.est__list { list-style: none; margin: 0 0 18px; padding: 0; flex: 1; font-size: 14px; }
+.est__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); color: var(--ink-2); }
+.est__list b { font-weight: 600; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.est__total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 0 18px; border-top: 1px solid var(--ink); }
+.est__total span { font-size: 14px; color: var(--ink-2); }
+.est__total b { font-size: 28px; font-weight: 800; letter-spacing: -.03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media (max-width: 1200px) { .ests { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  /* на телефоне — свайп, как у полотен */
+  .ests {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter)) 40px; padding: 0 var(--gutter) 4px; scroll-padding-left: var(--gutter);
+    scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .ests::-webkit-scrollbar { display: none; }
+  .est { flex: 0 0 84vw; max-width: 360px; scroll-snap-align: start; padding: 20px; }
+  .est__total b { font-size: 26px; }
+}
