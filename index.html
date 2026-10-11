@@ -57,7 +57,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=89">
+  <link rel="stylesheet" href="css/style.css?v=90">
 </head>
 <body>
 
@@ -155,22 +155,10 @@
           <button class="btn btn--light" data-magnetic data-modal data-source="Первый экран — замер"
                   data-title="Бесплатный замер"
                   data-text="Оставьте телефон. Перезвоним и договоримся, когда приехать с образцами.">
-            <span class="btn__label">Вызвать замерщика</span>
+            <span class="btn__label">Вызвать замерщика бесплатно</span>
           </button>
           <a class="hero__link" href="#calc">Рассчитать стоимость</a>
         </div>
-      </div>
-    </section>
-
-    <!-- ================= TEQTUM: противопожарное полотно ================= -->
-    <section class="brand-band">
-      <div class="container brand-band__inner">
-        <img class="brand-band__logo" src="img/brands/teqtum-euro.png" alt="Teqtum Euro" width="246" height="130" loading="lazy">
-        <div class="brand-band__text">
-          <b>Противопожарное полотно Teqtum Euro</b>
-          <span>Германия, класс пожарной опасности КМ2 — самое безопасное из наших полотен.</span>
-        </div>
-        <a class="brand-band__more" href="#prices"><span>Подробнее</span></a>
       </div>
     </section>
 
@@ -391,9 +379,9 @@
             </div>
 
             <button class="btn btn--light btn--block" data-magnetic data-modal data-summary="calc" data-source="Калькулятор"
-                    data-title="Оставить заявку"
+                    data-title="Бесплатный замер"
                     data-text="Оставьте телефон. Замерщик приедет бесплатно и посчитает точную смету.">
-              <span class="btn__label">Оставить заявку</span>
+              <span class="btn__label">Вызвать замерщика бесплатно</span>
             </button>
             <div class="calc__alt">
               <p>Не хотите оставлять заявку? Напишите или позвоните сами.</p>
@@ -465,7 +453,9 @@
 
           <article class="price reveal">
             <span class="price__tag">Германия, КМ2</span>
+            <img class="price__logo" src="img/brands/teqtum-euro.png" alt="Teqtum Euro" width="246" height="130" loading="lazy">
             <h3 class="price__name">Teqtum Euro</h3>
+            <p class="price__note">Противопожарное, самое безопасное из наших полотен</p>
             <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
             <details class="price__more">
               <summary>Характеристики</summary>
@@ -525,7 +515,7 @@
             <span class="step__dot" aria-hidden="true"></span>
             <span class="step__num">02</span>
             <h3 class="step__title">Бесплатный замер</h3>
-            <p>Технолог приезжает с образцами, замеряет комнаты, считает смету и заключает договор.</p>
+            <p>Замерщик приезжает с образцами, замеряет комнаты, считает смету и заключает договор.</p>
           </div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
@@ -573,7 +563,7 @@
             </div>
             <div class="benefit reveal">
               <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M12 6v4"/></svg></span>
-              <b>Безопасные баллоны</b><span>композитные, с контролем давления газа</span>
+              <b>Замер бесплатно</b><span>приедем с образцами полотен</span>
             </div>
             <div class="benefit reveal">
               <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
@@ -589,8 +579,8 @@
       <div class="container faq-wrap">
         <div class="section-head">
           <h2 class="h2">Частые вопросы</h2>
-          <p class="lead">Не нашли свой вопрос? Позвоните, мастер ответит бесплатно.</p>
-          <button class="btn btn--light" data-magnetic data-modal data-source="FAQ — вопрос" data-title="Задать вопрос мастеру" data-text="Оставьте телефон, мастер перезвонит и ответит."><span class="btn__label">Задать вопрос</span></button>
+          <p class="lead">Не нашли свой вопрос? Позвоните, ответим бесплатно.</p>
+          <button class="btn btn--light" data-magnetic data-modal data-source="FAQ — вопрос" data-title="Задать вопрос" data-text="Оставьте телефон, мастер перезвонит и ответит."><span class="btn__label">Задать вопрос</span></button>
         </div>
 
         <div class="faq">
@@ -645,12 +635,12 @@
           </div>
 
           <div class="cta__form">
-            <div class="cta__form-title">Записаться на замер</div>
+            <div class="cta__form-title">Бесплатный замер</div>
             <form class="form" data-form novalidate>
               <input type="hidden" name="source" value="Финальная форма">
               <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
               <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
-              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Оставить заявку</span></button>
+              <button class="btn btn--light btn--block" type="submit"><span class="btn__label">Вызвать замерщика бесплатно</span></button>
               <label class="check">
                 <input type="checkbox" name="agree" required>
                 <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
