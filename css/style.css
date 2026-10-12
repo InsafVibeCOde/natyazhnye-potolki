@@ -5,9 +5,9 @@
 
 :root {
   --bg: #FCFBF9;
-  --bg-2: #F5F2ED;
+  --bg-2: #F8EFE7;
   --surface: #FFFFFF;
-  --surface-2: #F7F4EF;
+  --surface-2: #FAF3EC;
   --line: rgba(34, 31, 27, .08);
   --line-2: rgba(34, 31, 27, .15);
   --ink: #23201C;
@@ -1124,3 +1124,42 @@ input, textarea { caret-color: var(--warm); }
 .hero__rating a { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; }
 .hero__rating a + a { padding-left: 10px; border-left: 1px solid var(--line-2); }
 button.header__gift { text-align: left; }
+
+/* ==========================================================================
+   «Светлый салон» (12.10.2026): без тёмных пятен — светлое меню,
+   главные кнопки цвета тёплого света, мягкое свечение на первом экране
+   ========================================================================== */
+
+/* главная кнопка — тёплый свет вместо чёрной */
+.btn--light {
+  background: linear-gradient(180deg, #F2C06C, #E6A747);
+  color: var(--ink);
+  box-shadow: 0 12px 26px -14px rgba(196, 128, 32, .75), inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+.btn--light:hover { background: linear-gradient(180deg, #F0B85C, #E09C38); box-shadow: 0 16px 32px -14px rgba(196, 128, 32, .85), inset 0 1px 0 rgba(255, 255, 255, .45); }
+.btn--ghost { background: var(--surface); }
+
+/* меню на компьютере — светлое, с тонкими линиями */
+.header__nav { background: var(--surface); border-bottom: 1px solid var(--line); }
+.header__nav a { color: var(--ink-2); border-left-color: var(--line); }
+.header__nav a:last-child { border-right-color: var(--line); }
+.header__nav a:hover { background: var(--surface-2); color: var(--ink); }
+
+/* круглые кнопки телефона — светлые, иконка тёплая */
+.header__call, .mobile-bar__tel {
+  background: #FFF7EC; color: #9A6527;
+  box-shadow: inset 0 0 0 1px rgba(var(--glow-rgb), .55);
+}
+
+/* первый экран: мягкое тёплое свечение, как от подсветки потолка */
+.hero {
+  background:
+    radial-gradient(70% 55% at 85% 10%, rgba(var(--glow-rgb), .16), transparent 70%),
+    radial-gradient(60% 45% at 0% 100%, rgba(240, 200, 180, .18), transparent 70%),
+    var(--bg);
+}
+.hero__media img, .hero__media { border-radius: 28px; }
+.hero__media { box-shadow: 0 30px 60px -30px rgba(120, 80, 30, .35); }
+
+/* шаги: светящиеся точки на пудровом фоне */
+.step__num { color: #9A6527; }
