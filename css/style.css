@@ -635,10 +635,14 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 }
 .modal__title { font-size: 30px; font-weight: 800; letter-spacing: -.035em; line-height: 1.1; padding-right: 40px; }
 .modal__text { margin-top: 10px; color: var(--ink-2); }
+/* подпись «что выбрали»: не похожа на поле ввода — без рамки и заливки, с галочкой */
 .modal__summary {
-  margin-top: 18px; padding: 14px 16px; border-radius: 12px;
-  background: rgba(var(--glow-rgb), .08); border: 1px solid rgba(var(--glow-rgb), .2);
-  font-size: 14px; color: var(--warm); display: none;
+  margin-top: 14px; padding-left: 26px; position: relative;
+  font-size: 14px; line-height: 1.45; color: var(--ink-2); display: none;
+}
+.modal__summary::before {
+  content: ""; position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(var(--glow-rgb), .25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2399692B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
 }
 .modal__summary.is-visible { display: block; }
 
