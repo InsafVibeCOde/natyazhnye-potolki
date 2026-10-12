@@ -4,21 +4,24 @@
    ========================================================================== */
 
 :root {
-  --bg: #F7F6F3;
-  --bg-2: #EFECE6;
+  --bg: #FCFBF9;
+  --bg-2: #F5F2ED;
   --surface: #FFFFFF;
-  --surface-2: #F3F1EC;
-  --line: rgba(27, 26, 24, .09);
-  --line-2: rgba(27, 26, 24, .17);
-  --ink: #1B1A18;
-  --ink-2: #5E5A54;
-  --ink-3: #8F8A82;
+  --surface-2: #F7F4EF;
+  --line: rgba(34, 31, 27, .08);
+  --line-2: rgba(34, 31, 27, .15);
+  --ink: #23201C;
+  --ink-2: #625C55;
+  --ink-3: #6F695F;
+  /* мягкая тень вместо рамок: тёплая, со смещением вниз */
+  --shadow-soft: 0 1px 2px rgba(60, 44, 24, .04), 0 14px 34px -20px rgba(60, 44, 24, .22);
+  --shadow-lift: 0 2px 4px rgba(60, 44, 24, .05), 0 24px 48px -24px rgba(60, 44, 24, .28);
   --accent: #4F5B85;
   --accent-deep: #3D476B;
   --glow: #E9AE52;        /* цвет света: линии, точки, свечение */
   --glow-rgb: 233, 174, 82;
   --warm: #99692B;        /* тёплый акцент для текста — читается на светлом */
-  --ok: #2F8F5B;
+  --ok: #26754A;
   --danger: #C0392B;
 
   --radius: 22px;
@@ -69,23 +72,23 @@ h1, h2, h3, h4, p { margin: 0; }
 
 .h1 {
   font-size: clamp(42px, 6.2vw, 100px);
-  line-height: .95;
-  letter-spacing: -.045em;
-  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.035em;
+  font-weight: 600;
 }
 
 .h2 {
   font-size: clamp(30px, 3.6vw, 54px);
-  line-height: 1;
-  letter-spacing: -.04em;
-  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  font-weight: 600;
 }
 
 .h3 {
   font-size: clamp(20px, 2vw, 26px);
   line-height: 1.2;
-  letter-spacing: -.02em;
-  font-weight: 700;
+  letter-spacing: -.015em;
+  font-weight: 600;
 }
 
 /* один шрифт на весь сайт: выделения без курсива и второй гарнитуры */
@@ -306,9 +309,10 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .section--alt { background: var(--bg-2); }
 
 .section-head {
-  display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end;
-  margin-bottom: clamp(32px, 4vw, 56px);
+  display: grid; gap: 18px; max-width: 760px;
+  margin-bottom: clamp(32px, 4vw, 52px);
 }
+.section-head .lead { max-width: 60ch; }
 .section-head .eyebrow { margin-bottom: 22px; }
 
 
@@ -571,7 +575,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 .cta__bg img { width: 100%; height: 100%; object-fit: cover; opacity: .9; }
 .cta::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(90deg, rgba(247, 246, 243, .96) 32%, rgba(247, 246, 243, .72));
+  background: linear-gradient(90deg, rgba(252, 251, 249, .96) 32%, rgba(252, 251, 249, .72));
 }
 .cta .h2 { margin: 18px 0 20px; }
 .cta__form {
@@ -874,7 +878,7 @@ em .w { padding-right: .08em; margin-right: -.08em; }
 
 /* Телефоны: без дорогих фильтров и размытия фона — так анимации идут плавно */
 @media (max-width: 960px), (hover: none) {
-    .header.is-scrolled { background: rgba(247, 246, 243, .97); }
+    .header.is-scrolled { background: rgba(252, 251, 249, .97); }
   .header.is-scrolled, .mobile-bar, .cta__form, .modal, .work__cap {
     backdrop-filter: none; -webkit-backdrop-filter: none;
   }
@@ -1081,3 +1085,33 @@ button.hero__deal { width: 100%; text-align: left; font-family: inherit; cursor:
 .price__logo { position: absolute; top: 24px; right: 24px; height: 34px; width: auto; border-radius: 6px; }
 .price__note { margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--warm); }
 .hero__lead b { color: var(--ink); font-weight: 700; }
+
+/* ==========================================================================
+   Светлый проход (12.10.2026): легче вес, мягкие тени вместо рамок
+   ========================================================================== */
+
+/* крупные цифры и названия — 700 вместо 800 */
+.price__name, .est__name, .modal__title, .field__value, .counter__val { font-weight: 700; }
+.calc__total, .est__total b, .offers__value, .price__value { font-weight: 700; }
+.hero__deal b { font-weight: 700; }
+
+/* карточки: белые на мягкой тени, рамка почти невидимая */
+.tech-card, .price, .est, .benefit, .offers__grid, .calc__plan, .calc__panel, .cert {
+  border-color: rgba(34, 31, 27, .05);
+  box-shadow: var(--shadow-soft);
+}
+.price--featured { box-shadow: var(--shadow-lift); }
+@media (hover: hover) {
+  .price:hover, .est:hover, .tech-card:hover { box-shadow: var(--shadow-lift); }
+  .est, .tech-card { transition: box-shadow .4s var(--ease); }
+}
+
+/* главная кнопка: тёплый графит и мягкая тень, без ухода в синий на наведении */
+.btn--light { box-shadow: 0 10px 24px -14px rgba(35, 32, 28, .55); }
+.btn--light:hover { background: #3A352F; box-shadow: 0 14px 30px -14px rgba(35, 32, 28, .6); }
+.btn:active { transform: translateY(1px); }
+
+/* браузерные мелочи в тон сайту */
+html { scrollbar-color: #D9D2C7 var(--bg); }
+input, textarea { caret-color: var(--warm); }
+:focus-visible { outline-color: var(--warm); }
