@@ -1119,3 +1119,8 @@ button.hero__deal { width: 100%; text-align: left; font-family: inherit; cursor:
 html { scrollbar-color: #D9D2C7 var(--bg); }
 input, textarea { caret-color: var(--warm); }
 :focus-visible { outline-color: var(--warm); }
+
+/* оценки на первом экране: Авито и 2ГИС — отдельные ссылки */
+.hero__rating a { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; }
+.hero__rating a + a { padding-left: 10px; border-left: 1px solid var(--line-2); }
+button.header__gift { text-align: left; }
