@@ -1170,3 +1170,7 @@ button.header__gift { text-align: left; }
 .h3, .price__name, .est__name, .modal__title { font-weight: 500; letter-spacing: -.01em; }
 
 b, strong { font-weight: 600; }
+
+/* площадь в примере расчёта не переносится; длинное название помещения переносится само */
+.est__area { white-space: nowrap; flex-shrink: 0; }
+.est__room { min-width: 0; }
