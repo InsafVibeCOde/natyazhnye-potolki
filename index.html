@@ -136,17 +136,37 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=106">
+  <link rel="stylesheet" href="css/style.css?v=107">
   <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
   <style>
-    .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: #FCFBF9; transition: opacity .45s ease, visibility .45s ease; }
-    .splash.is-hidden { opacity: 0; visibility: hidden; }
+    .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden;
+      background: radial-gradient(circle 280px at 50% 52%, rgba(233, 174, 82, .18), transparent 70%), #FCFBF9;
+      transition: transform .7s cubic-bezier(.76, 0, .24, 1), visibility .7s; }
+    .splash.is-hidden { transform: translateY(-100%); visibility: hidden; }
     .no-splash .splash { display: none; }
-    .splash__in { display: grid; justify-items: center; gap: 14px; }
-    .splash__name { font: 600 22px/1 "Manrope", system-ui, sans-serif; letter-spacing: -.01em; color: #23201C; }
-    .splash__line { display: block; width: 150px; height: 3px; border-radius: 3px; background: #E9AE52; box-shadow: 0 0 14px 2px rgba(233, 174, 82, .7); transform-origin: left; animation: splash-light .7s cubic-bezier(.2, .7, .2, 1) both; }
-    @keyframes splash-light { from { transform: scaleX(0); opacity: .3; } to { transform: scaleX(1); opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .splash__line { animation: none; } }
+    .splash__in { display: grid; justify-items: center; gap: 16px; }
+    .splash__mark { width: 52px; height: 52px; opacity: 0; animation: splash-up .7s .05s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .splash__name { overflow: hidden; padding-bottom: .08em; }
+    .splash__name span { display: block; font: 600 clamp(28px, 7vw, 44px)/1 "Manrope", system-ui, sans-serif; letter-spacing: -.03em; color: #23201C;
+      transform: translateY(105%); animation: splash-mask .8s .15s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .splash__line { display: block; width: min(220px, 60vw); height: 2px; border-radius: 2px; background: #F2C06C;
+      opacity: 0; transform: scaleX(0); animation: splash-on .9s .35s ease-out forwards; }
+    .splash__sub { font: 500 13px/1 "Manrope", system-ui, sans-serif; letter-spacing: .02em; color: #7F786F; opacity: 0; animation: splash-up .6s .7s ease-out forwards; }
+    @keyframes splash-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes splash-mask { to { transform: none; } }
+    /* линия «включается» как лампа: вспыхивает, мигает и разгорается тёплым ореолом */
+    @keyframes splash-on {
+      0% { opacity: 0; transform: scaleX(.15); box-shadow: none; }
+      25% { opacity: .9; transform: scaleX(1); box-shadow: 0 0 6px 1px rgba(233, 174, 82, .5); }
+      35% { opacity: .25; }
+      45% { opacity: 1; }
+      55% { opacity: .5; }
+      100% { opacity: 1; transform: scaleX(1); box-shadow: 0 0 18px 4px rgba(233, 174, 82, .75), 0 0 60px 12px rgba(233, 174, 82, .25); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .splash__mark, .splash__name span, .splash__line, .splash__sub { animation: none; opacity: 1; transform: none; }
+      .splash { transition: opacity .3s; } .splash.is-hidden { transform: none; opacity: 0; }
+    }
   </style>
   <script>
     // заставку показываем один раз за визит: при повторном открытии в той же вкладке её нет
@@ -156,18 +176,20 @@
 <body>
   <div class="splash" aria-hidden="true">
     <div class="splash__in">
-      <img src="img/logo-mark.svg" width="56" height="56" alt="">
-      <span class="splash__name">Люкс Монтаж</span>
+      <img class="splash__mark" src="img/logo-mark.svg" width="52" height="52" alt="">
+      <div class="splash__name"><span>Люкс Монтаж</span></div>
       <i class="splash__line"></i>
+      <span class="splash__sub">натяжные потолки с освещением</span>
     </div>
   </div>
   <script>
-    // убираем заставку, как только страница загрузилась, и не позже чем через 1,2 с
+    // убираем заставку после загрузки (не раньше 1,1 с, чтобы свет успел «включиться») и не позже 1,7 с
     (function () {
       var s = document.querySelector('.splash'), done = false;
-      function hide() { if (done) return; done = true; s.classList.add('is-hidden'); setTimeout(function () { s.remove(); }, 600); }
-      window.addEventListener('load', function () { setTimeout(hide, 300); });
-      setTimeout(hide, 1200);
+      function hide() { if (done) return; done = true; s.classList.add('is-hidden'); setTimeout(function () { s.remove(); }, 800); }
+      var t0 = Date.now();
+      window.addEventListener('load', function () { setTimeout(hide, Math.max(150, 1100 - (Date.now() - t0))); });
+      setTimeout(hide, 1700);
       try { sessionStorage.setItem('lm-splash', '1'); } catch (e) {}
     })();
   </script>

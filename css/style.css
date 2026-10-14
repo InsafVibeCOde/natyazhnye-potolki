@@ -1191,3 +1191,6 @@ button.header__gift { text-align: left; }
     .price .btn { align-self: end; }
   }
 }
+
+/* финальная форма не шире экрана на узких телефонах */
+.cta > * { min-width: 0; }
