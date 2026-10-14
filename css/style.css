@@ -1194,3 +1194,28 @@ button.header__gift { text-align: left; }
 
 /* финальная форма не шире экрана на узких телефонах */
 .cta > * { min-width: 0; }
+
+/* ---------- Полотна: круглый знак-выгода справа от названия (как на образце заказчика, но в нашем свете) ---------- */
+.price__head { position: relative; padding-right: 96px; min-height: 84px; }
+.seal {
+  position: absolute; top: -4px; right: 0;
+  width: 84px; height: 84px; border-radius: 50%;
+  display: grid; place-items: center; align-content: center; gap: 4px; padding: 8px;
+  text-align: center; color: #84561C;
+  background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, #FFF6E9 70%);
+  box-shadow: inset 0 0 0 1px rgba(var(--glow-rgb), .55), 0 0 0 5px rgba(var(--glow-rgb), .08), 0 10px 24px -12px rgba(196, 128, 32, .55);
+}
+.seal svg { width: 26px; height: 26px; color: #C0802A; }
+.seal small { font-size: 11px; font-weight: 600; line-height: 1.15; }
+.seal b { font-size: 28px; line-height: .9; font-weight: 700; color: #23201C; letter-spacing: -.02em; }
+.price__perks:empty { display: none; }
+@media (max-width: 720px) {
+  .price__head { padding-right: 88px; }
+  .seal { width: 78px; height: 78px; }
+}
+
+/* название полотна всегда в одну строку рядом со знаком */
+.price__head { padding-right: 86px; }
+.seal { width: 76px; height: 76px; top: -2px; }
+.seal svg { width: 24px; height: 24px; }
+.price__name { font-size: 22px; white-space: nowrap; }
