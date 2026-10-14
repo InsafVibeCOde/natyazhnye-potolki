@@ -132,10 +132,11 @@
 }
   </script>
   <link rel="preload" as="image" imagesrcset="img/hero/chandelier-sm.webp 900w, img/hero/chandelier.webp 1280w" imagesizes="(max-width: 960px) 100vw, 50vw" fetchpriority="high">
-  <link rel="preload" href="fonts/jost-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="fonts/fonts.css?v=3">
+  <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=102">
+  <link rel="stylesheet" href="css/style.css?v=104">
 </head>
 <body>
 
@@ -481,68 +482,74 @@
 
         <div class="prices">
           <article class="price price--featured reveal">
-            <span class="price__tag">Рекомендуем</span>
-            <img class="price__logo" src="img/brands/teqtum-euro.png" alt="Teqtum Euro" width="246" height="130" loading="lazy">
-            <h3 class="price__name">Teqtum Euro</h3>
-            <p class="price__note">Германия, класс КМ2. Противопожарное, самое безопасное из наших полотен</p>
-            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
-            <details class="price__more">
-              <summary>Характеристики</summary>
-              <dl class="price__spec">
-                <div><dt>Производство</dt><dd>Германия</dd></div>
-                <div><dt>Пожаробезопасность</dt><dd>КМ2</dd></div>
-                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-                <div><dt>Плотность</dt><dd>210 мк</dd></div>
-              </dl>
-            </details>
+            <div class="price__top"><span class="price__tag">Рекомендуем</span><img class="price__logo" src="img/brands/teqtum-euro.png" alt="Teqtum Euro" width="246" height="130" loading="lazy"></div>
+            <div class="price__head">
+              <div>
+                <h3 class="price__name">Teqtum Euro</h3>
+                <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              </div>
+              <span class="price__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.97 8.97C7.83 10.31 7 11.76 7 13a5 5 0 0 0 9.49 2.21M16.5 12c0-3-2.5-5.5-4.5-8-.38.5-.75 1-1.1 1.5M3 3l18 18"/></svg>Не горит</span>
+            </div>
+            <p class="price__note">Немецкое сырьё и немецкие сертификаты</p>
+            <dl class="price__spec">
+              <div><dt>Производство</dt><dd>Германия</dd></div>
+              <div><dt>Пожаробезопасность</dt><dd>КМ2</dd></div>
+              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+              <div><dt>Плотность</dt><dd>210 мк</dd></div>
+            </dl>
             <button class="btn btn--light btn--block" data-modal data-source="Цены — Teqtum" data-title="Консультация по Teqtum Euro">Консультация</button>
           </article>
 
           <article class="price reveal">
-            <span class="price__tag">Китай</span>
-            <h3 class="price__name">MSD Classic</h3>
-            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
-            <details class="price__more">
-              <summary>Характеристики</summary>
-              <dl class="price__spec">
-                <div><dt>Производство</dt><dd>Китай</dd></div>
-                <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
-                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-                <div><dt>Плотность</dt><dd>170 мк</dd></div>
-              </dl>
-            </details>
+            <div class="price__head">
+              <div>
+                <h3 class="price__name">MSD Classic</h3>
+                <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              </div>
+              <span class="price__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3a4 4 0 0 0 4-4V6a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1-2 2h-7a3 3 0 0 1-3-3"/></svg>Лучшая цена</span>
+            </div>
+            <dl class="price__spec">
+              <div><dt>Производство</dt><dd>Китай</dd></div>
+              <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
+              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+              <div><dt>Плотность</dt><dd>170 мк</dd></div>
+            </dl>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — MSD Classic" data-title="Консультация по MSD Classic">Консультация</button>
           </article>
 
           <article class="price reveal">
-            <span class="price__tag">Тайвань</span>
-            <h3 class="price__name">MSD Premium</h3>
-            <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
-            <details class="price__more">
-              <summary>Характеристики</summary>
-              <dl class="price__spec">
-                <div><dt>Производство</dt><dd>Тайвань</dd></div>
-                <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
-                <div><dt>Ширина</dt><dd>до 505 см</dd></div>
-                <div><dt>Плотность</dt><dd>180–200 мк</dd></div>
-              </dl>
-            </details>
+            <div class="price__head">
+              <div>
+                <h3 class="price__name">MSD Premium</h3>
+                <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              </div>
+              <span class="price__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h8.5a2.5 2.5 0 1 0-2.34-3.24M3 12h15.5a2.5 2.5 0 1 1-2.34 3.24M4 16h5.5a2.5 2.5 0 1 1-2.34 3.24"/></svg>Без запаха</span>
+            </div>
+            <dl class="price__spec">
+              <div><dt>Производство</dt><dd>Тайвань</dd></div>
+              <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
+              <div><dt>Ширина</dt><dd>до 505 см</dd></div>
+              <div><dt>Плотность</dt><dd>180–200 мк</dd></div>
+            </dl>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — MSD Premium" data-title="Консультация по MSD Premium">Консультация</button>
           </article>
 
           <article class="price reveal">
-            <span class="price__tag">Германия</span>
-            <h3 class="price__name">BAUF</h3>
-            <p class="price__origin">мат, сатин, глянец, фотопечать · белый</p>
-            <details class="price__more">
-              <summary>Характеристики</summary>
-              <dl class="price__spec">
-                <div><dt>Производство</dt><dd>Германия</dd></div>
-                <div><dt>Пожаробезопасность</dt><dd>КМ3</dd></div>
-                <div><dt>Ширина</dt><dd>до 300 см</dd></div>
-                <div><dt>Плотность</dt><dd>270 мк</dd></div>
-              </dl>
-            </details>
+            <div class="price__head">
+              <div>
+                <h3 class="price__name">BAUF</h3>
+                <p class="price__origin">мат, сатин, глянец, фотопечать · белый</p>
+              </div>
+              <span class="price__badge"><b>15</b>лет гарантии</span>
+            </div>
+            <p class="price__note">Немецкое сырьё и немецкие сертификаты</p>
+            <dl class="price__spec">
+              <div><dt>Производство</dt><dd>Германия</dd></div>
+              <div><dt>Пожаробезопасность</dt><dd>КМ3</dd></div>
+              <div><dt>Ширина</dt><dd>до 300 см</dd></div>
+              <div><dt>Плотность</dt><dd>270 мк</dd></div>
+              <div><dt>Гарантия</dt><dd>15 лет</dd></div>
+            </dl>
             <button class="btn btn--ghost btn--block" data-modal data-source="Цены — BAUF" data-title="Консультация по BAUF">Консультация</button>
           </article>
 
