@@ -137,8 +137,40 @@
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css?v=106">
+  <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
+  <style>
+    .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: #FCFBF9; transition: opacity .45s ease, visibility .45s ease; }
+    .splash.is-hidden { opacity: 0; visibility: hidden; }
+    .no-splash .splash { display: none; }
+    .splash__in { display: grid; justify-items: center; gap: 14px; }
+    .splash__name { font: 600 22px/1 "Manrope", system-ui, sans-serif; letter-spacing: -.01em; color: #23201C; }
+    .splash__line { display: block; width: 150px; height: 3px; border-radius: 3px; background: #E9AE52; box-shadow: 0 0 14px 2px rgba(233, 174, 82, .7); transform-origin: left; animation: splash-light .7s cubic-bezier(.2, .7, .2, 1) both; }
+    @keyframes splash-light { from { transform: scaleX(0); opacity: .3; } to { transform: scaleX(1); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .splash__line { animation: none; } }
+  </style>
+  <script>
+    // заставку показываем один раз за визит: при повторном открытии в той же вкладке её нет
+    try { if (sessionStorage.getItem('lm-splash')) document.documentElement.classList.add('no-splash'); } catch (e) {}
+  </script>
 </head>
 <body>
+  <div class="splash" aria-hidden="true">
+    <div class="splash__in">
+      <img src="img/logo-mark.svg" width="56" height="56" alt="">
+      <span class="splash__name">Люкс Монтаж</span>
+      <i class="splash__line"></i>
+    </div>
+  </div>
+  <script>
+    // убираем заставку, как только страница загрузилась, и не позже чем через 1,2 с
+    (function () {
+      var s = document.querySelector('.splash'), done = false;
+      function hide() { if (done) return; done = true; s.classList.add('is-hidden'); setTimeout(function () { s.remove(); }, 600); }
+      window.addEventListener('load', function () { setTimeout(hide, 300); });
+      setTimeout(hide, 1200);
+      try { sessionStorage.setItem('lm-splash', '1'); } catch (e) {}
+    })();
+  </script>
 
   <!-- ================= HEADER ================= -->
   <header class="header">
