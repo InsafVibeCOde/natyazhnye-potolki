@@ -1167,20 +1167,27 @@ button.header__gift { text-align: left; }
 .est__area { white-space: nowrap; flex-shrink: 0; }
 .est__room { min-width: 0; }
 
-/* ---------- Полотна: карточка как у референса — название, значок-выгода, характеристики сразу видны ---------- */
-.price__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+/* ---------- Полотна: одинаковая структура у всех карточек, строки выровнены сеткой ---------- */
+.price__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 30px; }
 .price__top .price__tag { margin-bottom: 0; }
-.price__top .price__logo { position: static; height: 30px; }
-.price__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
-.price__head > div { min-width: 0; }
-.price__badge {
-  flex: 0 0 76px; width: 76px; height: 76px; border-radius: 50%;
-  display: grid; place-items: center; align-content: center; gap: 3px; padding: 6px;
-  text-align: center; font-size: 11px; font-weight: 600; line-height: 1.15; color: var(--ink-2);
-  background: var(--surface); box-shadow: 0 6px 18px -10px rgba(60, 44, 24, .35), inset 0 0 0 1px var(--line);
+.price__top .price__logo { position: static; height: 28px; }
+.price__head { margin-top: 18px; }
+.price__perks { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 18px; }
+.price__perks li {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; line-height: 1.25; color: #84561C;
+  background: #FFF4E4; box-shadow: inset 0 0 0 1px rgba(var(--glow-rgb), .35);
 }
-.price__badge svg { width: 22px; height: 22px; color: var(--warm); }
-.price__badge b { font-size: 24px; line-height: 1; font-weight: 700; color: var(--ink); }
-.price__note { margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--warm); }
-.price .price__spec { margin: 20px 0 24px; flex: 1; }
+.price__perks svg { flex: 0 0 18px; width: 18px; height: 18px; color: #B07424; }
+.price--featured .price__perks li { background: #FFFFFF; }
+.price .price__spec { margin: 20px 0 24px; }
 .price .price__spec div:first-child { border-top: 0; }
+/* на компьютере: каждая карточка делит строки с соседями — плашки и характеристики на одной высоте */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 721px) {
+    .prices { grid-auto-rows: auto; }
+    .price { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+    .price__head, .price__perks { margin-top: 18px; }
+    .price .btn { align-self: end; }
+  }
+}
