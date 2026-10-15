@@ -1275,3 +1275,42 @@ button.header__gift { text-align: left; }
 .badge__icon svg { width: 24px; height: 24px; }
 .badge__icon b { font-size: 19px; }
 .badge__label { font-size: 11px; font-weight: 600; }
+
+/* ==========================================================================
+   Шапка-«таблетка» (15.10.2026): плавает над страницей, при прокрутке сжимается
+   ========================================================================== */
+.header.header--pill, .header.header--pill.is-scrolled { background: none; border: 0; box-shadow: none; }
+.header--pill { position: fixed; top: 14px; left: 0; right: 0; z-index: 50; pointer-events: none; transition: transform .4s var(--ease); }
+.header--pill.is-hidden { transform: translateY(-130%); }
+.pill {
+  pointer-events: auto; display: flex; align-items: center; gap: 20px;
+  width: min(1240px, calc(100% - 32px)); margin: 0 auto; height: 64px; padding: 0 8px 0 16px; border-radius: 999px;
+  background: rgba(255, 255, 255, .72); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: inset 0 0 0 1px rgba(34, 31, 27, .08), 0 14px 34px -20px rgba(60, 44, 24, .45);
+  transition: height .35s var(--ease), background-color .35s;
+}
+.header--pill.is-scrolled .pill { height: 56px; background: rgba(255, 255, 255, .9); }
+.pill .logo { gap: 10px; }
+.pill .logo__mark { width: 36px; height: 36px; }
+.pill .logo__name { font-size: 16px; font-weight: 800; }
+.pill__nav { display: flex; gap: 4px; margin: 0 auto; }
+.pill__nav a { padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-2); transition: background-color .2s, color .2s; }
+.pill__nav a:hover { background: var(--surface-2); color: var(--ink); }
+.pill__right { display: flex; align-items: center; gap: 14px; }
+.pill__phone { font-size: 16px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; }
+.pill .btn--call { min-height: 46px; box-shadow: 0 8px 18px -12px rgba(196, 128, 32, .8); }
+.pill .header__call, .pill .burger { display: none; }
+.hero { padding-top: 112px; }
+/* оценки 2ГИС и Авито теперь над заголовком и на компьютере */
+.hero__rating { display: inline-flex; margin-bottom: 18px; }
+@media (max-width: 1100px) { .pill__phone { display: none; } }
+@media (max-width: 960px) {
+  .header--pill { top: 10px; }
+  .pill { height: 58px; gap: 10px; padding: 0 6px 0 12px; }
+  .pill__nav, .pill .btn--call { display: none; }
+  .pill__right { margin-left: auto; gap: 8px; }
+  .pill .header__call, .pill .burger { display: grid; place-items: center; width: 44px; height: 44px; }
+  .hero { padding-top: 84px; }
+  .hero__rating { margin-bottom: 12px; }
+}
+@media (prefers-reduced-transparency: reduce) { .pill { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
