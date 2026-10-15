@@ -370,9 +370,10 @@
   if (worksTrack && worksCur) {
     const cards = $$('.work', worksTrack);
     worksTrack.addEventListener('scroll', () => {
-      const first = cards[0];
-      const step = first.offsetWidth + parseFloat(getComputedStyle(worksTrack).columnGap || 12);
-      const i = Math.min(cards.length - 1, Math.round(worksTrack.scrollLeft / step));
+      // карточки разной ширины: берём ту, чей левый край ближе всего к началу прокрутки
+      const x = worksTrack.scrollLeft + cards[0].offsetLeft;
+      let i = 0;
+      cards.forEach((c, n) => { if (Math.abs(c.offsetLeft - x) < Math.abs(cards[i].offsetLeft - x)) i = n; });
       worksCur.textContent = String(i + 1).padStart(2, '0');
     }, { passive: true });
   }
@@ -558,9 +559,9 @@
       openLb(all.map((a) => a.dataset.full), all.indexOf(el), isWork ? all.map(workCap) : [], isWork);
     });
   });
-  // «Все фото»: сначала 12 снимков из ленты, потом прежние работы без повторов
+  // «Все фото»: сначала снимки из ленты, потом прежние работы без повторов
   const allWorks = [
-    ...Array.from({ length: 12 }, (_, i) => `img/works/n-${String(i + 1).padStart(2, '0')}.webp`),
+    ...$$('.work').map((a) => a.dataset.full),
     ...Array.from({ length: 12 }, (_, i) => `img/works/p-${String(i + 1).padStart(2, '0')}.webp`),
     ...[1, 2, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24].map((n) => `img/works/w-${String(n).padStart(2, '0')}.webp`),
   ];
