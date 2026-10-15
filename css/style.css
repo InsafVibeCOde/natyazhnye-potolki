@@ -1416,3 +1416,4 @@ button.header__gift { text-align: left; }
   .hero__deal-txt b { font-size: 16px; }
   .hero__deal-txt small { font-size: 13px; }
 }
+.photo-band { height: clamp(180px, 18vw, 280px); }
