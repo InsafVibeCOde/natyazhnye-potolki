@@ -1268,3 +1268,10 @@ button.header__gift { text-align: left; }
 .badge__icon svg { width: 36px; height: 36px; }
 .badge__icon b { font-size: 26px; }
 @media (max-width: 720px) { .prices { padding-top: 16px; } }
+
+/* значки полотен компактнее и аккуратнее */
+.badge { flex-basis: 64px; gap: 5px; }
+.badge__icon { width: 46px; height: 46px; box-shadow: inset 0 0 0 1px var(--b-ring, rgba(233, 174, 82, .35)); }
+.badge__icon svg { width: 24px; height: 24px; }
+.badge__icon b { font-size: 19px; }
+.badge__label { font-size: 11px; font-weight: 600; }
