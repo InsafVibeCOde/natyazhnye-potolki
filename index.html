@@ -136,7 +136,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=119">
+  <link rel="stylesheet" href="css/style.css?v=120">
   <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
   <style>
     .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden;
@@ -521,6 +521,12 @@
       </div>
     </section>
 
+    <!-- ================= Фото-разделитель ================= -->
+    <figure class="photo-band">
+      <img decoding="async" src="img/bands/chandelier-cloud-sm.webp" srcset="img/bands/chandelier-cloud-sm.webp 960w, img/bands/chandelier-cloud.webp 1920w" sizes="100vw" alt="Дизайнерская люстра из золотых и белых лепестков, подсветка по периметру" loading="lazy" width="1920" height="873">
+      <figcaption>Дизайнерская люстра и подсветка по периметру</figcaption>
+    </figure>
+
     <!-- ================= PRICES ================= -->
     <section class="section" id="prices">
       <div class="container">
@@ -645,6 +651,12 @@
       </div>
     </section>
 
+    <!-- ================= Фото-разделитель ================= -->
+    <figure class="photo-band">
+      <img decoding="async" src="img/bands/kitchen-lines-sm.webp" srcset="img/bands/kitchen-lines-sm.webp 960w, img/bands/kitchen-lines.webp 1920w" sizes="100vw" alt="Световые линии и подвесные светильники на кухне" loading="lazy" width="1920" height="873">
+      <figcaption>Световые линии и подвесы на кухне</figcaption>
+    </figure>
+
     <!-- ================= ABOUT ================= -->
     <section class="section" id="about">
       <div class="container">
@@ -664,22 +676,28 @@
             </button>
           </div>
 
-          <div class="benefits">
-            <div class="benefit reveal">
-              <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-              <b>Гарантия до&nbsp;10&nbsp;лет</b><span>на полотна и монтаж по договору</span>
-            </div>
-            <div class="benefit reveal">
-              <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2 2 2 0 0 1 2-2 2 2 0 0 1-2-2 2 2 0 0 1-2 2zM16 6a2 2 0 0 1 2 2 2 2 0 0 1 2-2 2 2 0 0 1-2-2 2 2 0 0 1-2 2zM9 18a6 6 0 0 1 6-6 6 6 0 0 1-6-6 6 6 0 0 1-6 6 6 6 0 0 1 6 6z"/></svg></span>
-              <b>Чистый монтаж</b><span>не оставляем строительный и крупный мусор</span>
-            </div>
-            <div class="benefit reveal">
-              <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-7a1 1 0 0 0-1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M4 8h2M4 12h3M4 16h2M8 4v2M12 4v3M16 4v2"/></svg></span>
-              <b>Замер бесплатно</b><span>приедем с образцами полотен</span>
-            </div>
-            <div class="benefit reveal">
-              <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
-              <b>Сертифицированные полотна</b><span>для жилых помещений, покажем на замере</span>
+          <div class="about__side">
+            <figure class="about__photo">
+              <img decoding="async" src="img/bands/hall-frame-sm.webp" srcset="img/bands/hall-frame-sm.webp 700w, img/bands/hall-frame.webp 1200w" sizes="(max-width: 960px) 100vw, 45vw" alt="Световая рамка по периметру и люстра в коридоре" loading="lazy" width="1200" height="900">
+              <figcaption>Световая рамка и люстра в коридоре</figcaption>
+            </figure>
+            <div class="benefits">
+              <div class="benefit reveal">
+                <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <b>Гарантия до&nbsp;10&nbsp;лет</b><span>на полотна и монтаж по договору</span>
+              </div>
+              <div class="benefit reveal">
+                <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2 2 2 0 0 1 2-2 2 2 0 0 1-2-2 2 2 0 0 1-2 2zM16 6a2 2 0 0 1 2 2 2 2 0 0 1 2-2 2 2 0 0 1-2-2 2 2 0 0 1-2 2zM9 18a6 6 0 0 1 6-6 6 6 0 0 1-6-6 6 6 0 0 1-6 6 6 6 0 0 1 6 6z"/></svg></span>
+                <b>Чистый монтаж</b><span>не оставляем строительный и крупный мусор</span>
+              </div>
+              <div class="benefit reveal">
+                <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-7a1 1 0 0 0-1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M4 8h2M4 12h3M4 16h2M8 4v2M12 4v3M16 4v2"/></svg></span>
+                <b>Замер бесплатно</b><span>приедем с образцами полотен</span>
+              </div>
+              <div class="benefit reveal">
+                <span class="benefit__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+                <b>Сертифицированные полотна</b><span>для жилых помещений, покажем на замере</span>
+              </div>
             </div>
           </div>
         </div>
