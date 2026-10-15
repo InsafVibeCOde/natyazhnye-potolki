@@ -1347,3 +1347,34 @@ button.header__gift { text-align: left; }
 .about__photo { position: relative; margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; box-shadow: var(--shadow-soft); }
 .about__photo img { width: 100%; height: 100%; object-fit: cover; }
 .about__photo figcaption { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: rgba(255, 255, 255, .92); }
+
+/* ---------- Калькулятор компактнее (15.10.2026): без схемы, одна карточка ---------- */
+.calc { display: block; }
+.calc__plan { display: none; }
+.calc__panel {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px 40px;
+  grid-template-areas: "field total" "counters cta" "counters alt";
+  padding: clamp(20px, 2.6vw, 32px); align-items: start;
+}
+.calc__panel > .field { grid-area: field; }
+.calc__panel > .counters { grid-area: counters; }
+.calc__panel > .calc__total-wrap { grid-area: total; padding-top: 0; border-top: 0; }
+.calc__panel > .btn { grid-area: cta; }
+.calc__panel > .calc__alt { grid-area: alt; }
+.calc__total { font-size: clamp(38px, 3.6vw, 52px); margin: 6px 0 4px; }
+.calc__alt { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; padding-top: 0; border-top: 0; }
+.calc__alt p { width: 100%; margin: 0; font-size: 13px; }
+.calc__alt .btn { width: auto; min-height: 42px; padding: 0 18px; font-size: 14px; flex: 1 1 0; }
+@media (max-width: 960px) {
+  .calc__panel { grid-template-columns: 1fr; grid-template-areas: "field" "counters" "total" "cta" "alt"; gap: 16px; }
+}
+@media (max-width: 720px) {
+  .calc__panel { gap: 12px; padding: 18px 16px; }
+  .counters { gap: 0; border: 1px solid var(--line); border-radius: 16px; }
+  .counter { border: 0; border-radius: 0; padding: 6px 12px; }
+  .counter + .counter { border-top: 1px solid var(--line); }
+  .counter__btn { width: 38px; height: 38px; }
+  .counter__val { font-size: 19px; }
+  .calc__total { font-size: 40px; margin: 2px 0; }
+  .calc__alt .btn { min-height: 44px; }
+}

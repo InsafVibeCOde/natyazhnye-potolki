@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вариант C «Мягкий свет» — Люкс Монтаж</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../img/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="switcher.css">
+  <style>
+    :root {
+      --pearl: #EEF0F5;
+      --white: #FFFFFF;
+      --dusk: #2F3350;
+      --dusk-2: #636884;
+      --rose: #E9D3CF;
+      --glow: #FFF4E4;
+      --blue: #7B84A9;
+      --gutter: clamp(18px, 4.5vw, 56px);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--dusk);
+      background: radial-gradient(120% 70% at 50% 0%, #FBF7F3 0%, var(--pearl) 55%) fixed, var(--pearl);
+      font-family: 'Raleway', system-ui, sans-serif; font-size: 18px; line-height: 1.6; font-variant-numeric: lining-nums;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    .top { display: flex; align-items: center; gap: 24px; padding: 22px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { width: 38px; height: 38px; }
+    .brand b { font-weight: 500; font-size: 20px; letter-spacing: .01em; white-space: nowrap; }
+    .top nav { display: flex; gap: 30px; margin: 0 auto; font-size: 17px; color: var(--dusk-2); }
+    .top nav a { text-decoration: none; }
+    .top__phone { font-weight: 500; text-decoration: none; white-space: nowrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 56px; padding: 0 32px; border-radius: 999px; border: 0; cursor: pointer;
+      font: 500 17px/1 'Raleway', sans-serif; letter-spacing: .01em; text-decoration: none; white-space: nowrap;
+      transition: background-color .3s, color .3s, box-shadow .3s;
+    }
+    .btn--dusk { background: var(--dusk); color: #fff; }
+    .btn--dusk:hover { background: #3E4366; box-shadow: 0 0 0 6px rgba(123, 132, 169, .18); }
+    .btn--white { background: var(--white); color: var(--dusk); }
+    .btn--white:hover { box-shadow: 0 0 0 6px rgba(255, 255, 255, .7); }
+
+    /* Первый экран: светящееся кольцо — парящая ниша */
+    .hero { text-align: center; padding: clamp(18px, 3vw, 36px) 0 clamp(64px, 9vw, 120px); }
+    .halo {
+      position: relative; width: min(52vw, 340px); aspect-ratio: 1; margin: 30px auto 0;
+      border-radius: 50%;
+    }
+    .halo::before {
+      content: ""; position: absolute; inset: -9%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 238, 214, .95) 52%, rgba(255, 238, 214, 0) 70%);
+      animation: halo-on 1.8s cubic-bezier(.2, .7, .2, 1) .2s both;
+    }
+    /* парящая ниша: белое полотно внутри, свет уходит из-под края */
+    .halo__niche {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle at 50% 45%, #FFFFFF 0%, #F8F6F3 58%, #EFE9E2 100%);
+      box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, .9),
+        inset 0 0 38px 14px rgba(255, 222, 184, .85),
+        0 0 0 14px rgba(255, 244, 228, .9),
+        0 0 70px 26px rgba(255, 226, 190, .75);
+      animation: halo-on 1.8s cubic-bezier(.2, .7, .2, 1) .2s both;
+    }
+    @keyframes halo-on { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
+
+    .hero h1 {
+      margin: clamp(30px, 4vw, 48px) auto 0; max-width: 15em;
+      font-weight: 300; font-size: clamp(38px, 5.4vw, 72px); line-height: 1.08; letter-spacing: -.015em;
+    }
+    .hero__lead { margin: 20px auto 0; max-width: 32em; color: var(--dusk-2); font-size: clamp(17px, 1.4vw, 20px); }
+    .hero__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero__price { margin-top: 22px; font-size: 16px; color: var(--dusk-2); }
+    .hero__price b { color: var(--dusk); font-weight: 500; }
+
+    /* Почему спокойно */
+    .calm { padding: clamp(56px, 8vw, 100px) 0; background: var(--white); border-radius: 48px 48px 0 0; }
+    .calm h2 { margin: 0 auto; max-width: 18em; text-align: center; font-weight: 300; font-size: clamp(32px, 3.8vw, 50px); line-height: 1.12; }
+    .calm__photos { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 16px; align-items: center; margin: 48px 0; }
+    .calm__photos img { width: 100%; object-fit: cover; border-radius: 999px; }
+    .calm__photos img:nth-child(1), .calm__photos img:nth-child(3) { aspect-ratio: 3 / 4.4; }
+    .calm__photos img:nth-child(2) { aspect-ratio: 4 / 3.4; border-radius: 40px; }
+    .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 56px); margin: 0; padding: 0; list-style: none; }
+    .reasons li { text-align: center; }
+    .reasons b { display: block; margin-bottom: 6px; font-weight: 500; font-size: 22px; }
+    .reasons span { color: var(--dusk-2); font-size: 17px; }
+    .reasons i {
+      display: block; width: 44px; height: 44px; margin: 0 auto 16px; border-radius: 50%;
+      background: radial-gradient(circle, var(--glow) 40%, var(--rose) 100%);
+      box-shadow: 0 0 22px 4px rgba(255, 224, 190, .8);
+    }
+
+    @media (max-width: 900px) {
+      .top nav { display: none; }
+      .top__phone { margin-left: auto; }
+      .calm__photos { grid-template-columns: 1fr 1fr; }
+      .calm__photos img:nth-child(2) { grid-column: span 2; order: -1; }
+      .reasons { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 560px) {
+      .top .btn { display: none; }
+      .halo { width: 60vw; }
+      .hero__actions .btn { flex: 1 1 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { .halo::before, .halo__niche { animation: none; } }
+    @media (max-width: 440px) {
+      .top { gap: 12px; }
+      .brand { gap: 8px; }
+      .brand img { width: 32px; height: 32px; }
+      .brand b { font-size: 17px; }
+      .top__phone { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="#"><img src="../img/logo-mark.svg" alt=""><b>Люкс Монтаж</b></a>
+      <nav><a href="#">Потолки и свет</a><a href="#">Цены</a><a href="#">Работы</a></nav>
+      <a class="top__phone" href="tel:+79510618500">8 (951) 061-85-00</a>
+      <a class="btn btn--dusk" href="#">Бесплатный замер</a>
+    </header>
+
+    <section class="hero">
+      <div class="halo" role="img" aria-label="Круглая парящая ниша с мягкой подсветкой"><span class="halo__niche"></span></div>
+      <h1>Ровный потолок и мягкий свет в вашем доме за один день</h1>
+      <p class="hero__lead">Натяжные потолки в Казани под ключ: подберём полотно и свет под интерьер, замер бесплатный, цена фиксируется в договоре.</p>
+      <div class="hero__actions">
+        <a class="btn btn--dusk" href="#">Записаться на бесплатный замер</a>
+        <a class="btn btn--white" href="#">Рассчитать стоимость</a>
+      </div>
+      <p class="hero__price">Полотно с установкой <b>от 499 ₽ за м²</b></p>
+    </section>
+  </div>
+
+  <section class="calm">
+    <div class="wrap">
+      <h2>Ремонт потолка, после которого не нужно ничего переделывать</h2>
+      <div class="calm__photos">
+        <img src="../img/tech/t-track.webp" alt="Светлая комната с трековыми светильниками" loading="lazy">
+        <img src="../img/works/w-19-sm.webp" alt="Белая кухня с подвесными светильниками" loading="lazy">
+        <img src="../img/tech/t-contour.webp" alt="Потолок с контурной подсветкой" loading="lazy">
+      </div>
+      <ul class="reasons">
+        <li><i></i><b>Убираем за собой</b><span>после монтажа — в течение часа</span></li>
+        <li><i></i><b>Цена не меняется</b><span>смета фиксируется в договоре на замере</span></li>
+        <li><i></i><b>Сертифицированные полотна</b><span>не впитывают влагу и запахи, легко моются</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="switcher" aria-label="Варианты дизайна"><span>Вариант</span><a href="a.html">A</a><a href="b.html">B</a><a href="c.html" aria-current="page">C</a></nav>
+</body>
+</html>
