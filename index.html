@@ -136,7 +136,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=110">
+  <link rel="stylesheet" href="css/style.css?v=109">
   <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
   <style>
     .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden;
@@ -295,37 +295,40 @@
       </div>
     </section>
 
-    <!-- ================= WORKS: плитка с фильтрами ================= -->
-    <section class="section section--alt" id="works">
-      <div class="container">
-        <div class="section-head">
+    <!-- ================= WORKS (horizontal) ================= -->
+    <section class="works" id="works">
+      <div class="works__pin">
+        <div class="works__head-m container">
           <h2 class="h2">Наши работы в&nbsp;Казани</h2>
-          <p class="lead">Квартиры, дома, клиники и кафе. Все фото с наших объектов, нажмите, чтобы рассмотреть.</p>
+          <p class="lead">Фото с наших объектов, без картинок из интернета. Листайте вбок.</p>
         </div>
-        <div class="chips" role="group" aria-label="Показать работы">
-          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Все работы</button>
-          <button class="chip" type="button" data-filter="lines" aria-pressed="false">Световые линии</button>
-          <button class="chip" type="button" data-filter="tracks" aria-pressed="false">Треки</button>
-          <button class="chip" type="button" data-filter="niche" aria-pressed="false">Подсветка ниш</button>
-          <button class="chip" type="button" data-filter="stars" aria-pressed="false">Звёздное небо</button>
-          <button class="chip" type="button" data-filter="window" aria-pressed="false">Световые окна</button>
+        <div class="works__track">
+          <div class="works__intro">
+            <div>
+              <h2 class="h2">Наши работы в&nbsp;Казани</h2>
+              <p class="lead">Квартиры, дома, клиники и кафе, которые мы сделали. Все фото с наших объектов.</p>
+            </div>
+            <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span></button>
+          </div>
+
+          <button class="work" data-lightbox="works" data-full="img/works/n-01.webp"><img decoding="async" src="img/works/n-01.webp" srcset="img/works/n-01-sm.webp 480w, img/works/n-01.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Две подвесные люстры, точечные светильники и подсветка скрытой ниши над окном" loading="lazy" width="720" height="960"><span class="work__cap">Подвесные люстры и подсветка ниши</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-02.webp"><img decoding="async" src="img/works/n-02.webp" srcset="img/works/n-02-sm.webp 480w, img/works/n-02.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Натяжной потолок «звёздное небо» с подсветкой по контуру" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо с подсветкой по контуру</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-03.webp"><img decoding="async" src="img/works/n-03.webp" srcset="img/works/n-03-sm.webp 480w, img/works/n-03.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Круглый световой потолок с фигурным краем в магазине" loading="lazy" width="720" height="960"><span class="work__cap">Круглый световой потолок в магазине</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-04.webp"><img decoding="async" src="img/works/n-04.webp" srcset="img/works/n-04-sm.webp 480w, img/works/n-04.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световые линии и радиусный угол на теневом профиле" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии и радиусный угол</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-05.webp"><img decoding="async" src="img/works/n-05.webp" srcset="img/works/n-05-sm.webp 480w, img/works/n-05.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Магнитные треки со светильниками в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-06.webp"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Натяжные тканевые стены на лестнице со встроенной световой линией" loading="lazy" width="720" height="960"><span class="work__cap">Тканевые стены и световая линия</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-07.webp"><img decoding="async" src="img/works/n-07.webp" srcset="img/works/n-07-sm.webp 480w, img/works/n-07.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Дизайнерская люстра, магнитные треки и подсветка скрытой ниши над окном" loading="lazy" width="720" height="960"><span class="work__cap">Люстра, магнитные треки и подсветка ниши</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-08.webp"><img decoding="async" src="img/works/n-08.webp" srcset="img/works/n-08-sm.webp 480w, img/works/n-08.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Звёздное небо с подсветкой по контуру, рядом скрытая ниша с магнитными треками" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо и магнитные треки</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-09.webp"><img decoding="async" src="img/works/n-09.webp" srcset="img/works/n-09-sm.webp 480w, img/works/n-09.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Световое окно вровень с потолком и световая линия вдоль лестницы" loading="lazy" width="720" height="960"><span class="work__cap">Световое окно вровень с потолком</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-10.webp"><img decoding="async" src="img/works/n-10.webp" srcset="img/works/n-10-sm.webp 480w, img/works/n-10.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Подсветка скрытой ниши над панорамными окнами и точечные светильники" loading="lazy" width="720" height="960"><span class="work__cap">Подсветка скрытой ниши над окном</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-11.webp"><img decoding="async" src="img/works/n-11.webp" srcset="img/works/n-11-sm.webp 480w, img/works/n-11.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Магнитные треки и подсветка скрытой ниши над панорамными окнами" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки у панорамных окон</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-12.webp"><img decoding="async" src="img/works/n-12.webp" srcset="img/works/n-12-sm.webp 480w, img/works/n-12.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Магнитные треки в скрытой нише и парящий профиль" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки и парящий профиль</span></button>
+          <span class="work__end" aria-hidden="true"></span>
         </div>
-        <div class="wgrid">
-          <button class="wtile" data-lightbox="works" data-tags="niche" data-full="img/works/n-01.webp"><img decoding="async" src="img/works/n-01.webp" srcset="img/works/n-01-sm.webp 480w, img/works/n-01.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Две подвесные люстры, точечные светильники и подсветка скрытой ниши над окном" loading="lazy" width="720" height="960"><span class="work__cap">Подвесные люстры и подсветка ниши</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="stars" data-full="img/works/n-02.webp"><img decoding="async" src="img/works/n-02.webp" srcset="img/works/n-02-sm.webp 480w, img/works/n-02.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Натяжной потолок «звёздное небо» с подсветкой по контуру" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо с подсветкой по контуру</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="window" data-full="img/works/n-03.webp"><img decoding="async" src="img/works/n-03.webp" srcset="img/works/n-03-sm.webp 480w, img/works/n-03.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Круглый световой потолок с фигурным краем в магазине" loading="lazy" width="720" height="960"><span class="work__cap">Круглый световой потолок в магазине</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="lines" data-full="img/works/n-04.webp"><img decoding="async" src="img/works/n-04.webp" srcset="img/works/n-04-sm.webp 480w, img/works/n-04.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Световые линии и радиусный угол на теневом профиле" loading="lazy" width="720" height="960"><span class="work__cap">Световые линии и радиусный угол</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="tracks" data-full="img/works/n-05.webp"><img decoding="async" src="img/works/n-05.webp" srcset="img/works/n-05-sm.webp 480w, img/works/n-05.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Магнитные треки со светильниками в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="lines" data-full="img/works/n-06.webp"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Натяжные тканевые стены на лестнице со встроенной световой линией" loading="lazy" width="720" height="960"><span class="work__cap">Тканевые стены и световая линия</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="tracks niche" data-full="img/works/n-07.webp"><img decoding="async" src="img/works/n-07.webp" srcset="img/works/n-07-sm.webp 480w, img/works/n-07.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Дизайнерская люстра, магнитные треки и подсветка скрытой ниши над окном" loading="lazy" width="720" height="960"><span class="work__cap">Люстра, магнитные треки и подсветка ниши</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="stars tracks" data-full="img/works/n-08.webp"><img decoding="async" src="img/works/n-08.webp" srcset="img/works/n-08-sm.webp 480w, img/works/n-08.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Звёздное небо с подсветкой по контуру, рядом скрытая ниша с магнитными треками" loading="lazy" width="720" height="960"><span class="work__cap">Звёздное небо и магнитные треки</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="window lines" data-full="img/works/n-09.webp"><img decoding="async" src="img/works/n-09.webp" srcset="img/works/n-09-sm.webp 480w, img/works/n-09.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Световое окно вровень с потолком и световая линия вдоль лестницы" loading="lazy" width="720" height="960"><span class="work__cap">Световое окно вровень с потолком</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="niche" data-full="img/works/n-10.webp"><img decoding="async" src="img/works/n-10.webp" srcset="img/works/n-10-sm.webp 480w, img/works/n-10.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Подсветка скрытой ниши над панорамными окнами и точечные светильники" loading="lazy" width="720" height="960"><span class="work__cap">Подсветка скрытой ниши над окном</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="tracks niche" data-full="img/works/n-11.webp"><img decoding="async" src="img/works/n-11.webp" srcset="img/works/n-11-sm.webp 480w, img/works/n-11.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Магнитные треки и подсветка скрытой ниши над панорамными окнами" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки у панорамных окон</span></button>
-          <button class="wtile" data-lightbox="works" data-tags="tracks" data-full="img/works/n-12.webp"><img decoding="async" src="img/works/n-12.webp" srcset="img/works/n-12-sm.webp 480w, img/works/n-12.webp 720w" sizes="(max-width: 720px) 50vw, 25vw" alt="Магнитные треки в скрытой нише и парящий профиль" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки и парящий профиль</span></button>
-        </div>
-        <div class="wgrid__foot">
-          <button class="btn btn--ghost" data-all-works><span class="btn__label">Смотреть все фото</span></button>
+        <div class="works__progress" aria-hidden="true"><i></i></div>
+        <div class="works__foot-m container">
+          <span class="works__count" aria-live="polite"><b data-works-cur>01</b> / 12</span>
+          <button class="btn btn--ghost btn--sm" data-all-works>Все фото</button>
         </div>
       </div>
     </section>
@@ -335,11 +338,10 @@
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Свет в натяжном потолке</h2>
-          <p class="lead reveal">Встраиваем световые линии, треки, парящий профиль, подсветку ниш над окнами и световые окна. Для светильников берём кабель, не поддерживающий горение. Нажмите «Включить свет» на фото.</p>
+          <p class="lead reveal">Встраиваем световые линии, треки, парящий профиль, подсветку ниш над окнами и световые окна. Для светильников берём кабель, не поддерживающий горение.</p>
         </div>
         <div class="tech-grid">
           <article class="tech-card reveal">
-            <button class="light-switch" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7-.7.7"/><path d="M9 16a5 5 0 1 1 6 0 3.5 3.5 0 0 0-1 3 2 2 0 0 1-4 0 3.5 3.5 0 0 0-1-3M9.7 17h4.6"/></svg><span>Включить свет</span></button>
             <img decoding="async" src="img/tech/c-01.webp" srcset="img/tech/c-01-sm.webp 640w, img/tech/c-01.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Световые линии на натяжном потолке на кухне" loading="lazy" width="1200" height="750">
             <div class="tech-card__body">
               <h3 class="h3">Световые линии</h3>
@@ -347,7 +349,6 @@
             </div>
           </article>
           <article class="tech-card reveal">
-            <button class="light-switch" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7-.7.7"/><path d="M9 16a5 5 0 1 1 6 0 3.5 3.5 0 0 0-1 3 2 2 0 0 1-4 0 3.5 3.5 0 0 0-1-3M9.7 17h4.6"/></svg><span>Включить свет</span></button>
             <img decoding="async" src="img/tech/c-02.webp" srcset="img/tech/c-02-sm.webp 640w, img/tech/c-02.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Контурная подсветка в теневом профиле у стены" loading="lazy" width="1200" height="750">
             <div class="tech-card__body">
               <h3 class="h3">Теневой и парящий профиль</h3>
@@ -355,7 +356,6 @@
             </div>
           </article>
           <article class="tech-card reveal">
-            <button class="light-switch" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7-.7.7"/><path d="M9 16a5 5 0 1 1 6 0 3.5 3.5 0 0 0-1 3 2 2 0 0 1-4 0 3.5 3.5 0 0 0-1-3M9.7 17h4.6"/></svg><span>Включить свет</span></button>
             <img decoding="async" src="img/tech/c-03.webp" srcset="img/tech/c-03-sm.webp 640w, img/tech/c-03.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Магнитный трек со светильниками по периметру потолка" loading="lazy" width="1200" height="750">
             <div class="tech-card__body">
               <h3 class="h3">Трековые системы</h3>
@@ -363,7 +363,6 @@
             </div>
           </article>
           <article class="tech-card reveal">
-            <button class="light-switch" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7-.7.7"/><path d="M9 16a5 5 0 1 1 6 0 3.5 3.5 0 0 0-1 3 2 2 0 0 1-4 0 3.5 3.5 0 0 0-1-3M9.7 17h4.6"/></svg><span>Включить свет</span></button>
             <img decoding="async" src="img/tech/c-04.webp" srcset="img/tech/c-04-sm.webp 640w, img/tech/c-04.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Световые квадраты на натяжном потолке" loading="lazy" width="1200" height="750">
             <div class="tech-card__body">
               <h3 class="h3">Фигурные световые конструкции</h3>
@@ -371,7 +370,6 @@
             </div>
           </article>
           <article class="tech-card reveal">
-            <button class="light-switch" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7-.7.7"/><path d="M9 16a5 5 0 1 1 6 0 3.5 3.5 0 0 0-1 3 2 2 0 0 1-4 0 3.5 3.5 0 0 0-1-3M9.7 17h4.6"/></svg><span>Включить свет</span></button>
             <img decoding="async" src="img/tech/c-05.webp" srcset="img/tech/c-05-sm.webp 640w, img/tech/c-05.webp 1200w" sizes="(max-width: 960px) 82vw, 34vw" alt="Световое окно в натяжном потолке" loading="lazy" width="1200" height="750">
             <div class="tech-card__body">
               <h3 class="h3">Световое окно</h3>
@@ -382,47 +380,8 @@
       </div>
     </section>
 
-    <!-- ================= ROOMS: подбор света по комнате ================= -->
-    <section class="section section--alt" id="rooms">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Подберём свет для вашей комнаты</h2>
-          <p class="lead">Выберите комнату: покажем, какой свет туда обычно ставим, пример с наших объектов и цену.</p>
-        </div>
-        <div class="rooms">
-          <div class="chips rooms__tabs" role="tablist" aria-label="Комната">
-            <button class="chip is-active" type="button" role="tab" aria-selected="true" data-room="living">Гостиная</button>
-            <button class="chip" type="button" role="tab" aria-selected="false" data-room="kitchen">Кухня</button>
-            <button class="chip" type="button" role="tab" aria-selected="false" data-room="bedroom">Спальня</button>
-            <button class="chip" type="button" role="tab" aria-selected="false" data-room="kids">Детская</button>
-            <button class="chip" type="button" role="tab" aria-selected="false" data-room="hall">Коридор</button>
-            <button class="chip" type="button" role="tab" aria-selected="false" data-room="bath">Санузел</button>
-          </div>
-          <div class="rooms__panel" role="tabpanel" aria-live="polite">
-            <figure class="rooms__photo">
-              <img decoding="async" src="img/works/n-07.webp" alt="Люстра, магнитные треки и подсветка ниши" width="720" height="960" loading="lazy" data-room-img>
-              <figcaption data-room-cap>Люстра, магнитные треки и подсветка ниши</figcaption>
-            </figure>
-            <div class="rooms__body">
-              <h3 class="h3" data-room-title>Гостиная</h3>
-              <p class="rooms__text" data-room-text>Основной свет даём треками, вечерний делаем мягким: подсветка ниши над окном. Люстру оставляем как акцент.</p>
-              <ul class="rooms__list" data-room-list>
-                <li>Магнитные треки</li>
-                <li>Подсветка скрытой ниши над окном</li>
-                <li>Люстра или подвесные светильники</li>
-              </ul>
-              <div class="rooms__price" data-room-price><span>Пример расчёта</span><b>Комната 19 м², подсветка по периметру и ниша для штор: 35 830 ₽</b></div>
-              <button class="btn btn--light" data-modal data-room-btn data-source="Подбор света — Гостиная" data-title="Подберём свет для вашей комнаты"
-                      data-text="Оставьте телефон. Перезвоним, уточним размеры комнаты и предложим варианты света с ценой."
-                      data-summary="Комната: гостиная">Хочу такой свет</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= CALCULATOR ================= -->
-    <section class="section" id="calc">
+    <section class="section section--alt" id="calc">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Сколько стоит потолок с установкой</h2>
@@ -568,7 +527,7 @@
     </section>
 
     <!-- ================= PRICES ================= -->
-    <section class="section section--alt" id="prices">
+    <section class="section" id="prices">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Полотна, с которыми работаем</h2>
@@ -657,7 +616,7 @@
     </section>
 
     <!-- ================= STEPS ================= -->
-    <section class="section" id="steps">
+    <section class="section section--alt" id="steps">
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-split>Как всё проходит</h2>
@@ -668,25 +627,25 @@
           <div class="steps__line" aria-hidden="true"><i></i></div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__top"><span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="step__time">Сегодня</span></div>
+            <span class="step__num">01</span>
             <h3 class="step__title">Заявка</h3>
             <p>Оставляете заявку, пишете или звоните. Договариваемся, когда приехать на замер.</p>
           </div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__top"><span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-7a1 1 0 0 0-1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M4 8h2M4 12h3M4 16h2M8 4v2M12 4v3M16 4v2"/></svg></span><span class="step__time">В удобный вам день</span></div>
+            <span class="step__num">02</span>
             <h3 class="step__title">Бесплатный замер</h3>
             <p>Замерщик приезжает с образцами, замеряет комнаты, считает смету и заключает договор.</p>
           </div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__top"><span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h4L20 8a1.5 1.5 0 0 0-4-4L3 17v4M14.5 5.5l4 4"/><path d="M12 8 7 3 3 7l5 5M7 8 5.5 9.5M16 12l5 5-4 4-5-5M16 17l-1.5 1.5"/></svg></span><span class="step__time">1–2 дня, монтаж комнаты 3–4 часа</span></div>
+            <span class="step__num">03</span>
             <h3 class="step__title">Изготовление и&nbsp;монтаж</h3>
             <p>Полотно изготавливают по вашим размерам, а ставим его за один день. После себя убираем.</p>
           </div>
           <div class="step">
             <span class="step__dot" aria-hidden="true"></span>
-            <div class="step__top"><span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2zM9 15l2 2 4-4"/></svg></span><span class="step__time">В день монтажа</span></div>
+            <span class="step__num">04</span>
             <h3 class="step__title">Приёмка работы</h3>
             <p>Принимаете работу, подписываете акт и получаете гарантию до 10 лет.</p>
           </div>
@@ -695,7 +654,7 @@
     </section>
 
     <!-- ================= ABOUT ================= -->
-    <section class="section section--alt" id="about">
+    <section class="section" id="about">
       <div class="container">
         <div class="about">
           <div class="about__text">
@@ -736,7 +695,7 @@
     </section>
 
     <!-- ================= FAQ ================= -->
-    <section class="section" id="faq">
+    <section class="section section--alt" id="faq">
       <div class="container faq-wrap">
         <div class="section-head">
           <h2 class="h2">Частые вопросы</h2>
@@ -786,7 +745,7 @@
     </section>
 
     <!-- ================= CTA ================= -->
-    <section class="section" id="contacts" style="padding-top: 0">
+    <section class="section section--alt" id="contacts" style="padding-top: 0">
       <div class="container">
         <div class="cta">
           <div class="cta__bg" aria-hidden="true"><img decoding="async" src="img/cta.webp" alt="" loading="lazy" width="1600" height="900"></div>
@@ -922,7 +881,7 @@
     (function () {
       var anim = !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches;
       var list = anim ? ['js/vendor/gsap.min.js', 'js/vendor/ScrollTrigger.min.js', 'js/vendor/lenis.min.js'] : [];
-      list.concat('js/main.js?v=85').forEach(function (src) {
+      list.concat('js/main.js?v=84').forEach(function (src) {
         var s = document.createElement('script');
         s.src = src; s.async = false; // по порядку: сначала библиотеки, потом main.js
         document.body.appendChild(s);

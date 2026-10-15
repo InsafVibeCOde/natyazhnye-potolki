@@ -332,6 +332,21 @@
   /* ---------- Works: horizontal scroll ---------- */
 
   if (motion) {
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 961px)', () => {
+      const track = $('.works__track');
+      const bar = $('.works__progress i');
+      const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+      gsap.to(track, {
+        x: () => -dist(), ease: 'none',
+        scrollTrigger: {
+          trigger: '.works', start: 'top top', end: () => '+=' + dist(),
+          pin: true, scrub: 1, invalidateOnRefresh: true,
+          onUpdate: (self) => { if (bar) bar.style.transform = `scaleX(${self.progress})`; },
+        },
+      });
+    });
+
     /* Steps: линия «загорается» по мере скролла */
     const steps = $$('.step');
     const line = $('.steps__line i');
@@ -538,7 +553,7 @@
 
   $$('[data-lightbox]').forEach((el) => {
     el.addEventListener('click', () => {
-      const all = $$(`[data-lightbox="${el.dataset.lightbox}"]`).filter((a) => !a.hidden);
+      const all = $$(`[data-lightbox="${el.dataset.lightbox}"]`);
       const isWork = el.dataset.lightbox === 'works';
       openLb(all.map((a) => a.dataset.full), all.indexOf(el), isWork ? all.map(workCap) : [], isWork);
     });
@@ -549,7 +564,7 @@
     ...Array.from({ length: 12 }, (_, i) => `img/works/p-${String(i + 1).padStart(2, '0')}.webp`),
     ...[1, 2, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24].map((n) => `img/works/w-${String(n).padStart(2, '0')}.webp`),
   ];
-  $$('[data-all-works]').forEach((b) => b.addEventListener('click', () => openLb(allWorks, 0, $$('[data-lightbox="works"]').map(workCap), true)));
+  $$('[data-all-works]').forEach((b) => b.addEventListener('click', () => openLb(allWorks, 0, $$('.work').map(workCap), true)));
 
   // заявка прямо из просмотра: в ней видно, какая работа понравилась
   lbCta.addEventListener('click', () => {
@@ -693,97 +708,6 @@
         if (METRIKA_ID && window.ym) window.ym(METRIKA_ID, 'reachGoal', 'max');
       });
     });
-  }
-
-  /* ---------- Работы: фильтр и раскладка плитки ---------- */
-
-  const tiles = $$('.wtile');
-  const layoutTiles = () => {
-    const vis = tiles.filter((t) => !t.hidden);
-    vis.forEach((t, i) => {
-      t.classList.toggle('is-big', i === 0);
-      t.classList.toggle('is-tall', vis.length > 5 && (i === 3 || i === 8));
-    });
-  };
-  layoutTiles();
-  $$('[data-filter]').forEach((chip) => chip.addEventListener('click', () => {
-    const f = chip.dataset.filter;
-    $$('[data-filter]').forEach((c) => { c.classList.toggle('is-active', c === chip); c.setAttribute('aria-pressed', c === chip); });
-    tiles.forEach((t) => { t.hidden = f !== 'all' && !t.dataset.tags.split(' ').includes(f); });
-    layoutTiles();
-    if (hasGsap) ScrollTrigger.refresh();
-  }));
-
-  /* ---------- «Включите свет» ---------- */
-
-  $$('.tech-card').forEach((card) => {
-    const sw = $('.light-switch', card);
-    if (!sw) return;
-    const set = (on) => {
-      card.classList.toggle('is-on', on);
-      sw.setAttribute('aria-pressed', on);
-      $('span', sw).textContent = on ? 'Выключить свет' : 'Включить свет';
-    };
-    let pinned = false;
-    sw.addEventListener('click', () => { pinned = true; set(!card.classList.contains('is-on')); });
-    if (finePointer) {
-      card.addEventListener('mouseenter', () => { if (!pinned) set(true); });
-      card.addEventListener('mouseleave', () => { if (!pinned) set(false); });
-    } else if ('IntersectionObserver' in window) {
-      // на телефоне свет сам «включается», когда карточку долистали
-      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-        if (e.isIntersecting && !pinned) { setTimeout(() => set(true), 350); io.unobserve(card); }
-      }), { threshold: 0.75 });
-      io.observe(card);
-    }
-  });
-
-  /* ---------- Подбор света по комнате ---------- */
-
-  const ROOMS = {
-    living: { t: 'Гостиная', img: 'img/works/n-07.webp', cap: 'Люстра, магнитные треки и подсветка ниши',
-      text: 'Основной свет даём треками, вечерний делаем мягким: подсветка ниши над окном. Люстру оставляем как акцент.',
-      list: ['Магнитные треки', 'Подсветка скрытой ниши над окном', 'Люстра или подвесные светильники'],
-      price: 'Комната 19 м², подсветка по периметру и ниша для штор: 35 830 ₽' },
-    kitchen: { t: 'Кухня', img: 'img/tech/c-01.webp', cap: 'Световые линии на кухне',
-      text: 'Над рабочей зоной нужен яркий ровный свет, над столом свет пониже и потеплее.',
-      list: ['Световые линии над рабочей зоной', 'Трек или подвесы над столом'], price: '' },
-    bedroom: { t: 'Спальня', img: 'img/works/n-02.webp', cap: 'Звёздное небо с подсветкой по контуру',
-      text: 'В спальне главное мягкий рассеянный свет без слепящих точек.',
-      list: ['Парящий профиль с подсветкой по периметру', 'Звёздное небо', 'Подсветка ниши над окном'], price: '' },
-    kids: { t: 'Детская', img: 'img/works/n-08.webp', cap: 'Звёздное небо и магнитные треки',
-      text: 'Ровный основной свет для игр и уроков, а звёздное небо работает как ночник.',
-      list: ['Ровный основной свет', 'Звёздное небо вместо ночника'], price: 'Детская 12 м², глянцевый потолок: 32 400 ₽' },
-    hall: { t: 'Коридор', img: 'img/works/n-04.webp', cap: 'Световые линии и радиусный угол',
-      text: 'В коридоре обычно нет окон, поэтому свет нужен по всей длине.',
-      list: ['Световые линии вдоль коридора', 'Теневой профиль у стен'], price: 'Коридор 13 м², световые линии и теневой профиль: 40 515 ₽' },
-    bath: { t: 'Санузел', img: 'img/tech/c-02.webp', cap: 'Подсветка по периметру',
-      text: 'Площадь небольшая: хватает контурной подсветки и пары точечных светильников.',
-      list: ['Контурная подсветка', 'Точечные светильники'], price: 'Санузел 2,25 м², контурная подсветка: 15 680 ₽' },
-  };
-  const roomPanel = $('.rooms__panel');
-  if (roomPanel) {
-    const q = (k) => $(`[data-room-${k}]`, roomPanel);
-    const show = (key) => {
-      const r = ROOMS[key];
-      roomPanel.classList.add('is-switching');
-      const img = new Image();
-      img.onload = img.onerror = () => {
-        q('img').src = r.img; q('img').alt = r.cap; q('cap').textContent = r.cap;
-        q('title').textContent = r.t; q('text').textContent = r.text;
-        q('list').innerHTML = r.list.map((x) => `<li>${x}</li>`).join('');
-        q('price').innerHTML = r.price ? `<span>Пример расчёта</span><b>${r.price}</b>` : '<span>Цена</span><b>Посчитаем на бесплатном замере</b>';
-        const btn = q('btn');
-        btn.dataset.source = `Подбор света — ${r.t}`;
-        btn.dataset.summary = `Комната: ${r.t.toLowerCase()}`;
-        roomPanel.classList.remove('is-switching');
-      };
-      img.src = r.img;
-    };
-    $$('[data-room]').forEach((tab) => tab.addEventListener('click', () => {
-      $$('[data-room]').forEach((t) => { t.classList.toggle('is-active', t === tab); t.setAttribute('aria-selected', t === tab); });
-      show(tab.dataset.room);
-    }));
   }
 
   /* ---------- Refresh after fonts/images ---------- */
