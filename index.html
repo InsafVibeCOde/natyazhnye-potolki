@@ -136,7 +136,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=117">
+  <link rel="stylesheet" href="css/style.css?v=118">
   <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
   <style>
     .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden;
@@ -300,6 +300,30 @@
         <div class="works__foot-m container">
           <span class="works__count" aria-live="polite"><b data-works-cur>01</b> / 12</span>
           <button class="btn btn--ghost btn--sm" data-all-works>Все фото</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Заявка после работ ================= -->
+    <section class="lead-band" aria-label="Заявка на замер">
+      <div class="container">
+        <div class="lead-band__card">
+          <div class="lead-band__text">
+            <h2 class="h3">Хотите так&nbsp;же у&nbsp;себя?</h2>
+            <p>Оставьте телефон: приедем на бесплатный замер с образцами и покажем, как будет выглядеть ваш потолок.</p>
+          </div>
+          <form class="form lead-band__form" data-form novalidate>
+            <input type="hidden" name="source" value="Форма после работ">
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input class="input ym-disable-keys" type="tel" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" aria-label="Ваш телефон">
+            <button class="btn btn--light" type="submit"><span class="btn__label">Вызвать замерщика бесплатно</span></button>
+            <label class="check">
+              <input type="checkbox" name="agree" required>
+              <span>Даю <a href="html/agreement.html" target="_blank">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="html/privacy.html" target="_blank">политикой конфиденциальности</a></span>
+            </label>
+            <div class="form__error" role="alert"></div>
+            <div class="form__success">Спасибо! Перезвоним как можно скорее.</div>
+          </form>
         </div>
       </div>
     </section>

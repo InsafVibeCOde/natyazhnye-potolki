@@ -1314,3 +1314,21 @@ button.header__gift { text-align: left; }
   .hero__rating { margin-bottom: 12px; }
 }
 @media (prefers-reduced-transparency: reduce) { .pill { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* ---------- Полоса-заявка после «Наших работ» ---------- */
+.lead-band { background: var(--bg-2); padding: 0 0 clamp(56px, 7vw, 96px); }
+.lead-band__card {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px 40px; align-items: center;
+  padding: clamp(22px, 3vw, 36px); border-radius: calc(var(--radius) + 6px);
+  background: var(--surface); box-shadow: var(--shadow-soft);
+}
+.lead-band__text { display: grid; gap: 8px; }
+.lead-band__text p { color: var(--ink-2); max-width: 48ch; }
+.lead-band__form { margin-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 12px; }
+.lead-band__form .check, .lead-band__form .form__error, .lead-band__form .form__success { grid-column: 1 / -1; }
+.lead-band__form .input { min-height: 56px; }
+@media (max-width: 960px) {
+  .lead-band__card { grid-template-columns: 1fr; }
+  .lead-band__form { grid-template-columns: 1fr; }
+  .lead-band__form .btn { width: 100%; }
+}
