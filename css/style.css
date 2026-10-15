@@ -1219,3 +1219,9 @@ button.header__gift { text-align: left; }
 .seal { width: 76px; height: 76px; top: -2px; }
 .seal svg { width: 24px; height: 24px; }
 .price__name { font-size: 22px; white-space: nowrap; }
+
+/* телефон: кнопка «Вызвать замерщика» на первом экране, сразу под выгодами; фото после неё */
+@media (max-width: 960px) {
+  .hero__actions { order: 5; margin-top: 20px; }
+  .hero__media { order: 6; margin-top: 20px; }
+}
