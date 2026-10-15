@@ -1225,3 +1225,46 @@ button.header__gift { text-align: left; }
   .hero__actions { order: 5; margin-top: 20px; }
   .hero__media { order: 6; margin-top: 20px; }
 }
+
+/* ---------- Полотна v3: спокойная карточка — название, цветной значок, одна строка фактур, характеристики ---------- */
+.prices .price { display: flex; flex-direction: column; grid-row: auto; grid-template-rows: none; padding-top: 30px; }
+.price__ribbon {
+  position: absolute; top: -12px; left: 24px; padding: 5px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--ink);
+  background: linear-gradient(180deg, #F2C06C, #E6A747); box-shadow: 0 6px 14px -8px rgba(196, 128, 32, .9);
+}
+.prices .price__head { position: static; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-right: 0; min-height: 0; margin-top: 0; }
+.price__title { min-width: 0; }
+.prices .price__name { font-size: 22px; white-space: nowrap; }
+.prices .price__origin { margin-top: 6px; font-size: 14px; color: var(--ink-3); }
+.badge { flex: 0 0 72px; display: grid; justify-items: center; gap: 6px; text-align: center; }
+.badge__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--b-bg, #FFF4E4); box-shadow: inset 0 0 0 1px var(--b-ring, rgba(233, 174, 82, .4)); }
+.badge__icon svg { width: 30px; height: 30px; }
+.badge__icon b { font-size: 24px; font-weight: 700; line-height: 1; color: #6B4A1E; letter-spacing: -.02em; }
+.badge__label { font-size: 12px; font-weight: 600; line-height: 1.2; color: var(--ink-2); }
+.badge--fire { --b-bg: radial-gradient(circle at 50% 60%, #FFE3CF, #FFF3EA); --b-ring: rgba(232, 87, 42, .3); }
+.badge--fire .badge__label { color: #B5441B; }
+.badge--price { --b-bg: radial-gradient(circle at 50% 60%, #FFEBC7, #FFF7E8); }
+.badge--leaf { --b-bg: radial-gradient(circle at 50% 60%, #DDF0E1, #F2FAF3); --b-ring: rgba(109, 176, 124, .4); }
+.badge--leaf .badge__label { color: #2F6B3E; }
+.badge--years { --b-bg: radial-gradient(circle at 50% 60%, #F6E7D2, #FDF6EC); }
+.price__ger { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 14px; font-weight: 600; color: #84561C; }
+.price__ger svg { flex: 0 0 18px; width: 18px; height: 18px; color: #B07424; }
+.prices .price__spec { margin: 18px 0 22px; flex: 1; }
+.prices .price .btn { margin-top: auto; }
+.price .seal, .price__perks, .price__top { display: none; }
+
+/* на компьютере строки карточек общие: название, немецкая строка, характеристики, кнопка */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 721px) {
+    .prices .price { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+  }
+}
+.price__ger:empty { margin-top: 14px; min-height: 0; }
+
+/* значки крупнее; на телефоне ярлык «Рекомендуем» не обрезается лентой */
+.badge { flex-basis: 78px; }
+.badge__icon { width: 64px; height: 64px; }
+.badge__icon svg { width: 36px; height: 36px; }
+.badge__icon b { font-size: 26px; }
+@media (max-width: 720px) { .prices { padding-top: 16px; } }

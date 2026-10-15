@@ -136,7 +136,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=112">
+  <link rel="stylesheet" href="css/style.css?v=115">
   <!-- Заставка: стили здесь, чтобы она появилась мгновенно, ещё до загрузки style.css -->
   <style>
     .splash { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; overflow: hidden;
@@ -536,18 +536,17 @@
 
         <div class="prices">
           <article class="price price--featured reveal">
-            <div class="price__top"><span class="price__tag">Рекомендуем</span><img class="price__logo" src="img/brands/teqtum-euro.png" alt="Teqtum Euro" width="246" height="130" loading="lazy"></div>
+            <span class="price__ribbon">Рекомендуем</span>
             <div class="price__head">
-              <span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.97 8.97C7.83 10.31 7 11.76 7 13a5 5 0 0 0 9.49 2.21M16.5 12c0-3-2.5-5.5-4.5-8-.38.5-.75 1-1.1 1.5M3 3l18 18"/></svg><small>Не горит</small></span>
-              <h3 class="price__name">Teqtum Euro</h3>
-              <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              <div class="price__title">
+                <h3 class="price__name">Teqtum Euro</h3>
+                <p class="price__origin">Мат, сатин, глянец</p>
+              </div>
+              <div class="badge badge--fire"><span class="badge__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="g-fire" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E8572A"/><stop offset=".6" stop-color="#F59331"/><stop offset="1" stop-color="#FFC24B"/></linearGradient></defs><path fill="url(#g-fire)" d="M12 10.94c2.33-3.31.17-7.82-1-8.94 0 3.4-2.24 5.3-3.67 6.71C5.9 10.12 5 12.33 5 14.3 5 18 8.13 21 12 21s7-3 7-6.7c0-1.71-1.23-4.4-2.33-5.59-2.09 3.35-3.26 3.35-4.67 2.23z"/><path d="M3.5 3.5l17 17" stroke="#FFF3EA" stroke-width="3.4" stroke-linecap="round"/><path d="M3.5 3.5l17 17" stroke="#9A3D14" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="badge__label">Не горит</span></div>
             </div>
-            <ul class="price__perks">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкое сырьё</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкие сертификаты</span></li>
-            </ul>
+            <p class="price__ger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкое сырьё и сертификаты</span></p>
             <dl class="price__spec">
-              <div><dt>Производство</dt><dd>Германия</dd></div>
+              <div><dt>Страна</dt><dd>Германия</dd></div>
               <div><dt>Пожаробезопасность</dt><dd>КМ2</dd></div>
               <div><dt>Ширина</dt><dd>до 505 см</dd></div>
               <div><dt>Плотность</dt><dd>210 мк</dd></div>
@@ -556,16 +555,16 @@
           </article>
 
           <article class="price reveal">
-            <div class="price__top"><span class="price__tag">Китай</span></div>
             <div class="price__head">
-              <span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3a4 4 0 0 0 4-4V6a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1-2 2h-7a3 3 0 0 1-3-3"/></svg><small>Лучшая цена</small></span>
-              <h3 class="price__name">MSD Classic</h3>
-              <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              <div class="price__title">
+                <h3 class="price__name">MSD Classic</h3>
+                <p class="price__origin">Мат, сатин, глянец</p>
+              </div>
+              <div class="badge badge--price"><span class="badge__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#F2B54A" d="M3 6v5.17a2 2 0 0 0 .59 1.42l7.7 7.7a2.41 2.41 0 0 0 3.42 0l5.59-5.6a2.41 2.41 0 0 0 0-3.4l-7.71-7.71A2 2 0 0 0 11.17 3H6a3 3 0 0 0-3 3z"/><circle cx="7.6" cy="7.6" r="1.6" fill="#fff"/><path d="M10.5 12.5h4M12.5 10.5v4" stroke="#8A5A16" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="badge__label">Лучшая цена</span></div>
             </div>
-            <ul class="price__perks">
-            </ul>
+            <p class="price__ger" aria-hidden="true"></p>
             <dl class="price__spec">
-              <div><dt>Производство</dt><dd>Китай</dd></div>
+              <div><dt>Страна</dt><dd>Китай</dd></div>
               <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
               <div><dt>Ширина</dt><dd>до 505 см</dd></div>
               <div><dt>Плотность</dt><dd>170 мк</dd></div>
@@ -574,16 +573,16 @@
           </article>
 
           <article class="price reveal">
-            <div class="price__top"><span class="price__tag">Тайвань</span></div>
             <div class="price__head">
-              <span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21c.5-4.5 2.5-8 7-10"/><path d="M9 18c6.22 0 10.5-3.29 11-12V4h-4.01C9 4 7 7.5 7 11c0 1 .5 3 2 5h3"/></svg><small>Без запаха</small></span>
-              <h3 class="price__name">MSD Premium</h3>
-              <p class="price__origin">мат, сатин, глянец · белый и цветной</p>
+              <div class="price__title">
+                <h3 class="price__name">MSD Premium</h3>
+                <p class="price__origin">Мат, сатин, глянец</p>
+              </div>
+              <div class="badge badge--leaf"><span class="badge__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#6DB07C" d="M9 18c6.22 0 10.5-3.29 11-12V4h-4.01C9 4 7 7.5 7 11c0 1 .5 3 2 5h3z"/><path d="M5 21c.5-4.5 2.5-8 7-10" stroke="#2F6B3E" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></span><span class="badge__label">Без запаха</span></div>
             </div>
-            <ul class="price__perks">
-            </ul>
+            <p class="price__ger" aria-hidden="true"></p>
             <dl class="price__spec">
-              <div><dt>Производство</dt><dd>Тайвань</dd></div>
+              <div><dt>Страна</dt><dd>Тайвань</dd></div>
               <div><dt>Пожаробезопасность</dt><dd>КМ4</dd></div>
               <div><dt>Ширина</dt><dd>до 505 см</dd></div>
               <div><dt>Плотность</dt><dd>180–200 мк</dd></div>
@@ -592,18 +591,16 @@
           </article>
 
           <article class="price reveal">
-            <div class="price__top"><span class="price__tag">Германия</span></div>
             <div class="price__head">
-              <span class="seal" aria-label="Гарантия 15 лет"><b>15</b><small>лет гарантии</small></span>
-              <h3 class="price__name">BAUF</h3>
-              <p class="price__origin">мат, сатин, глянец, фотопечать · белый</p>
+              <div class="price__title">
+                <h3 class="price__name">BAUF</h3>
+                <p class="price__origin">Мат, сатин, глянец, фотопечать</p>
+              </div>
+              <div class="badge badge--years"><span class="badge__icon"><b>15</b></span><span class="badge__label">лет гарантии</span></div>
             </div>
-            <ul class="price__perks">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкое сырьё</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкие сертификаты</span></li>
-            </ul>
+            <p class="price__ger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15l3.4 5.9 1.6-3.2 3.6.2-3.4-5.9M6.8 12l-3.4 5.9 3.6-.2 1.6 3.2 3.4-5.9"/></svg><span>Немецкое сырьё и сертификаты</span></p>
             <dl class="price__spec">
-              <div><dt>Производство</dt><dd>Германия</dd></div>
+              <div><dt>Страна</dt><dd>Германия</dd></div>
               <div><dt>Пожаробезопасность</dt><dd>КМ3</dd></div>
               <div><dt>Ширина</dt><dd>до 300 см</dd></div>
               <div><dt>Плотность</dt><dd>270 мк</dd></div>
