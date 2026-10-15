@@ -1378,3 +1378,15 @@ button.header__gift { text-align: left; }
   .calc__total { font-size: 40px; margin: 2px 0; }
   .calc__alt .btn { min-height: 44px; }
 }
+
+/* Главное фото: люстра целиком в квадратной рамке (она левее центра снимка) */
+.hero__media img { object-position: 34% 50%; }
+
+/* Фото-разделители: не во всю ширину экрана, а в рамке контента и ниже */
+.photo-band {
+  width: min(var(--container), calc(100% - 2 * var(--gutter))); margin: clamp(8px, 2vw, 24px) auto;
+  height: clamp(200px, 24vw, 380px); border-radius: var(--radius);
+}
+.photo-band figcaption { left: 16px; bottom: 14px; }
+@media (max-width: 720px) { .photo-band { width: calc(100% - 32px); height: 52vw; border-radius: 18px; } }
+@media (max-width: 720px) { .photo-band img { object-position: center 100%; } .photo-band figcaption { left: 10px; bottom: 10px; font-size: 12px; padding: 5px 10px; } }
