@@ -1501,3 +1501,6 @@ button.header__gift { text-align: left; }
   .est-feat__media { gap: 4px; }
   .est-feat__media .est-feat__photo { border-radius: 10px; }
 }
+/* три примера с фото: в ряд на широком экране */
+@media (min-width: 1200px) { .est-feat-wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 721px) and (max-width: 1199px) { .est-feat-wrap .est--feat:first-child { grid-column: 1 / -1; } }
