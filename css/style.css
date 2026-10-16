@@ -1084,8 +1084,6 @@ button.hero__deal { width: 100%; text-align: left; font-family: inherit; cursor:
   .est__total b { font-size: 26px; }
 }
 
-/* логотип Teqtum в карточке полотна */
-.price__logo { position: absolute; top: 24px; right: 24px; height: 34px; width: auto; border-radius: 6px; }
 .price__note { margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--warm); }
 .hero__lead b { color: var(--ink); font-weight: 700; }
 
