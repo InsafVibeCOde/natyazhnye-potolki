@@ -64,14 +64,11 @@
 
   const header = $('.header');
   const mobileBar = $('.mobile-bar');
-  let lastY = 0;
+  // шапка закреплена всегда: при прокрутке не прячется
   const onScroll = () => {
-    const y = window.scrollY;
-    header.classList.toggle('is-scrolled', y > 20);
-    header.classList.toggle('is-hidden', y > 400 && y > lastY && !document.body.classList.contains('menu-open'));
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
     // на телефоне панель с «Позвонить / Заказать звонок» видна сразу
     if (mobileBar) mobileBar.classList.add('is-visible');
-    lastY = y;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
