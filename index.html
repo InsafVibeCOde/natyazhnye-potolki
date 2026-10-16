@@ -136,7 +136,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=132">
+  <link rel="stylesheet" href="css/style.css?v=133">
 </head>
 <body>
   <!-- ================= HEADER ================= -->
@@ -239,7 +239,7 @@
           <button class="work work--wide" data-lightbox="works" data-full="img/works/f-05.webp"><img decoding="async" src="img/works/f-05.webp" srcset="img/works/f-05-sm.webp 640w, img/works/f-05.webp 960w" sizes="(max-width: 960px) 86vw, 46vw" alt="Потолок целиком: встроенный трек и светильники по периметру" loading="lazy" width="960" height="720"><span class="work__cap">Встроенный трек со светильниками</span></button>
           <button class="work" data-lightbox="works" data-full="img/works/n-05.webp"><img decoding="async" src="img/works/n-05.webp" srcset="img/works/n-05-sm.webp 480w, img/works/n-05.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Магнитные треки со светильниками в натяжном потолке" loading="lazy" width="720" height="960"><span class="work__cap">Магнитные треки</span></button>
           <button class="work work--wide" data-lightbox="works" data-full="img/works/f-06.webp"><img decoding="async" src="img/works/f-06.webp" srcset="img/works/f-06-sm.webp 640w, img/works/f-06.webp 960w" sizes="(max-width: 960px) 86vw, 46vw" alt="Потолок со световыми окнами в виде шестиугольников с облаками" loading="lazy" width="960" height="720"><span class="work__cap">Световые окна «небо с облаками»</span></button>
-          <button class="work" data-lightbox="works" data-full="img/works/n-06.webp"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Натяжные тканевые стены на лестнице со встроенной световой линией" loading="lazy" width="720" height="960"><span class="work__cap">Тканевые стены и световая линия</span></button>
+          <button class="work" data-lightbox="works" data-full="img/works/n-06.webp" data-cap="«Тихие стены» (тканевые натяжные стены) со встроенными световыми линиями шириной 1,5 см"><img decoding="async" src="img/works/n-06.webp" srcset="img/works/n-06-sm.webp 480w, img/works/n-06.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="«Тихие стены» — тканевые натяжные стены на лестнице со встроенными световыми линиями шириной 1,5 см" loading="lazy" width="720" height="960"><span class="work__cap"><span class="cap-full">«Тихие стены» (тканевые натяжные стены) со&nbsp;встроенными световыми линиями шириной 1,5&nbsp;см</span><span class="cap-short">«Тихие стены» и&nbsp;световые линии 1,5&nbsp;см</span></span></button>
           <button class="work work--wide" data-lightbox="works" data-full="img/works/f-07.webp"><img decoding="async" src="img/works/f-07.webp" srcset="img/works/f-07-sm.webp 640w, img/works/f-07.webp 960w" sizes="(max-width: 960px) 86vw, 46vw" alt="Потолок целиком: световой круг и дизайнерская люстра" loading="lazy" width="960" height="720"><span class="work__cap">Световой круг и дизайнерская люстра</span></button>
           <button class="work" data-lightbox="works" data-full="img/works/n-07.webp"><img decoding="async" src="img/works/n-07.webp" srcset="img/works/n-07-sm.webp 480w, img/works/n-07.webp 720w" sizes="(max-width: 960px) 86vw, 34vw" alt="Дизайнерская люстра, магнитные треки и подсветка скрытой ниши над окном" loading="lazy" width="720" height="960"><span class="work__cap">Люстра, магнитные треки и подсветка ниши</span></button>
           <button class="work work--wide" data-lightbox="works" data-full="img/works/f-08.webp"><img decoding="async" src="img/works/f-08.webp" srcset="img/works/f-08-sm.webp 640w, img/works/f-08.webp 960w" sizes="(max-width: 960px) 86vw, 46vw" alt="Гостиная целиком: натяжной потолок, подвесные люстры и трек" loading="lazy" width="960" height="720"><span class="work__cap">Гостиная: подвесы и треки</span></button>
@@ -838,7 +838,7 @@
     (function () {
       var anim = !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches;
       var list = anim ? ['js/vendor/gsap.min.js', 'js/vendor/ScrollTrigger.min.js', 'js/vendor/lenis.min.js'] : [];
-      list.concat('js/main.js?v=85').forEach(function (src) {
+      list.concat('js/main.js?v=86').forEach(function (src) {
         var s = document.createElement('script');
         s.src = src; s.async = false; // по порядку: сначала библиотеки, потом main.js
         document.body.appendChild(s);

@@ -1451,3 +1451,5 @@ button.header__gift { text-align: left; }
   .work img { height: 100%; }
   .work__cap { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 6px 11px; font-size: 12.5px; }
 }
+.work__cap .cap-short { display: none; }
+@media (max-width: 960px) { .work__cap .cap-full { display: none; } .work__cap .cap-short { display: inline; } }

@@ -525,7 +525,7 @@
   /* ---------- Lightbox ---------- */
 
   const lb = $('#lightbox');
-  const workCap = (el) => ($('.work__cap', el) || {}).textContent || '';
+  const workCap = (el) => el.dataset.cap || ($('.work__cap', el) || {}).textContent || '';
   const lbImg = $('img', lb);
   const lbCount = $('.lightbox__count', lb);
   const lbCap = $('.lightbox__cap', lb);
