@@ -1524,4 +1524,4 @@ button.hero__deal {
 /* «Сколько стоит»: заголовок перед калькулятором */
 #calc .section-head .muted { margin-top: 14px; font-size: 15px; color: var(--ink-3); max-width: 60ch; }
 .calc-head { margin-top: clamp(40px, 6vw, 72px); }
-.calc-head .h2 { max-width: 22ch; }
+.calc-head .lead { margin-top: 12px; }
