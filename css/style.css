@@ -1525,3 +1525,9 @@ button.hero__deal {
 #calc .section-head .muted { margin-top: 14px; font-size: 15px; color: var(--ink-3); max-width: 60ch; }
 .calc-head { margin-top: clamp(40px, 6vw, 72px); }
 .calc-head .lead { margin-top: 12px; }
+/* нечётная последняя карточка примера — на всю ширину: фото слева, смета справа */
+@media (min-width: 961px) {
+  .est-feat-wrap .est--feat:last-child:nth-child(odd) { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; padding: 12px; }
+  .est-feat-wrap .est--feat:last-child:nth-child(odd) .est-feat__media { align-self: start; }
+  .est-feat-wrap .est--feat:last-child:nth-child(odd) .est-feat__body { padding: 8px 16px 10px 0; }
+}
