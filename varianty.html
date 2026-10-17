@@ -155,14 +155,17 @@
   }
   /* чётные блоки — зеркально, чтобы рисунок не повторялся один в один */
   .section:nth-of-type(even)::before, .footer::before { transform: scaleX(-1); }
-  .v-flowers .hero::before, .v-flowers .section::before, .v-flowers .works::before, .v-flowers .lead-band::before, .v-flowers .footer::before { background-image: url(img/variants/flowers.svg); opacity: .9; }
-  .v-lines .hero::before, .v-lines .section::before, .v-lines .works::before, .v-lines .lead-band::before, .v-lines .footer::before { background-image: url(img/variants/lines.svg); opacity: 1; }
-  .v-glow .hero::before, .v-glow .section::before, .v-glow .works::before, .v-glow .lead-band::before, .v-glow .footer::before { opacity: 1; background-image:
+  .v-flowers .hero::before, .v-flowers .section::before, .v-flowers .works::before, .v-flowers .lead-band::before, .v-flowers .footer::before { background-image: url(img/variants/flowers-tile.svg); opacity: 1; }
+  .v-lines .hero::before, .v-lines .section::before, .v-lines .works::before, .v-lines .lead-band::before, .v-lines .footer::before { background-image: url(img/variants/lines-tile.svg); opacity: 1; }
+  .v-flowers :is(.hero, .section, .works, .lead-band, .footer)::before,
+  .v-lines :is(.hero, .section, .works, .lead-band, .footer)::before { background-repeat: repeat; background-size: 900px auto; background-position: center top; }
+  .v-glow .hero::before, .v-glow .section::before, .v-glow .works::before, .v-glow .lead-band::before, .v-glow .footer::before { opacity: 1; background-repeat: no-repeat; background-size: 100% 100%; background-image:
       radial-gradient(560px 400px at 10% 15%, rgba(242, 192, 108, .26), transparent 70%),
-      radial-gradient(640px 440px at 92% 88%, rgba(239, 180, 160, .2), transparent 70%); }
+      radial-gradient(640px 440px at 92% 60%, rgba(239, 180, 160, .2), transparent 70%),
+      radial-gradient(520px 380px at 20% 95%, rgba(242, 192, 108, .2), transparent 70%); }
   @media (max-width: 720px) {
-    .v-flowers .hero::before, .v-flowers .section::before, .v-flowers .works::before, .v-flowers .footer::before { background-size: 230% auto; background-position: 70% 0; }
-    .v-lines .hero::before, .v-lines .section::before, .v-lines .works::before, .v-lines .footer::before { background-size: 170% auto; background-position: center top; background-repeat: repeat-y; }
+    .v-flowers :is(.hero, .section, .works, .lead-band, .footer)::before,
+    .v-lines :is(.hero, .section, .works, .lead-band, .footer)::before { background-size: 520px auto; }
   }
   .vsw { position: fixed; z-index: 300; left: 50%; bottom: 96px; transform: translateX(-50%); display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(35, 32, 28, .88); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); font: 600 13px/1 Manrope, system-ui, sans-serif; }
   .vsw button { border: 0; padding: 10px 13px; border-radius: 999px; background: none; color: #fff; cursor: pointer; font: inherit; white-space: nowrap; }
