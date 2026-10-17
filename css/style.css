@@ -1548,3 +1548,23 @@ button.hero__deal {
 }
 .section:nth-of-type(even)::before, .footer::before { transform: scaleX(-1); }
 .hero::before { z-index: -1; }
+
+/* Преимущества первого экрана: иконка + заголовок + пояснение */
+.hero__perks { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+.hero__perks li.perk { display: flex; align-items: flex-start; gap: 12px; padding: 0; line-height: 1.3; }
+.hero__perks li.perk::before { content: none; display: none; }
+.perk__ic { flex-shrink: 0; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px;
+  background: linear-gradient(180deg, #F2C06C, #E6A747); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 6px 14px -8px rgba(196,128,32,.8); }
+.perk__txt { display: grid; gap: 2px; min-width: 0; padding-top: 1px; }
+.perk__txt b { font-size: 15px; font-weight: 700; color: var(--ink); }
+.perk__txt span { font-size: 13.5px; color: var(--ink-2); }
+@media (max-width: 720px) {
+  .hero__perks { grid-template-columns: 1fr; gap: 12px; }
+  .perk__ic { width: 34px; height: 34px; }
+}
+.hero__perks li.perk { flex-direction: row; padding: 0 !important; border: 0 !important; }
+.hero__perks .perk__ic { color: #fff; font-size: 0; }
+.hero__perks .perk__ic svg { width: 18px; height: 18px; }
+.hero__perks .perk__txt b { font-size: 15px; line-height: 1.3; }
+.hero__perks .perk__txt span { font-size: 13.5px; line-height: 1.35; color: var(--ink-2); }
+@media (max-width: 720px) { .hero__perks .perk__txt b { font-size: 15.5px; } .hero__perks .perk__txt span { font-size: 14px; } }
