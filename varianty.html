@@ -167,10 +167,24 @@
     .v-flowers :is(.hero, .section, .works, .lead-band, .footer)::before,
     .v-lines :is(.hero, .section, .works, .lead-band, .footer)::before { background-size: 520px auto; }
   }
+  /* Фото первого экрана на фоне */
+  .hero-bg .hero { overflow: hidden; }
+  .hero-bg .hero__media { position: absolute !important; inset: 0; z-index: -3; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; min-height: 0; grid-row: auto; order: 0; }
+  .hero-bg .hero__media img { position: absolute; inset: 0; width: 100%; height: 100% !important; object-fit: cover; object-position: 70% 30%; border-radius: 0 !important; }
+  .hero-bg .hero::after { content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+    background: linear-gradient(90deg, rgba(252,251,249,.97) 0%, rgba(252,251,249,.93) 38%, rgba(252,251,249,.55) 55%, rgba(252,251,249,0) 75%); }
+  @media (max-width: 960px) {
+    .hero-bg .hero__media img { display: none; }
+    .hero-bg .hero__media { background: var(--bg) url(img/works/f-02.webp) 50% 0 / 100% auto no-repeat; }
+    .hero-bg .hero::after { background: linear-gradient(180deg, rgba(252,251,249,.35) 0%, rgba(252,251,249,.72) 18%, rgba(252,251,249,.93) 38%, var(--bg) 58%); }
+  }
+  .vsw.vsw2 { bottom: 150px; }
+
   .vsw { position: fixed; z-index: 300; left: 50%; bottom: 96px; transform: translateX(-50%); display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(35, 32, 28, .88); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); font: 600 13px/1 Manrope, system-ui, sans-serif; }
   .vsw button { border: 0; padding: 10px 13px; border-radius: 999px; background: none; color: #fff; cursor: pointer; font: inherit; white-space: nowrap; }
   .vsw button[aria-pressed="true"] { background: #F2C06C; color: #23201C; }
   @media (min-width: 961px) { .vsw { bottom: 24px; } }
+  @media (min-width: 961px) { .vsw.vsw2 { bottom: 78px; } }
 </style>
 </head>
 <body>
@@ -935,7 +949,7 @@
       });
     })();
   </script>
-<div class="vsw" role="group" aria-label="Варианты фона">
+<div class="vsw vsw1" role="group" aria-label="Варианты фона">
   <button data-v="" aria-pressed="false">Как сейчас</button>
   <button data-v="v-flowers" aria-pressed="true">Цветы</button>
   <button data-v="v-lines" aria-pressed="false">Узор</button>
@@ -948,6 +962,19 @@
       bs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === v)); }); }
     bs.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.v); }); });
     set('v-flowers');
+  })();
+</script>
+<div class="vsw vsw2" role="group" aria-label="Фото первого экрана">
+  <button data-h="" aria-pressed="false">Фото отдельно</button>
+  <button data-h="hero-bg" aria-pressed="true">Фото на фоне</button>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement, bs = document.querySelectorAll('.vsw2 button');
+    function set(v) { root.classList.toggle('hero-bg', v === 'hero-bg');
+      bs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.h === v)); }); }
+    bs.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.h); }); });
+    set('hero-bg');
   })();
 </script>
 </body>
