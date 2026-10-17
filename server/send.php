@@ -32,6 +32,26 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     reply(405, ['ok' => false, 'error' => 'method']);
 }
 
+// Защита от спама: не больше 5 заявок за 10 минут с одного адреса.
+// IP не храним: только его хеш с солью, и только на время окна.
+$rateDir = LOG_DIR . '/rate';
+if (!is_dir($rateDir)) {
+    mkdir($rateDir, 0750, true);
+}
+$rateFile = $rateDir . '/' . hash('sha256', __FILE__ . ($_SERVER['REMOTE_ADDR'] ?? '')) . '.txt';
+$now = time();
+$hits = is_file($rateFile) ? array_filter(array_map('intval', explode(',', (string)file_get_contents($rateFile))), static fn($t) => $t > $now - 600) : [];
+if (count($hits) >= 5) {
+    reply(429, ['ok' => false, 'error' => 'rate']);
+}
+$hits[] = $now;
+file_put_contents($rateFile, implode(',', $hits), LOCK_EX);
+foreach (glob($rateDir . '/*.txt') ?: [] as $f) {   // чистим старые окна
+    if (filemtime($f) < $now - 600) {
+        @unlink($f);
+    }
+}
+
 $raw = file_get_contents('php://input', false, null, 0, MAX_BYTES + 1);
 if ($raw === false || strlen($raw) > MAX_BYTES) {
     reply(413, ['ok' => false, 'error' => 'size']);
@@ -50,7 +70,9 @@ if (!empty($data['website'])) {
 // Обрезка до 500 символов без расширения mbstring (на части хостингов оно выключено)
 $clean = static function ($v): string {
     $s = trim(strip_tags((string)($v ?? '')));
-    return preg_match('/^.{0,500}/us', $s, $m) ? $m[0] : '';
+    $s = preg_match('/^.{0,500}/us', $s, $m) ? $m[0] : '';
+    // текст, начинающийся с = + - @, Excel принял бы за формулу
+    return preg_match('/^[=+\-@\t\r]/', $s) ? "'" . $s : $s;
 };
 
 $phoneDigits = preg_replace('/\D+/', '', (string)($data['phone'] ?? ''));
