@@ -147,15 +147,23 @@
   <link rel="stylesheet" href="js/vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css?v=151">
 <style>
-  /* Примерка фонов. Фон кладём на первый экран и на форму после работ */
-  .hero, .lead-band__card { position: relative; isolation: isolate; }
-  .hero::before, .lead-band__card::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0; transition: opacity .4s; }
-  .v-flowers .hero::before, .v-flowers .lead-band__card::before { background-image: url(img/variants/flowers.svg); opacity: 1; }
-  .v-lines .hero::before, .v-lines .lead-band__card::before { background-image: url(img/variants/lines.svg); opacity: 1; }
-  .v-glow .hero::before, .v-glow .lead-band__card::before { opacity: 1; background-image:
-      radial-gradient(520px 380px at 12% 18%, rgba(242, 192, 108, .28), transparent 70%),
-      radial-gradient(620px 420px at 92% 85%, rgba(239, 180, 160, .22), transparent 70%); }
-  @media (max-width: 720px) { .v-flowers .hero::before, .v-lines .hero::before { background-size: 230% auto; background-position: 70% 0; } }
+  /* Примерка фонов по всему сайту: слой под содержимым каждого блока */
+  .hero, .section, .works, .lead-band, .footer { position: relative; isolation: isolate; }
+  .hero::before, .section::before, .works::before, .lead-band::before, .footer::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0; transition: opacity .4s;
+  }
+  /* чётные блоки — зеркально, чтобы рисунок не повторялся один в один */
+  .section:nth-of-type(even)::before, .footer::before { transform: scaleX(-1); }
+  .v-flowers .hero::before, .v-flowers .section::before, .v-flowers .works::before, .v-flowers .lead-band::before, .v-flowers .footer::before { background-image: url(img/variants/flowers.svg); opacity: .9; }
+  .v-lines .hero::before, .v-lines .section::before, .v-lines .works::before, .v-lines .lead-band::before, .v-lines .footer::before { background-image: url(img/variants/lines.svg); opacity: 1; }
+  .v-glow .hero::before, .v-glow .section::before, .v-glow .works::before, .v-glow .lead-band::before, .v-glow .footer::before { opacity: 1; background-image:
+      radial-gradient(560px 400px at 10% 15%, rgba(242, 192, 108, .26), transparent 70%),
+      radial-gradient(640px 440px at 92% 88%, rgba(239, 180, 160, .2), transparent 70%); }
+  @media (max-width: 720px) {
+    .v-flowers .hero::before, .v-flowers .section::before, .v-flowers .works::before, .v-flowers .footer::before { background-size: 230% auto; background-position: 70% 0; }
+    .v-lines .hero::before, .v-lines .section::before, .v-lines .works::before, .v-lines .footer::before { background-size: 170% auto; background-position: center top; background-repeat: repeat-y; }
+  }
   .vsw { position: fixed; z-index: 300; left: 50%; bottom: 96px; transform: translateX(-50%); display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(35, 32, 28, .88); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); font: 600 13px/1 Manrope, system-ui, sans-serif; }
   .vsw button { border: 0; padding: 10px 13px; border-radius: 999px; background: none; color: #fff; cursor: pointer; font: inherit; white-space: nowrap; }
   .vsw button[aria-pressed="true"] { background: #F2C06C; color: #23201C; }
