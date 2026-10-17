@@ -1532,3 +1532,5 @@ button.hero__deal {
   .est-feat-wrap .est--feat:last-child:nth-child(odd) .est-feat__body { padding: 8px 16px 10px 0; }
 }
 .est-feat-wrap { margin-bottom: 0; }
+.hero__perks li { line-height: 1.35; }
+.calc__alt p:empty { display: none; }
