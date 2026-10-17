@@ -176,7 +176,9 @@
   @media (max-width: 960px) {
     .hero-bg .hero__media img { display: none; }
     .hero-bg .hero__media { background: var(--bg) url(img/works/f-02.webp) 50% 0 / 100% auto no-repeat; }
-    .hero-bg .hero::after { background: linear-gradient(180deg, rgba(252,251,249,.35) 0%, rgba(252,251,249,.72) 18%, rgba(252,251,249,.93) 38%, var(--bg) 58%); }
+    .hero-bg .hero::after { background: linear-gradient(180deg, rgba(252,251,249,0) 0%, rgba(252,251,249,.15) 14%, rgba(252,251,249,.45) 30%, rgba(252,251,249,.85) 42%, var(--bg) 56%); }
+    .hero-bg .hero__title, .hero-bg .hero__lead { text-shadow: 0 0 10px rgba(252,251,249,.7); }
+    .hero-bg .hero__rating { background: rgba(252,251,249,.75); border-radius: 999px; padding: 6px 12px; margin-left: -4px; }
   }
   .vsw.vsw2 { bottom: 150px; }
 
