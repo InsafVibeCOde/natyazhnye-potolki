@@ -1534,3 +1534,4 @@ button.hero__deal {
 .est-feat-wrap { margin-bottom: 0; }
 .hero__perks li { line-height: 1.35; }
 .calc__alt p:empty { display: none; }
+.lightbox img { touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-drag: none; }

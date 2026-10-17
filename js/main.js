@@ -583,6 +583,28 @@
   $('.lightbox__next', lb).addEventListener('click', () => go(1));
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
 
+  // свайп по фото на телефоне: влево — следующее, вправо — предыдущее; фото тянется за пальцем
+  let sx = 0, sy = 0, dx = 0, swiping = false;
+  lb.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1 || group.length < 2) return;
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; swiping = true;
+    lbImg.style.transition = 'none';
+  }, { passive: true });
+  lb.addEventListener('touchmove', (e) => {
+    if (!swiping) return;
+    dx = e.touches[0].clientX - sx;
+    const dy = e.touches[0].clientY - sy;
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dx) < 10) { swiping = false; lbImg.style.transform = ''; return; }
+    lbImg.style.transform = `translateX(${dx}px)`;
+  }, { passive: true });
+  lb.addEventListener('touchend', () => {
+    if (!swiping) return;
+    swiping = false;
+    lbImg.style.transition = 'transform .25s ease';
+    lbImg.style.transform = '';
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (lb.classList.contains('is-open')) closeLb();

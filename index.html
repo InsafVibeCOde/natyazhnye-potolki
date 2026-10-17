@@ -144,7 +144,7 @@
   <link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css?v=4">
   <link rel="stylesheet" href="js/vendor/lenis.css">
-  <link rel="stylesheet" href="css/style.css?v=150">
+  <link rel="stylesheet" href="css/style.css?v=151">
 </head>
 <body>
   <!-- ================= HEADER ================= -->
@@ -901,7 +901,7 @@
     (function () {
       var anim = !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches;
       var list = anim ? ['js/vendor/gsap.min.js', 'js/vendor/ScrollTrigger.min.js', 'js/vendor/lenis.min.js'] : [];
-      list.concat('js/main.js?v=88').forEach(function (src) {
+      list.concat('js/main.js?v=89').forEach(function (src) {
         var s = document.createElement('script');
         s.src = src; s.async = false; // по порядку: сначала библиотеки, потом main.js
         document.body.appendChild(s);
