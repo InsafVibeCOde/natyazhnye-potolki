@@ -840,7 +840,7 @@
       </div>
       <div class="footer__bottom">
         <span class="footer__owner">© 2011–2026 «Люкс Монтаж» · Самозанятый Валиев Альберт Талгатович, ИНН 165609328077 <span class="footer__age" title="Возрастная маркировка">0+</span></span>
-        <span class="footer__legal">Информация на сайте не является публичной офертой (ст. 437 ГК РФ). <a href="html/privacy.html">Политика конфиденциальности</a> · <a href="html/agreement.html">Согласие на обработку персональных данных</a><a href="#" data-cookie-settings hidden> · Настройки cookie</a></span>
+        <span class="footer__legal">Информация на сайте не является публичной офертой (ст. 437 ГК РФ). <a href="html/privacy.html">Политика конфиденциальности</a> · <a href="html/agreement.html">Согласие на обработку персональных данных</a></span>
       </div>
     </div>
   </footer>
@@ -887,21 +887,12 @@
     </div>
   </div>
 
-  <!-- Cookie -->
-  <div class="cookie" id="cookie" role="dialog" aria-label="Cookie">
-    <span data-cookie-text>Сайт использует cookie только для своей работы, аналитики нет. Подробнее — в <a href="html/privacy.html">политике конфиденциальности</a>.</span>
-    <div class="cookie__actions">
-      <button class="btn btn--ghost btn--sm" data-cookie-decline hidden>Отклонить</button>
-      <button class="btn btn--light btn--sm" data-cookie-accept>Понятно</button>
-    </div>
-  </div>
-
   <script>
     // библиотеки анимаций (~135 КБ) нужны только на компьютере с мышью — на телефоне их не грузим
     (function () {
       var anim = !matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches;
       var list = anim ? ['js/vendor/gsap.min.js', 'js/vendor/ScrollTrigger.min.js', 'js/vendor/lenis.min.js'] : [];
-      list.concat('js/main.js?v=89').forEach(function (src) {
+      list.concat('js/main.js?v=90').forEach(function (src) {
         var s = document.createElement('script');
         s.src = src; s.async = false; // по порядку: сначала библиотеки, потом main.js
         document.body.appendChild(s);
