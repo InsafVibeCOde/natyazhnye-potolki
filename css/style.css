@@ -1573,3 +1573,4 @@ button.hero__deal {
 .mobile-menu a.mobile-menu__phone { font-size: 17px !important; font-weight: 600; }
 /* телефон: звонок только в нижней панели, в шапке не дублируем */
 @media (max-width: 960px) { .pill .header__call { display: none !important; } }
+.hero__perks li.perk:has(.perk__txt > b:only-child) { align-items: center; }
